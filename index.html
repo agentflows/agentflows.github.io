@@ -59,6 +59,10 @@
             More Research
           </a>
           <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://textgrad.com/">
+              <b>TextGrad</b>
+              <p style="font-size:18px; display: inline; margin-left: 5px;">🔥</p>
+            </a>
             <a class="navbar-item" href="https://chameleon-llm.github.io/">
               <b>Chameleon</b>
               <p style="font-size:18px; display: inline; margin-left: 5px;">🔥</p>
@@ -69,10 +73,6 @@
             </a>
             <a class="navbar-item" href="https://scienceqa.github.io/">
               <b>ScienceQA</b>
-              <p style="font-size:18px; display: inline; margin-left: 5px;">🔥</p>
-            </a>
-            <a class="navbar-item" href="https://textgrad.com/">
-              <b>TextGrad</b>
               <p style="font-size:18px; display: inline; margin-left: 5px;">🔥</p>
             </a>
             <a class="navbar-item" href="https://arxiv.org/abs/2501.06590">
@@ -99,7 +99,7 @@
             <h1 class="title is-1 publication-title is-bold">
               <img src="assets/logos/octotools.svg" style="width:1em;vertical-align: middle" alt="Logo" />
               <span class="octotools" style="vertical-align: middle">
-                OctoTools
+                <span style="color: var(--color-octo-red);">Octo</span><span style="color: var(--color-tools-blue);">Tools</span>
               </span>
             </h1>
             <h2 class="subtitle is-3 publication-subtitle">
@@ -200,15 +200,20 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="content has-text-centered">
-      <img src="assets/models/framework_overall.png" alt="geometric reasoning" width="100%"/>
-      <p> 
-        The overall framework of <b>OctoTools</b>. (1) <b>Tool cards</b> define tool-usage metadata and encapsulate heterogeneous tools, enabling  training-free integration of new tools without additional training or framework refinement. (2) The <b>planner</b> governs both high-level and low-level planning to address the global objective and refine actions step by step. (3) The <b>executor</b> instantiates tool calls by generating executable commands and save structured results in the context. The final answer is summarized from the full trajectory in the context. Furthermore, the <b>task-specific toolset optimization</b> algorithm learns a beneficial subset of tools for downstream tasks.
+      <img src="assets/models/framework_overall.png" width="100%"/>
+      <p style="text-align: left;">
+        The overall framework of <b>OctoTools</b>. 
+        (1) <b style="color: var(--color-tool-cards-orange)">Tool cards</b> define tool-usage metadata and encapsulate heterogeneous tools, enabling  training-free integration of new tools without additional training or framework refinement. 
+        (2) The <b style="color: var(--color-planner-red)">planner</b> governs both high-level and low-level planning to address the global objective and refine actions step by step. 
+        (3) The <b style="color: var(--color-executor-blue)">executor</b> instantiates tool calls by generating executable commands and save structured results in the context. The final answer is summarized from the full trajectory in the context. 
+        Furthermore, the <b style="color: var(--color-tool-cards-orange)">task-specific toolset optimization</b> algorithm learns a beneficial subset of tools for downstream tasks.
       </p>
     </div>
     <div class="content has-text-centered">
-      <img src="assets/models/framework_example.png" alt="geometric reasoning" width="100%"/>
-      <p> 
-        The demonstration of the self-contained example. We visualize the tool cards for selected tools, the initial plan, and two steps in which the planner and the executor orchestrate low-level planing and tool usage.
+      <img src="assets/models/framework_example.png" width="100%"/>
+      <p style="text-align: left;">
+        The demonstration of the self-contained example. 
+        We visualize the <b>tool cards</b> for selected tools, the initial plan, and two steps in which the <b>planner</b> and the <b>executor</b> orchestrate low-level planing and tool usage.
       </p>
     </div>
   </div>
