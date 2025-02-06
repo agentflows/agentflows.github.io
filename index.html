@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="OctoTools: An Agentic Framework with Extensible Tools for Complex Reasoning">
+  <meta name="keywords" content="OctoTools, LLM Agents, Complex Reasoning, LLMs, Tools">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> OctoTools: An Agentic Framework with Extensible Tools for Complex Reasoning</title>
+
+  <link rel="icon" href="./assets/logos/octotools.svg">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/explorer-index.js"></script>
+
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="https://lupantech.github.io/">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+        </a>
+        <a class="navbar-item" href="https://bowen118.github.io/">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+        </a>
+        <a class="navbar-item" href="https://shengliu66.github.io/">
+          <span class="icon">
+            <i class="fas fa-home"></i>
+          </span>
+        </a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More Research
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://chameleon-llm.github.io/">
+              <b>Chameleon</b>
+              <p style="font-size:18px; display: inline; margin-left: 5px;">🔥</p>
+            </a>
+            <a class="navbar-item" href="https://mathvista.github.io/">
+              <b>MathVista</b>
+              <p style="font-size:18px; display: inline; margin-left: 5px;">🔥</p>
+            </a>
+            <a class="navbar-item" href="https://scienceqa.github.io/">
+              <b>ScienceQA</b>
+              <p style="font-size:18px; display: inline; margin-left: 5px;">🔥</p>
+            </a>
+            <a class="navbar-item" href="https://textgrad.com/">
+              <b>TextGrad</b>
+              <p style="font-size:18px; display: inline; margin-left: 5px;">🔥</p>
+            </a>
+            <a class="navbar-item" href="https://arxiv.org/abs/2501.06590">
+              <b>ChemAgent</b>
+              <p style="font-size:18px; display: inline; margin-left: 5px;">🔥</p>
+            </a>
+            <a class="navbar-item" href="https://www.nature.com/articles/s41586-024-07618-3">
+              <b>PathChat</b>
+              <p style="font-size:18px; display: inline; margin-left: 5px;">🔥</p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title is-bold">
+              <img src="assets/logos/octotools.svg" style="width:1em;vertical-align: middle" alt="Logo" />
+              <span class="octotools" style="vertical-align: middle">
+                OctoTools
+              </span>
+            </h1>
+            <h2 class="subtitle is-3 publication-subtitle">
+              An Agentic Framework with Extensible Tools for <br>Complex Reasoning
+            </h2>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://lupantech.github.io/">Pan Lu</a>*
+                <a href="mailto:lupantech@gmail.com"><i class="fas fa-envelope"></i></a>,</span>
+              <span class="author-block">
+                <a href="https://bowen118.github.io/">Bowen Chen</a>*,</span>
+              <span class="author-block">
+                <a href="https://shengliu66.github.io/">Sheng Liu</a>*,</span>
+              <span class="author-block">
+                <a href="https://rthapa84.github.io/">Rahul Thapa</a>,</span>
+              <span class="author-block">
+                <a href="https://dbds.stanford.edu/people/joseph-boen/">Joseph Boen</a>,</span>
+              <span class="author-block">
+                <a href="https://www.james-zou.com/">James Zou</a>
+                <a href="mailto:jamesz@stanford.edu"><i class="fas fa-envelope"></i></a></span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Stanford University</span><br>
+              <span class="paper-block"><b>* Equal Contribution</b></span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2502.xxxxx.pdf"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <!-- arxiv link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2502.xxxxx" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/lupantech/MathVista"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <!-- Demo Link. -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/octotools"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <p style="font-size:18px">🤗</p>
+                    </span>
+                    <span>Demo</span>
+                  </a>
+                </span>
+                <!-- Visualization Link. -->
+                <span class="link-block">
+                  <a href="https://mathvista.github.io/#visualization"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <p style="font-size:18px">🔮</p>
+                    </span>
+                    <span>Visualize</span>
+                  </a>
+                </span>
+                <!-- Twitter Link. -->
+                <span class="link-block">
+                  <a href="https://twitter.com/lupantech/status/xxxx"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <p style="font-size:18px">🌐</p>
+                    </span>
+                    <span>Twitter</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="content has-text-centered">
+      <img src="assets/models/framework_overall.png" alt="geometric reasoning" width="100%"/>
+      <p> 
+        The overall framework of <b>OctoTools</b>. (1) <b>Tool cards</b> define tool-usage metadata and encapsulate heterogeneous tools, enabling  training-free integration of new tools without additional training or framework refinement. (2) The <b>planner</b> governs both high-level and low-level planning to address the global objective and refine actions step by step. (3) The <b>executor</b> instantiates tool calls by generating executable commands and save structured results in the context. The final answer is summarized from the full trajectory in the context. Furthermore, the <b>task-specific toolset optimization</b> algorithm learns a beneficial subset of tools for downstream tasks.
+      </p>
+    </div>
+    <div class="content has-text-centered">
+      <img src="assets/models/framework_example.png" alt="geometric reasoning" width="100%"/>
+      <p> 
+        The demonstration of the self-contained example. We visualize the tool cards for selected tools, the initial plan, and two steps in which the planner and the executor orchestrate low-level planing and tool usage.
+      </p>
+    </div>
+  </div>
+</section>
+
+  
+  <!-- <section class="section">
+    <div class="container" style="margin-top: -150px; margin-bottom: -100px;">
+      <div class="columns is-centered m-6">
+        <div class="column is-full has-text-centered content">
+          <div id="results-carousel" class="carousel results-carousel">
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="assets/results/tease_scores_version4_gemini.png" alt="geometric reasoning" width="84%" />
+                <p> Accuracy scores of one leading LLM (i.e., PoT GPT-4), four primary LMMs, random chance, and human
+                  performance our proposed∫ 
+                  <img src="assets/logos/octotools.svg" style="width:1.0em;vertical-align: middle" alt="Logo" />
+                  <span class="mathvista">MathVista</span>
+                  across mathematical reasoning and visual context types. PoT refers to program-of-thought prompting,
+                  and PoT GPT-4 is a textual LLM augmented with the caption and OCR text. GPT-4V is manually evaluated
+                  via the playground chatbot. <b class="best-score-text" style="color: #C6011F"> The scores of Gemini
+                    Ultra are from the Gemini Team, Google.</b>
+                </p>
+              </div>
+            </div>
+
+            <div class="box m-5">
+              <div class="content has-text-centered">
+                <img src="assets/results/tease_scores_gpt4v.png" alt="geometric reasoning" width="84%" />
+                <p> Accuracy scores of one leading LLM (i.e., PoT GPT-4), four primary LMMs, random chance, and human
+                  performance our proposed
+                  <img src="assets/logos/loctotools.svg" style="width:1.0em;vertical-align: middle" alt="Logo" />
+                  <span class="mathvista">MathVista</span>
+                  across mathematical reasoning and visual context types. PoT refers to program-of-thought prompting,
+                  and PoT GPT-4 is a textual LLM augmented with the caption and OCR text. GPT-4V is manually evaluated
+                  via the playground chatbot.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section> -->
+
+
+  <!-- Abstract. -->
+  <section class="section">
+    <div class="container" style="margin-bottom: 2vh;">
+
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Introduction</h2>
+          <div class="content has-text-justified">
+            <p>
+              Solving complex reasoning tasks may involve visual understanding, domain knowledge retrieval, numerical
+              calculation, and multi-step reasoning. Existing methods augment large language models (LLMs) with external
+              tools but are restricted to specialized domains, limited tool types, or require additional training data.
+            </p>
+            <p>
+              We introduce OctoTools, a training-free, user-friendly, and easily extensible open-source agentic
+              framework designed to tackle complex reasoning across diverse domains. OctoTools introduces standardized
+              tool cards to encapsulate tool functionality, a planner for both high-level and low-level planning, and an
+              executor to carry out tool usage. We validate OctoTools’ generality across 16 diverse tasks (including
+              MathVista, MMLU-Pro, MedQA, and GAIA-Text), achieving substantial average accuracy gains of 9.3% over
+              GPT-4o. Furthermore, OctoTools also outperforms AutoGen, GPT-Functions and LangChain by up to 10.6% when
+              given the same set of tools. Through comprehensive analysis and ablations, OctoTools demonstrates
+              advantages in task planning, effective tool usage, and multi-step problem solving.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Abstract. -->
+
+
+  <!-- BibTeX -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-3 has-text-centered">BibTeX</h2>
+      <pre><code>@article{lu2025octotools,
+    author = {Lu, Pan and Chen, Bowen and Liu, Sheng and Thapa, Rahul and Boen, Joseph and Zou, James},
+    title = {OctoTools: An Agentic Framework with Extensible Tools for Complex Reasoning},
+    journal = {arXiv preprint arXiv:2502.xxxxx},
+    year = {2025}
+}</code></pre>
+    </div>
+  </section>
+
+  <section>
+    <div class="section" id="org-banners" style="display:flex">
+      <a href="https://www.stanford.edu/" target="_blank" rel="external">
+        <img class="center-block org-banner" src="assets/logos/stanford.png">
+      </a>
+      <a href="https://ai.stanford.edu/" target="_blank" rel="external">
+        <img class="center-block org-banner" src="assets/logos/ai_stanford.png">
+      </a>
+    </div>
+  </section>
+
+
+  <!-- License -->
+  <footer class="footer">
+    <!-- <div class="container"> -->
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is website adapted from <a href="https://nerfies.github.io/">Nerfies</a> and <a
+              href="https://mathvista.github.io/">MathVista</a>, licensed under a <a rel="license"
+              href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->
+  </footer>
+
+</body>
+
+</html>
