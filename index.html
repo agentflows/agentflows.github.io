@@ -19,11 +19,27 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/explorer-index.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script defer src="./static/js/fontawesome.all.min.js"></script>
+<script src="./static/js/bulma-carousel.min.js"></script>
+<script src="./static/js/bulma-slider.min.js"></script>
+<script src="./static/js/explorer-index.js"></script>
+
+<!-- for latex rendering -->
+<link rel="stylesheet" href="./static/css/index.css"> 
+
+<!-- Add MathJax -->
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 </head>
 
@@ -97,8 +113,8 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <h1 class="title is-1 publication-title is-bold">
-              <img src="assets/logos/octotools.svg" style="width:1em;vertical-align: middle" alt="Logo" />
-              <span class="octotools" style="vertical-align: middle">
+              <img src="assets/logos/octotools.svg" style="width:1em;vertical-align: middle" alt="Logo">
+              <span style="vertical-align: middle">
                 <span style="color: var(--color-octo-red);">Octo</span><span style="color: var(--color-tools-blue);">Tools</span>
               </span>
             </h1>
@@ -200,9 +216,9 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="content has-text-centered">
-      <img src="assets/models/framework_overall.png" width="100%"/>
+      <img src="assets/models/framework_overall.png" width="100%">
       <p style="text-align: left;">
-        The overall framework of <b>OctoTools</b>. 
+        The overall framework of <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span>. 
         (1) <b style="color: var(--color-tool-cards-orange)">Tool cards</b> define tool-usage metadata and encapsulate heterogeneous tools, enabling  training-free integration of new tools without additional training or framework refinement. 
         (2) The <b style="color: var(--color-planner-red)">planner</b> governs both high-level and low-level planning to address the global objective and refine actions step by step. 
         (3) The <b style="color: var(--color-executor-blue)">executor</b> instantiates tool calls by generating executable commands and save structured results in the context. The final answer is summarized from the full trajectory in the context. 
@@ -210,7 +226,7 @@
       </p>
     </div>
     <div class="content has-text-centered">
-      <img src="assets/models/framework_example.png" width="100%"/>
+      <img src="assets/models/framework_example.png" width="100%">
       <p style="text-align: left;">
         The demonstration of the self-contained example. 
         We visualize the <b>tool cards</b> for selected tools, the initial plan, and two steps in which the <b>planner</b> and the <b>executor</b> orchestrate low-level planing and tool usage.
@@ -219,76 +235,259 @@
   </div>
 </section>
 
-  
-  <!-- <section class="section">
-    <div class="container" style="margin-top: -150px; margin-bottom: -100px;">
-      <div class="columns is-centered m-6">
-        <div class="column is-full has-text-centered content">
-          <div id="results-carousel" class="carousel results-carousel">
-            <div class="box m-5">
-              <div class="content has-text-centered">
-                <img src="assets/results/tease_scores_version4_gemini.png" alt="geometric reasoning" width="84%" />
-                <p> Accuracy scores of one leading LLM (i.e., PoT GPT-4), four primary LMMs, random chance, and human
-                  performance our proposed∫ 
-                  <img src="assets/logos/octotools.svg" style="width:1.0em;vertical-align: middle" alt="Logo" />
-                  <span class="mathvista">MathVista</span>
-                  across mathematical reasoning and visual context types. PoT refers to program-of-thought prompting,
-                  and PoT GPT-4 is a textual LLM augmented with the caption and OCR text. GPT-4V is manually evaluated
-                  via the playground chatbot. <b class="best-score-text" style="color: #C6011F"> The scores of Gemini
-                    Ultra are from the Gemini Team, Google.</b>
-                </p>
-              </div>
-            </div>
 
-            <div class="box m-5">
-              <div class="content has-text-centered">
-                <img src="assets/results/tease_scores_gpt4v.png" alt="geometric reasoning" width="84%" />
-                <p> Accuracy scores of one leading LLM (i.e., PoT GPT-4), four primary LMMs, random chance, and human
-                  performance our proposed
-                  <img src="assets/logos/loctotools.svg" style="width:1.0em;vertical-align: middle" alt="Logo" />
-                  <span class="mathvista">MathVista</span>
-                  across mathematical reasoning and visual context types. PoT refers to program-of-thought prompting,
-                  and PoT GPT-4 is a textual LLM augmented with the caption and OCR text. GPT-4V is manually evaluated
-                  via the playground chatbot.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-  </section> -->
-
-
-  <!-- Abstract. -->
+  <!-- Introduction -->
   <section class="section">
     <div class="container" style="margin-bottom: 2vh;">
-
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3">Introduction</h2>
           <div class="content has-text-justified">
             <p>
               Solving complex reasoning tasks may involve visual understanding, domain knowledge retrieval, numerical
-              calculation, and multi-step reasoning. Existing methods augment large language models (LLMs) with external
+              calculation, and multi-step reasoning. Existing methods augment <b>large language models (LLMs)</b> with external
               tools but are restricted to specialized domains, limited tool types, or require additional training data.
             </p>
             <p>
-              We introduce OctoTools, a training-free, user-friendly, and easily extensible open-source agentic
-              framework designed to tackle complex reasoning across diverse domains. OctoTools introduces standardized
-              tool cards to encapsulate tool functionality, a planner for both high-level and low-level planning, and an
-              executor to carry out tool usage. We validate OctoTools’ generality across 16 diverse tasks (including
-              MathVista, MMLU-Pro, MedQA, and GAIA-Text), achieving substantial average accuracy gains of 9.3% over
-              GPT-4o. Furthermore, OctoTools also outperforms AutoGen, GPT-Functions and LangChain by up to 10.6% when
-              given the same set of tools. Through comprehensive analysis and ablations, OctoTools demonstrates
-              advantages in task planning, effective tool usage, and multi-step problem solving.
+              We introduce 
+              <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span>, a training-free, user-friendly, and easily extensible open-source agentic framework designed to tackle complex reasoning across diverse domains. 
+              <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span> 
+              introduces standardized tool cards to encapsulate tool functionality, a planner for both high-level and low-level planning, and an
+              executor to carry out tool usage. We validate <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span>’ generality across <b>16 diverse tasks</b> (including MathVista, MMLU-Pro, MedQA, and GAIA-Text), achieving substantial average accuracy gains of <b>9.3%</b> over
+              <b>GPT-4o</b>. Furthermore, <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span> also outperforms <b>AutoGen</b>, <b>GPT-Functions</b> and <b>LangChain</b> by up to <b>10.6%</b> when given the same set of tools. Through comprehensive analysis and ablations, 
+              <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span>
+              demonstrates advantages in task planning, effective tool usage, and multi-step problem solving.
             </p>
+          </div>
+          <div class="container is-max-desktop">
+            <div class="content has-text-centered">
+              <img src="assets/results/main_scores_bar_chart.png" width="40%">
+              <p style="text-align: left;">
+              Performance comparison across 16 diverse tasks. <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span> achieves substantial improvements over GPT-4o and other frameworks including AutoGen, GPT-Functions, and LangChain when given access to the same set of tools.
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!--/ Abstract. -->
+  <!--/ Introduction -->
 
+
+<!-- Framework -->
+<section class="section">
+  <div class="container" style="margin-bottom: 2vh;">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">The <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span> Framework</h2>
+        <div class="content has-text-justified">
+          <p>
+            We propose <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span>, an open-source, versatile, and user-friendly agent-toolbox framework for <b>complex reasoning</b> tasks. Given a user query $q \in \mathcal{Q}$ and a pretrained language model $\text{LLM}_\theta(\cdot)$, a naive approach would generate an output directly as $y \sim \text{LLM}_\theta(q)$, providing a single-step response. In contrast, our <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span> framework introduces a <b>structured</b>, <b>multi-step</b> process that leverages <b>external tools</b> to tackle queries effectively.
+          </p>
+          <p>
+            Specifically, <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span> contains a set of <b>tools</b> $\mathcal{D} = \{d_i\}_{i=1}^n$ and associated metadata $\mathcal{M} = \{m_i\}_{i=1}^n$, where $n$ is the number of available tools. Given a query, a <b>planner</b> (based on a language model) first generates a <b>tentative plan</b> from a high-level perspective, indicating how these tools can be used to address the query, which forms the initial <b>context</b> $s_0$. From this plan, the planner determines the initial <b>action</b> $a_1$ for tool usage, specifying which tool $d_1$ to use, the relevant context, and a sub-goal. An <b>executor</b> (also powered by a language model) then converts the planner’s text-based action $a_1$ into a machine-executable <b>command</b> $o_t$, which is run to obtain intermediate results $r_1$. These results, along with the original action, update the context to $s_1 := (a_1, o_1, r_1)$. This process constitutes one step in our framework.
+          </p>
+          <p>
+            This process repeats, with the planner iteratively refining its actions based on the evolving context until it either finds a complete solution or inference limits (e.g., time or steps) are reached. After $T$ steps, the framework produces a full <b>trajectory</b> $(s_0, s_1, \dots, s_T)$, which is stored in a structured manner in the context. The planner then uses this trajectory to generate the <b>final solution</b> to the original query.
+          </p>
+          <p>
+            To sum up, <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span> provides a robust and effective framework for solving complex tasks through sub-goal decomposition and systematical tool usage. Standardized <b>tool cards</b> encapsulate functionality , the <b>planner</b> orchestrates both high-level and low-level task planning, and the <b>executor</b> instantiates tool calls for each sub-goal.
+          </p>
+        </div>
+        <h3 class="title is-4">Task-Specific Tool Selection</h3>
+        <div class="content has-text-justified">
+          <p>
+            The <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span> toolbox contains a diverse set of tools covering different modalities and skills. By leveraging structured tool cards and robust planning capabilities, <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span> demonstrates strong generality when all available tools are enabled across different tasks. However, when a small set of validation examples are available for a task, configuring a <b>task-specific subset of tools</b> can further enhance efficiency and effectiveness.
+          </p>
+          <p>
+            To this end, we propose an automated algorithm to optimize the toolset configuration for each task. Given $n$ available tools in the toolbox, the total number of possible subsets is $O(2^n)$, which is prohibitively large. To make this tractable, we employ a greedy search strategy that reduces the complexity to $O(n)$. Our approach proceeds in three stages. 
+          </p>
+          <div class="container is-max-desktop">
+            <div class="content has-text-centered">
+              <img src="assets/models/algorithm.png" width="45%">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/ Framework -->
+
+<!-- Results -->
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+        <h2 class="title is-3">Experimental Results</h2>
+        <h3 class="title is-4">Main Results: Comparison with Baselines</h3>
+          <div class="content has-text-justified">
+              <p>
+                To demonstrate the generality of our <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span> framework, we conduct comprehensive evaluations on <b>16 diverse benchmarks</b> spanning <b>two modalities</b>, <b>five domains</b>, and <b>four reasoning types</b>. These benchmarks encompass a wide range of complex reasoning tasks, including <b>visual understanding</b>, <b>numerical calculation</b>, <b>knowledge retrieval</b>, and <b>multi-step reasoning</b>.
+              </p>
+
+              <div id="results-carousel" class="carousel results-carousel">
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <img src="assets/results/result_table_1.png" width="90%">
+                  <!-- <p> Caption.
+                  </p> -->
+                </div>
+              </div>
+
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <img src="assets/results/benchmark_gains_radar_barplot.png" width="45%">
+                  <p> Performance gains across different benchmarks from our <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span> framework over the base GPT-4o model.
+                  </p>
+                </div>
+              </div>
+
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <img src="assets/results/result_table_2.png" width="50%">
+                  <p> Comparison with other agent frameworks using the same underlying toolbox. <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span> achieves superior performance with an average accuracy of 58.5%, outperforming the next best baseline by 7.3%. Results are averaged over three trials.
+                  </p>
+                </div>
+              </div>
+              
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <img src="assets/results/agent_baselines_bar_plot.png" width="90%">
+                  <p> Performance ours vs. other agents. Our framework consistently outperforms agent baselines across all benchmarks. Bar
+                    values represent accuracy and error bars represent standard deviation.
+                  </p>
+                </div>
+              </div>
+
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <img src="assets/results/tool_usage_ours_baselines.png" width="90%">
+                  <p> <b>a.</b> Tool usage distribution in our <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span> framework and agent baselines by averaging results from 16 tasks. <b>b.</b> Tool usage distribution across 16 tasks in <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span>. <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span> takes advantage of different external tools to address task-specific challenges.
+                  </p>
+                </div>
+              </div>
+
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <img src="assets/results/tool_usage_by_16_tasks_AutoGen.png" width="70%">
+                  <p> Distribution of tools usage. Frequency of tools used by the <b>AutoGen</b> agent for each benchmark.
+                  </p>
+                </div>
+              </div>
+
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <img src="assets/results/tool_usage_by_16_tasks_LangChain.png" width="70%">
+                  <p> Distribution of tools usage. Frequency of tools used by the <b>GPT-Functions</b> agent for each benchmark.
+                  </p>
+                </div>
+              </div>
+
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <img src="assets/results/tool_usage_by_16_tasks_GPT4o-Plugin.png" width="70%">
+                  <p> Distribution of tools usage. Frequency of tools used by the <b>LangChain</b> agent for each benchmark.
+                  </p>
+                </div>
+              </div>
+
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <img src="assets/results/num_steps_hist.png" width="60%">
+                  <p> Distribution of number of steps used.
+                  </p>
+                </div>
+              </div>
+
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <img src="assets/results/benchmark_distribution_x_steps_y_tools.png" width="50%">
+                  <p> Benchmark distribution across average number of steps and fraction of external tool usage (tools that exclude the base tool <b>Generalist_Solution_Generator</b>) in <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span>.
+                  </p>
+                </div>
+              </div>
+
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <img src="assets/results/scatterplot_decomposition_vs_tools.png" width="50%">
+                  <p> Benchmark distribution across two dimensions. Tasks that show high improvement from task decomposition likely require multi-step reasoning, while tasks that show high improvement from specialized tools likely require specialized skills.
+                  </p>
+                </div>
+              </div>
+
+              </div>
+          </div>
+          <h3 class="title is-4">Ablation Study: Disentangling Different Components</h3>
+          <div class="content has-text-justified">
+              <p>
+                We further explore several factors that affect <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span>'s performance, using a validation set of 100 samples.
+              </p>
+
+              <div id="results-carousel" class="carousel results-carousel">
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <img src="assets/ablation/ours_tool_selection_category_scores_bar_chart.png" width="50%">
+                  <p> Performance under three toolset strategies in <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span> across all 16 tasks and various categories (the number in parentheses indicates the number of tasks in each category).
+                  </p>
+                </div>
+              </div>
+
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <img src="assets/ablation/all_tools_ablation.png" width="90%">
+                  <p> Performance with vs. without tool selection. While toolset optimization increases performance over using the full toolset in most tasks, even without it, our framework achieves similar performance by naively enabling all possible tools. Bar values represent accuracy and error bars represent standard deviation.
+                  </p>
+                </div>
+              </div>
+
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <img src="assets/ablation/gpt4omini_ours_category_scores_bar_chart.png" width="50%">
+                  <p> Performance of <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span> on 16 tasks and various categories using a weaker LLM, GPT-4o-mini, as the base engine. <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span><sub>base</sub> is the configuration in which only the base <b>Generalist_Solution_Generator</b> tool is enabled. The number in parentheses indicates the number of tasks in each category.
+                  </p>
+                </div>
+              </div>
+
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <img src="assets/ablation/gpt4o-mini_bar_plot.png" width="90%">
+                  <p> Performance ours vs. other agents. Our framework consistently outperforms agent baselines across all benchmarks. Bar
+                    values represent accuracy and error bars represent standard deviation.
+                  </p>
+                </div>
+              </div>
+              
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <img src="assets/ablation/average_accuracy_by_max_steps_error_range.png" width="40%">
+                  <p> Average accuracy across 16 benchmarks with respect to maximum allowed reasoning steps in <span style="color: var(--color-octo-red);"><b>Octo</b></span><span style="color: var(--color-tools-blue);"><b>Tools</b></span>. Overall, performance tends to improve as the maxmum number of steps increases, highlighting the benefit of longer chains of multi-step reasoning.
+                  </p>
+                </div>
+              </div>
+              
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <img src="assets/ablation/accuracy_vs_max_steps_indiv_delta.png" width="65%">
+                  <p> Accuracy vs number of maximum steps. The change in accuracy from a maximum step of 1 is plotted. Most benchmarks improve in performance with the number of allowed steps.
+                  </p>
+                </div>
+              </div>
+
+              <div class="box m-5">
+                <div class="content has-text-centered">
+                  <img src="assets/ablation/toolset.png" width="60%">
+                  <p> Optimized tool sets for each benchmark following our Algorithm. A ✓indicates that the tool is used for that benchmark.
+                  </p>
+                </div>
+              </div>
+
+              </div>
+          </div>
+        </div>
+      </div>
+  </section>
+<!--/ Results --> 
 
   <!-- BibTeX -->
   <section class="section" id="BibTeX">
