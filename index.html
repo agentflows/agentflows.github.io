@@ -21,6 +21,8 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="stylesheet" href="./static/css/tool_cards.css">
+  <link rel="stylesheet" href="./static/css/top_button.css">
+  <link rel="stylesheet" href="./static/css/navbar.css">
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -43,12 +45,6 @@
     };
   </script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-  <style>
-    html {
-      scroll-behavior: smooth; /* Add smooth scrolling to the whole page */
-    }
-  </style>
 
 </head>
 
@@ -116,6 +112,29 @@
     </div>
   </nav>
 
+  <!-- Add Table of Contents -->
+  <div class="toc-wrapper">
+    <h4 style="margin-bottom: 10px;">Table of Contents</h4>
+    <ul class="toc-list">
+      <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#tool-cards">Tool Cards</a></li>
+      <li>
+        <a href="#framework">Framework</a>
+        <!-- <div class="toc-subitem">
+          <a href="#task-specific-tool-selection">Task-Specific Tool Selection</a>
+        </div> -->
+      </li>
+      <li>
+        <a href="#results">Results</a>
+        <!-- <div class="toc-subitem">
+          <a href="#main-results">Main Results</a>
+          <a href="#ablation-study">Ablation Study</a>
+        </div> -->
+      </li>
+      <li><a href="#visualization">Visualization</a></li>
+      <li><a href="#BibTeX">BibTeX</a></li>
+    </ul>
+  </div>
 
   <section class="hero">
     <div class="hero-body">
@@ -256,7 +275,7 @@
 
 
   <!-- Introduction -->
-  <section class="section">
+  <section class="section" id="introduction">
     <div class="container" style="margin-bottom: 2vh;">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
@@ -310,85 +329,10 @@
   <!--/ Introduction -->
 
 
-  <!-- Framework -->
-  <section class="section">
-    <div class="container" style="margin-bottom: 2vh;">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">The <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
-              style="color: var(--color-tools-blue);"><b>Tools</b></span> Framework</h2>
-          <div class="content has-text-justified">
-            <p>
-              We propose <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
-                style="color: var(--color-tools-blue);"><b>Tools</b></span>, an open-source, versatile, and
-              user-friendly agent-toolbox framework for <b>complex reasoning</b> tasks. Given a user query $q \in
-              \mathcal{Q}$ and a pretrained language model $\text{LLM}_\theta(\cdot)$, a naive approach would generate
-              an output directly as $y \sim \text{LLM}_\theta(q)$, providing a single-step response. In contrast, our
-              <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
-                style="color: var(--color-tools-blue);"><b>Tools</b></span> framework introduces a <b>structured</b>,
-              <b>multi-step</b> process that leverages <b>external tools</b> to tackle queries effectively.
-            </p>
-            <p>
-              Specifically, <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
-                style="color: var(--color-tools-blue);"><b>Tools</b></span> contains a set of <b>tools</b> $\mathcal{D}
-              = \{d_i\}_{i=1}^n$ and associated metadata $\mathcal{M} = \{m_i\}_{i=1}^n$, where $n$ is the number of
-              available tools. Given a query, a <b>planner</b> (based on a language model) first generates a
-              <b>tentative plan</b> from a high-level perspective, indicating how these tools can be used to address the
-              query, which forms the initial <b>context</b> $s_0$. From this plan, the planner determines the initial
-              <b>action</b> $a_1$ for tool usage, specifying which tool $d_1$ to use, the relevant context, and a
-              sub-goal. An <b>executor</b> (also powered by a language model) then converts the planner’s text-based
-              action $a_1$ into a machine-executable <b>command</b> $o_t$, which is run to obtain intermediate results
-              $r_1$. These results, along with the original action, update the context to $s_1 := (a_1, o_1, r_1)$. This
-              process constitutes one step in our framework.
-            </p>
-            <p>
-              This process repeats, with the planner iteratively refining its actions based on the evolving context
-              until it either finds a complete solution or inference limits (e.g., time or steps) are reached. After $T$
-              steps, the framework produces a full <b>trajectory</b> $(s_0, s_1, \dots, s_T)$, which is stored in a
-              structured manner in the context. The planner then uses this trajectory to generate the <b>final
-                solution</b> to the original query.
-            </p>
-            <p>
-              To sum up, <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
-                style="color: var(--color-tools-blue);"><b>Tools</b></span> provides a robust and effective framework
-              for solving complex tasks through sub-goal decomposition and systematical tool usage. Standardized <b>tool
-                cards</b> encapsulate functionality , the <b>planner</b> orchestrates both high-level and low-level task
-              planning, and the <b>executor</b> instantiates tool calls for each sub-goal.
-            </p>
-          </div>
-          <h3 class="title is-4">Task-Specific Tool Selection</h3>
-          <div class="content has-text-justified">
-            <p>
-              The <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
-                style="color: var(--color-tools-blue);"><b>Tools</b></span> toolbox contains a diverse set of tools
-              covering different modalities and skills. By leveraging structured tool cards and robust planning
-              capabilities, <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
-                style="color: var(--color-tools-blue);"><b>Tools</b></span> demonstrates strong generality when all
-              available tools are enabled across different tasks. However, when a small set of validation examples are
-              available for a task, configuring a <b>task-specific subset of tools</b> can further enhance efficiency
-              and effectiveness.
-            </p>
-            <p>
-              To this end, we propose an automated algorithm to optimize the toolset configuration for each task. Given
-              $n$ available tools in the toolbox, the total number of possible subsets is $O(2^n)$, which is
-              prohibitively large. To make this tractable, we employ a greedy search strategy that reduces the
-              complexity to $O(n)$. Our approach proceeds in three stages.
-            </p>
-            <div class="container is-max-desktop">
-              <div class="content has-text-centered">
-                <img src="assets/models/algorithm.png" width="50%">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--/ Framework -->
 
 
   <!-- Tool Cards -->
-  <section class="section">
+  <section class="section" id="tool-cards">
     <div class="container">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
@@ -746,8 +690,85 @@
   </section>
   <!--/ Tool Cards -->
 
+  <!-- Framework -->
+  <section class="section" id="framework">
+    <div class="container" style="margin-bottom: 2vh;">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">The <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
+              style="color: var(--color-tools-blue);"><b>Tools</b></span> Framework</h2>
+          <div class="content has-text-justified">
+            <p>
+              We propose <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
+                style="color: var(--color-tools-blue);"><b>Tools</b></span>, an open-source, versatile, and
+              user-friendly agent-toolbox framework for <b>complex reasoning</b> tasks. Given a user query $q \in
+              \mathcal{Q}$ and a pretrained language model $\text{LLM}_\theta(\cdot)$, a naive approach would generate
+              an output directly as $y \sim \text{LLM}_\theta(q)$, providing a single-step response. In contrast, our
+              <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
+                style="color: var(--color-tools-blue);"><b>Tools</b></span> framework introduces a <b>structured</b>,
+              <b>multi-step</b> process that leverages <b>external tools</b> to tackle queries effectively.
+            </p>
+            <p>
+              Specifically, <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
+                style="color: var(--color-tools-blue);"><b>Tools</b></span> contains a set of <b>tools</b> $\mathcal{D}
+              = \{d_i\}_{i=1}^n$ and associated metadata $\mathcal{M} = \{m_i\}_{i=1}^n$, where $n$ is the number of
+              available tools. Given a query, a <b>planner</b> (based on a language model) first generates a
+              <b>tentative plan</b> from a high-level perspective, indicating how these tools can be used to address the
+              query, which forms the initial <b>context</b> $s_0$. From this plan, the planner determines the initial
+              <b>action</b> $a_1$ for tool usage, specifying which tool $d_1$ to use, the relevant context, and a
+              sub-goal. An <b>executor</b> (also powered by a language model) then converts the planner’s text-based
+              action $a_1$ into a machine-executable <b>command</b> $o_t$, which is run to obtain intermediate results
+              $r_1$. These results, along with the original action, update the context to $s_1 := (a_1, o_1, r_1)$. This
+              process constitutes one step in our framework.
+            </p>
+            <p>
+              This process repeats, with the planner iteratively refining its actions based on the evolving context
+              until it either finds a complete solution or inference limits (e.g., time or steps) are reached. After $T$
+              steps, the framework produces a full <b>trajectory</b> $(s_0, s_1, \dots, s_T)$, which is stored in a
+              structured manner in the context. The planner then uses this trajectory to generate the <b>final
+                solution</b> to the original query.
+            </p>
+            <p>
+              To sum up, <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
+                style="color: var(--color-tools-blue);"><b>Tools</b></span> provides a robust and effective framework
+              for solving complex tasks through sub-goal decomposition and systematical tool usage. Standardized <b>tool
+                cards</b> encapsulate functionality , the <b>planner</b> orchestrates both high-level and low-level task
+              planning, and the <b>executor</b> instantiates tool calls for each sub-goal.
+            </p>
+          </div>
+          <h3 class="title is-4">Task-Specific Tool Selection</h3>
+          <div class="content has-text-justified">
+            <p>
+              The <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
+                style="color: var(--color-tools-blue);"><b>Tools</b></span> toolbox contains a diverse set of tools
+              covering different modalities and skills. By leveraging structured tool cards and robust planning
+              capabilities, <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
+                style="color: var(--color-tools-blue);"><b>Tools</b></span> demonstrates strong generality when all
+              available tools are enabled across different tasks. However, when a small set of validation examples are
+              available for a task, configuring a <b>task-specific subset of tools</b> can further enhance efficiency
+              and effectiveness.
+            </p>
+            <p>
+              To this end, we propose an automated algorithm to optimize the toolset configuration for each task. Given
+              $n$ available tools in the toolbox, the total number of possible subsets is $O(2^n)$, which is
+              prohibitively large. To make this tractable, we employ a greedy search strategy that reduces the
+              complexity to $O(n)$. Our approach proceeds in three stages.
+            </p>
+            <div class="container is-max-desktop">
+              <div class="content has-text-centered">
+                <img src="assets/models/algorithm.png" width="50%">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Framework -->
+
+
   <!-- Results -->
-  <section class="section">
+  <section class="section" id="results">
     <div class="container">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
@@ -974,7 +995,7 @@
 
 
   <!-- Examples -->
-  <section class="section">
+  <section class="section" id="visualization">
     <div class="container">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
@@ -1081,6 +1102,28 @@
               behavior: 'smooth'
           });
       }
+  </script>
+
+  <script>
+    // Add active state to TOC items based on scroll position
+    document.addEventListener('DOMContentLoaded', function() {
+      const tocLinks = document.querySelectorAll('.toc-list a');
+      
+      window.addEventListener('scroll', () => {
+        let current = '';
+        
+        document.querySelectorAll('section').forEach(section => {
+          const sectionTop = section.offsetTop;
+          if (window.pageYOffset >= sectionTop - 60) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        tocLinks.forEach(link => {
+          link.style.fontWeight = link.getAttribute('href').slice(1) === current ? 'bold' : 'normal';
+        });
+      });
+    });
   </script>
 
 </html>
