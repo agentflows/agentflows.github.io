@@ -6,6 +6,16 @@
     background-color: white; /* Added to ensure smooth transition */
   }
   
+  .tool-name {
+    color: #000000;
+    transition: color 0.3s ease;
+}
+
+.tool-name:hover {
+    color: #2160c4;
+    text-decoration: none;
+}
+
   .tool-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);

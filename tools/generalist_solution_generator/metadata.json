@@ -2,7 +2,6 @@
     "metadata": {
         "tool_name": "Python_Code_Generator_Tool",
         "tool_description": "A tool that generates and executes simple Python code snippets for basic arithmetical calculations and math-related problems. The generated code runs in a highly restricted environment with only basic mathematical operations available.",
-        "tool_version": "1.6.0",
         "input_types": {
             "query": "str - A clear, specific description of the arithmetic calculation or math problem to be solved, including any necessary numerical inputs."
         },
