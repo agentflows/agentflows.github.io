@@ -17,7 +17,10 @@
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/tool_cards.css">
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -41,8 +44,14 @@
   </script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+  <style>
+    html {
+      scroll-behavior: smooth; /* Add smooth scrolling to the whole page */
+    }
+  </style>
 
 </head>
+
 
 <body>
 
@@ -1046,5 +1055,32 @@
   </footer>
 
 </body>
+
+    <!-- Back to top button -->
+    <button onclick="topFunction()" id="topButton" title="Go to top">
+      <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- JavaScript for the top button -->
+  <script>
+      let mybutton = document.getElementById("topButton");
+      
+      window.onscroll = function() {scrollFunction()};
+      
+      function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+              mybutton.style.display = "block";
+          } else {
+              mybutton.style.display = "none";
+          }
+      }
+      
+      function topFunction() {
+          window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+          });
+      }
+  </script>
 
 </html>

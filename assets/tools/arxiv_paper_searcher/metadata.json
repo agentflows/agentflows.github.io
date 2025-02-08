@@ -1,46 +1,37 @@
-{
-    "metadata": {
-        "tool_name": "Python_Code_Generator_Tool",
-        "tool_description": "A tool that generates and executes simple Python code snippets for basic arithmetical calculations and math-related problems. The generated code runs in a highly restricted environment with only basic mathematical operations available.",
-        "tool_version": "1.6.0",
-        "input_types": {
-            "query": "str - A clear, specific description of the arithmetic calculation or math problem to be solved, including any necessary numerical inputs."
-        },
-        "output_type": "dict - A dictionary containing the generated code, calculation result, and any error messages.",
-        "demo_commands": [
-            {
-                "command": 'execution = tool.execute(query="Calculate the factorial of 5")',
-                "description": "Generate a Python code snippet to calculate the factorial of 5."
-            },
-            {
-                "command": 'execution = tool.execute(query="Find the sum of prime numbers up to 50")',
-                "description": "Generate a Python code snippet to find the sum of prime numbers up to 50."
-            },
-            {
-                "command": 'query="Given the list [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], calculate the sum of squares of odd numbers"\nexecution = tool.execute(query=query)',
-                "description": "Generate a Python function for a specific mathematical operation on a given list of numbers."
-            }
-        ],
-        "user_metadata": {
-            "limitations": [
-                "Restricted to basic Python arithmetic operations and built-in mathematical functions.",
-                "Cannot use any external libraries or modules, including those in the Python standard library.",
-                "Limited to simple mathematical calculations and problems.",
-                "Cannot perform any string processing, data structure manipulation, or complex algorithms.",
-                "No access to any system resources, file operations, or network requests.",
-                "Cannot use 'import' statements.",
-                "All calculations must be self-contained within a single function or script.",
-                "Input must be provided directly in the query string.",
-                "Output is limited to numerical results or simple lists/tuples of numbers."
-            ],
-            "best_practices": [
-                "Provide clear and specific queries that describe the desired mathematical calculation.",
-                "Include all necessary numerical inputs directly in the query string.",
-                "Keep tasks focused on basic arithmetic, algebraic calculations, or simple mathematical algorithms.",
-                "Ensure all required numerical data is included in the query.",
-                "Verify that the query only involves mathematical operations and does not require any data processing or complex algorithms.",
-                "Review generated code to ensure it only uses basic Python arithmetic operations and built-in math functions."
-            ]
-        }
+tool_name="Generalist_Solution_Generator_Tool",
+tool_description="A generalized tool that takes query from the user as prompt, and answers the question step by step to the best of its ability. It can also accept an image.",
+tool_version="1.0.0",
+input_types={
+    "prompt": "str - The prompt that includes query from the user to guide the agent to generate response (Examples: 'Describe this image in detail').",
+    "image": "str - The path to the image file if applicable (default: None).",
+},
+output_type="str - The generated response to the original query prompt",
+demo_commands=[
+    {
+        "command": 'execution = tool.execute(prompt="Summarize the following text in a few lines")',
+        "description": "Generate a short summary given the prompt from the user."
+    },
+    {
+        "command": 'execution = tool.execute(prompt="Explain the mood of this scene.", image="path/to/image1.png")',
+        "description": "Generate a caption focusing on the mood using a specific prompt and image."
+    },
+    {
+        "command": 'execution = tool.execute(prompt="Give your best coordinate estimate for the pacemaker in the image and return (x1, y1, x2, y2)", image="path/to/image2.png")',
+        "description": "Generate bounding box coordinates given the image and prompt from the user. The format should be (x1, y1, x2, y2)."
+    },
+    {
+        "command": 'execution = tool.execute(prompt="Is the number of tiny objects that are behind the small metal jet less than the number of tiny things left of the tiny sedan?", image="path/to/image2.png")',
+        "description": "Answer a question step by step given the image."
     }
+],
+user_metadata = {
+    "limitation": "The Generalist_Solution_Generator_Tool may provide hallucinated or incorrect responses.",
+    "best_practice": "Use the Generalist_Solution_Generator_Tool for general queries or tasks that don't require specialized knowledge or specific tools in the toolbox. For optimal results:\n\n"
+    "1) Provide clear, specific prompts.\n"
+    "2) Use it to answer the original query through step by step reasoning for tasks without complex or multi-step reasoning.\n"
+    "3) For complex queries, break them down into subtasks and use the tool multiple times.\n"
+    "4) Use it as a starting point for complex tasks, then refine with specialized tools.\n"
+    "5) Verify important information from its responses.\n"
+    "6) For image-related tasks, ensure the image path is correct and the prompt is relevant to the image content."
 }
+)
