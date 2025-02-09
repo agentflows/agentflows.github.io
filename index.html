@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="./static/css/tool_cards.css">
   <link rel="stylesheet" href="./static/css/top_button.css">
   <link rel="stylesheet" href="./static/css/navbar.css">
-
+  <link rel="stylesheet" href="./static/css/index.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -33,8 +33,6 @@
 
   <!-- Add navbar.js script -->
   <script src="./static/js/navbar.js"></script>
-
-  <link rel="stylesheet" href="./static/css/index.css">
 
   <!-- Add MathJax -->
   <script src="./static/js/mathjax.js"></script>
@@ -1041,34 +1039,6 @@
           <!-- The iframe will be inserted here by JavaScript -->
         </div>
 
-        <!-- <script>
-          // Function to handle button clicks
-          function handleExampleButtonClick(event) {
-            // Remove active class from all buttons
-            document.querySelectorAll('.example-button').forEach(btn => {
-              btn.classList.remove('is-active');
-            });
-            
-            // Add active class to clicked button
-            event.target.classList.add('is-active');
-            
-            // Get example number
-            const exampleNum = event.target.dataset.example;
-            
-            // Update iframe source
-            const container = document.getElementById('example-container');
-            container.innerHTML = `<iframe src="visualization/example_${exampleNum}/vis.html" 
-                                         style="width: 100%; height: 100%; border: none;"></iframe>`;
-          }
-
-          // Add click handlers to all example buttons
-          document.querySelectorAll('.example-button').forEach(button => {
-            button.addEventListener('click', handleExampleButtonClick);
-          });
-
-          // Auto-select first example on page load
-          document.querySelector('.example-button').click();
-        </script> -->
       </div>
     </div>
   </div>

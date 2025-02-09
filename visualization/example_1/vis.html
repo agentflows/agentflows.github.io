@@ -17,7 +17,39 @@
             padding: 20px;
         }
 
-        /* Add new wrapper class */
+        /* List styling */
+        .step-content ol {
+            padding-left: 25px;
+            margin-bottom: 1em;
+            list-style-type: decimal;
+        }
+    
+        .step-content ul {
+            padding-left: 25px;
+            margin-bottom: 1em;
+            list-style-type: disc;
+        }
+    
+        .step-content ol ol,
+        .step-content ul ul,
+        .step-content ol ul,
+        .step-content ul ol {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            padding-left: 25px;
+        }
+    
+        .step-content li {
+            margin-bottom: 0.5em;
+            line-height: 1.5;
+        }
+    
+        .step-content li > ul,
+        .step-content li > ol {
+            margin-top: 0.5em;
+        }
+
+        /* Layout styling */
         .top-sections-wrapper {
             display: flex;
             gap: 20px;
@@ -25,13 +57,12 @@
         }
         
         .query-section {
-            flex: 0 0 55%;  /* Modified from full width to 45% */
+            flex: 0 0 55%;
             display: flex;
             background: #f5f5f5;
             padding: 20px;
             border-radius: 8px;
         }
-        
         
         .image-container {
             flex: 0 0 50%;
@@ -43,7 +74,7 @@
         }
         
         .wrong-prediction {
-            flex: 0 0 45%;  /* Modified from full width to 45% */
+            flex: 0 0 45%;
             background: #ffebee;
             padding: 20px;
             border-radius: 8px;
@@ -74,7 +105,7 @@
             background: #e3f2fd;
             border-color: #2196f3;
         }
-        
+
         .step-content {
             flex: 1;
             padding: 20px;
@@ -83,6 +114,16 @@
             border-radius: 4px;
             min-height: 400px;
         }
+        
+        /* Add paragraph spacing */
+        .step-content p {
+            margin-bottom: 1em;
+        }
+
+        .step-content p + p {
+            margin-top: 1em;
+        }
+        
         
         .step-content:empty::before {
             content: 'Click a step to view details';
@@ -145,22 +186,74 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
-        // Store step content
-        const stepContent = {
-            'step0': `<h3>Initial Plan from Query Analyzer</h3>
-                     <p><strong>Concise summary:</strong> The query asks, "How many baseballs are there?" accompanied by an image showing several buckets containing baseballs. The objective is to determine the total number of baseballs present in the image.</p>
-                     <p><strong>Required skills:</strong></p>
-                     <ol>
-                         <li>Image Analysis: Understanding and interpreting visual content.</li>
-                         <li>Tool Operation: Ability to operate and execute commands using the provided tools.</li>
-                         <li>Critical Thinking: Evaluating tool outputs and making decisions based on them.</li>
-                     </ol>`,
-            'step1-action': `<h3>Action from Action Predictor</h3>
-                            <p><strong>Justification:</strong> The Image_Captioner_Tool is the best choice for the first step because it provides a general description of the image...</p>`,
-            // Add content for other steps...
-        };
-
+        // Function to fetch and parse markdown content
+        async function loadMarkdownContent() {
+            try {
+                const response = await fetch('../example_1/example.md');
+                const markdownContent = await response.text();
+                return parseMarkdownSections(markdownContent);
+            } catch (error) {
+                console.error('Error loading markdown:', error);
+                return {};
+            }
+        }
+    
+        // Function to parse markdown into sections
+        function parseMarkdownSections(markdown) {
+            const sections = {};
+            const lines = markdown.split('\n');
+            let currentSection = '';
+            let currentContent = [];
+    
+            lines.forEach(line => {
+                if (line.startsWith('### ')) {
+                    // If we were building a previous section, save it
+                    if (currentSection) {
+                        sections[currentSection] = currentContent.join('\n');
+                        currentContent = [];
+                    }
+                    currentSection = line.replace('### ', '').trim();
+                } else if (currentSection) {
+                    currentContent.push(line);
+                }
+            });
+    
+            // Save the last section
+            if (currentSection) {
+                sections[currentSection] = currentContent.join('\n');
+            }
+    
+            return sections;
+        }
+    
+        // Initialize content when page loads
+        async function initializeContent() {
+            const sections = await loadMarkdownContent();
+            
+            // Update stepContent with parsed markdown sections
+            stepContent = {
+                'step0': marked.parse(sections['Step 0: Initial Plan from Query Analyzer'] || ''),
+                'step1-action': marked.parse(sections['Step 1: Action from Action Predictor'] || ''),
+                'step1-command': marked.parse(sections['Step 1: Command from Command Generator'] || ''),
+                'step1-result': marked.parse(sections['Step 1: Result from Command Executor'] || ''),
+                'step1-verify': marked.parse(sections['Step 1: Verification from Context Verifier'] || ''),
+                'step2-action': marked.parse(sections['Step 2: Action from Action Predictor'] || ''),
+                'step2-command': marked.parse(sections['Step 2: Command from Command Generator'] || ''),    
+                'step2-result': marked.parse(sections['Step 2: Result from Command Executor'] || ''),
+                'step2-verify': marked.parse(sections['Step 2: Verification from Context Verifier'] || ''),
+                'final': marked.parse(sections['Final Answer'] || ''),
+                // Add other steps as needed...
+            };
+    
+            // Trigger display of initial content
+            const firstButton = document.querySelector('.step-button');
+            if (firstButton) {
+                firstButton.click();
+            }
+        }
+    
         // Handle button clicks
         document.querySelectorAll('.step-button').forEach(button => {
             button.addEventListener('click', () => {
@@ -169,13 +262,18 @@
                     btn.classList.remove('active');
                 });
                 button.classList.add('active');
-
+    
                 // Show content
                 const stepId = button.dataset.step;
                 const contentDiv = document.querySelector('.step-content');
                 contentDiv.innerHTML = stepContent[stepId] || 'Content for this step will be added...';
             });
         });
+    
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', initializeContent);
     </script>
+
+
 </body>
 </html>
