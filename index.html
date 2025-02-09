@@ -31,20 +31,17 @@
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/explorer-index.js"></script>
 
-  <!-- for latex rendering -->
+  <!-- Add navbar.js script -->
+  <script src="./static/js/navbar.js"></script>
+
   <link rel="stylesheet" href="./static/css/index.css">
 
   <!-- Add MathJax -->
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']],
-        processEscapes: true
-      }
-    };
-  </script>
+  <script src="./static/js/mathjax.js"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Add visualization.js script -->
+  <script src="./static/js/visualization.js"></script>
 
 </head>
 
@@ -114,7 +111,9 @@
 
   <!-- Add Table of Contents -->
   <div class="toc-wrapper">
-    <h4 style="margin-bottom: 10px;">Table of Contents</h4>
+    <h4 style="margin-bottom: 10px;">
+      <a href="#">Table of Contents</a>
+    </h4>
     <ul class="toc-list">
       <li><a href="#introduction">Introduction</a></li>
       <li><a href="#tool-cards">Tool Cards</a></li>
@@ -995,42 +994,85 @@
   <!--/ Results -->
 
 
-
-  <!-- Examples -->
-  <section class="section" id="visualization">
-    <div class="container">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3" id="visualization" >Visualization Examples (TBD)</h2>
-          <div class="content has-text-justified">
-            <p>
-              Text.
-            </p>
-
-            <div id="results-carousel" class="carousel results-carousel">
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="assets/results/tool_usage_by_16_tasks_AutoGen.png" width="70%">
-                  <p> Distribution of tools usage. Frequency of tools used by the <b>AutoGen</b> agent for each
-                    benchmark.
-                  </p>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="assets/results/tool_usage_by_16_tasks_LangChain.png" width="70%">
-                  <p> Distribution of tools usage. Frequency of tools used by the <b>GPT-Functions</b> agent for each
-                    benchmark.
-                  </p>
-                </div>
-              </div>
-
-            </div>
+<!-- Examples -->
+<section class="section" id="visualization">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3" id="visualization">Visualization Examples</h2>
+        
+        <!-- Example Selection Buttons -->
+        <div class="buttons is-centered" style="margin-bottom: 2rem;">
+          <!-- First Row -->
+          <div class="buttons has-addons is-centered" style="width: 100%; margin-bottom: 0.5rem;">
+            <button class="button is-info is-outlined example-button" data-example="1">
+              Demonstration
+            </button>
+            <button class="button is-info is-outlined example-button" data-example="2">
+              Visual Reasoning
+            </button>
+            <button class="button is-info is-outlined example-button" data-example="3">
+              Multi-step Reasoning
+            </button>
+            <button class="button is-info is-outlined example-button" data-example="4">
+              Agentic Reasoning
+            </button>
+          </div>
+          
+          <!-- Second Row -->
+          <div class="buttons has-addons is-centered" style="width: 100%;">
+            <button class="button is-info is-outlined example-button" data-example="5">
+              Scientific Reasoning
+            </button>
+            <button class="button is-info is-outlined example-button" data-example="6">
+              Medical Reasoning
+            </button>
+            <button class="button is-info is-outlined example-button" data-example="7">
+              Pathology Diagnosis
+            </button>
+            <button class="button is-info is-outlined example-button" data-example="8">
+              Literature Review
+            </button>
           </div>
         </div>
+
+        <!-- Example Display Container -->
+        <div id="example-container" style="width: 100%; height: 800px; border: none;">
+          <!-- The iframe will be inserted here by JavaScript -->
+        </div>
+
+        <!-- <script>
+          // Function to handle button clicks
+          function handleExampleButtonClick(event) {
+            // Remove active class from all buttons
+            document.querySelectorAll('.example-button').forEach(btn => {
+              btn.classList.remove('is-active');
+            });
+            
+            // Add active class to clicked button
+            event.target.classList.add('is-active');
+            
+            // Get example number
+            const exampleNum = event.target.dataset.example;
+            
+            // Update iframe source
+            const container = document.getElementById('example-container');
+            container.innerHTML = `<iframe src="visualization/example_${exampleNum}/vis.html" 
+                                         style="width: 100%; height: 100%; border: none;"></iframe>`;
+          }
+
+          // Add click handlers to all example buttons
+          document.querySelectorAll('.example-button').forEach(button => {
+            button.addEventListener('click', handleExampleButtonClick);
+          });
+
+          // Auto-select first example on page load
+          document.querySelector('.example-button').click();
+        </script> -->
       </div>
-  </section>
-  <!--/ Tool Cards -->
+    </div>
+  </div>
+</section>
   
   <!-- BibTeX -->
   <section class="section" id="BibTeX">
@@ -1079,53 +1121,10 @@
 
 </body>
 
-    <!-- Back to top button -->
-    <button onclick="topFunction()" id="topButton" title="Go to top">
-      <i class="fas fa-arrow-up"></i>
+  <!-- Back to top button -->
+  <button onclick="topFunction()" id="topButton" title="Go to top">
+    <i class="fas fa-arrow-up"></i>
   </button>
 
-  <!-- JavaScript for the top button -->
-  <script>
-      let mybutton = document.getElementById("topButton");
-      
-      window.onscroll = function() {scrollFunction()};
-      
-      function scrollFunction() {
-          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-              mybutton.style.display = "block";
-          } else {
-              mybutton.style.display = "none";
-          }
-      }
-      
-      function topFunction() {
-          window.scrollTo({
-              top: 0,
-              behavior: 'smooth'
-          });
-      }
-  </script>
-
-  <script>
-    // Add active state to TOC items based on scroll position
-    document.addEventListener('DOMContentLoaded', function() {
-      const tocLinks = document.querySelectorAll('.toc-list a');
-      
-      window.addEventListener('scroll', () => {
-        let current = '';
-        
-        document.querySelectorAll('section').forEach(section => {
-          const sectionTop = section.offsetTop;
-          if (window.pageYOffset >= sectionTop - 60) {
-            current = section.getAttribute('id');
-          }
-        });
-
-        tocLinks.forEach(link => {
-          link.style.fontWeight = link.getAttribute('href').slice(1) === current ? 'bold' : 'normal';
-        });
-      });
-    });
-  </script>
 
 </html>
