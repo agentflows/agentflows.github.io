@@ -15,25 +15,7 @@ git push
 ```
 
 
-### Separate the tool cards from the main page
-
-Load the tool_cards.html file directly into your index.html. Here's how you can do it:
-
-```html
-<!-- Include tool cards -->
-<div id="tool-cards-container"></div>
-
-<script>
-    fetch('tool_cards.html')
-    .then(response => response.text())
-    .then(html => {
-        document.getElementById('tool-cards-container').innerHTML = html;
-    })
-    .catch(error => console.error('Error loading tool cards:', error));
-</script>
-```
-
-properly setting up a local web server to serve your files:
+### Local server
 
 ```sh
 # Navigate to your project directory
