@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Google Search Tool</title>
+  <title>{{ global_tool_name }} Tool</title>
 
   <!-- Reuse the same CSS from index.html -->
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
@@ -16,6 +16,36 @@
 
   <!-- Load JavaScript -->
   <script src="../../static/js/tool-page.js"></script>
+  <script src="data.js"></script>
+
+ <script type="module">
+    import { global_tool_name, global_tool_description } from './data.js';
+    // const global_tool_name = "📄 ArXiv Paper Searcher";
+    // const global_tool_description = "A tool that searches arXiv for papers based on a given query.";
+
+    // Add event listener to populate template variables after DOM loads
+    document.addEventListener('DOMContentLoaded', function() {
+      document.title = global_tool_name + ' Tool';
+      
+      // Replace text content in specific elements instead of all elements
+      const titleElements = document.querySelectorAll('.title');
+      titleElements.forEach(element => {
+        if (element.textContent.includes('{{ global_tool_name }}')) {
+          element.textContent = element.textContent.replace('{{ global_tool_name }}', global_tool_name);
+        }   
+      });
+
+      const subtitleElement = document.querySelector('.subtitle');
+      if (subtitleElement) {
+        subtitleElement.textContent = subtitleElement.textContent.replace('{{ global_tool_description }}', global_tool_description);
+      }
+
+      const footerText = document.querySelector('.footer .content p');
+      if (footerText) {
+        footerText.innerHTML = footerText.innerHTML.replace('{{ global_tool_name }}', global_tool_name);
+      }
+    });
+  </script>
 
 </head>
 
@@ -26,14 +56,26 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-2">Google Search Tool</h1>
-            <p class="subtitle is-4">A tool that searches arXiv for papers based on a given query.</p>
+            <h1 class="title is-2">{{ global_tool_name }} Tool</h1>
+            <p class="subtitle is-4">{{ global_tool_description }}</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+
+  <!-- Tool Metadata -->
+  <section class="section">
+    <div class="container is-max-desktop">
+        <h2 class="title is-4" id="metadata">Tool Metadata</h2>
+      <div class="box">
+        <div class="content" id="metadata-content">
+          <!-- Content will be populated by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Example Images -->
   <section class="section">
@@ -57,13 +99,12 @@
   <footer class="footer">
     <div class="content has-text-centered">
       <p>
-        Google Search Tool - Part of the <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
+        {{ global_tool_name }} Tool - Part of the <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
         style="color: var(--color-tools-blue);"><b>Tools</b></span> Framework
       </p>
     </div>
   </footer>
-  
 
-  
+
 </body>
 </html>

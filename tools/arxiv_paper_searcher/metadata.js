@@ -1,29 +1,44 @@
 const metadata = {
-    "tool_name": "ArXiv_Paper_Searcher_Tool",
-    "tool_description": "A tool that searches arXiv for papers based on a given query.",
+    "tool_name": "Python_Code_Generator_Tool",
+    "tool_description": "A tool that generates and executes simple Python code snippets for basic arithmetical calculations and math-related problems. The generated code runs in a highly restricted environment with only basic mathematical operations available.",
     "input_types": {
-        "query": "str - The search query for arXiv papers.",
-        "size": "int - The number of results per page (25, 50, 100, or 200). If None, use 25.",
-        "max_results": "int - The maximum number of papers to return (default: 25). Should be less than or equal to 100."
+        "query": "str - A clear, specific description of the arithmetic calculation or math problem to be solved, including any necessary numerical inputs."
     },
-    "output_type": "list - A list of dictionaries containing paper information.",
+    "output_type": "dict - A dictionary containing the generated code, calculation result, and any error messages.",
     "demo_commands": [
         {
-            "command": "execution = tool.execute(query=\"tool agents with large language models\")",
-            "description": "Search for papers about tool agents with large language models."
+            "command": "execution = tool.execute(query=\"Calculate the factorial of 5\")",
+            "description": "Generate a Python code snippet to calculate the factorial of 5."
         },
         {
-            "command": "execution = tool.execute(query=\"quantum computing\", size=100, max_results=50)",
-            "description": "Search for quantum computing papers, with 100 results per page, returning a maximum of 50 papers."
+            "command": "execution = tool.execute(query=\"Find the sum of prime numbers up to 50\")", 
+            "description": "Generate a Python code snippet to find the sum of prime numbers up to 50."
         },
         {
-            "command": "execution = tool.execute(query=\"machine learning\", max_results=75)",
-            "description": "Search for machine learning papers, returning a maximum of 75 papers."
+            "command": "query=\"Given the list [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], calculate the sum of squares of odd numbers\"\nexecution = tool.execute(query=query)",
+            "description": "Generate a Python function for a specific mathematical operation on a given list of numbers."
         }
     ],
     "user_metadata": {
-        "valid_sizes": [25, 50, 100, 200],
-        "base_url": "https://arxiv.org/search/"
+        "limitations": [
+            "Restricted to basic Python arithmetic operations and built-in mathematical functions.",
+            "Cannot use any external libraries or modules, including those in the Python standard library.",
+            "Limited to simple mathematical calculations and problems.",
+            "Cannot perform any string processing, data structure manipulation, or complex algorithms.",
+            "No access to any system resources, file operations, or network requests.",
+            "Cannot use 'import' statements.",
+            "All calculations must be self-contained within a single function or script.",
+            "Input must be provided directly in the query string.",
+            "Output is limited to numerical results or simple lists/tuples of numbers."
+        ],
+        "best_practices": [
+            "Provide clear and specific queries that describe the desired mathematical calculation.",
+            "Include all necessary numerical inputs directly in the query string.",
+            "Keep tasks focused on basic arithmetic, algebraic calculations, or simple mathematical algorithms.",
+            "Ensure all required numerical data is included in the query.",
+            "Verify that the query only involves mathematical operations and does not require any data processing or complex algorithms.",
+            "Review generated code to ensure it only uses basic Python arithmetic operations and built-in math functions."
+        ]
     }
 };
 
