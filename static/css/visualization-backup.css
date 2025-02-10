@@ -3,7 +3,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    min-height: 800px;
+    /* min-height: 800px; */
 }
 
 /* Query Section */
@@ -219,8 +219,8 @@
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 4px;
-    min-height: 500px;
-    /* overflow-y: auto; */
+    /* min-height: 500px;
+    overflow-y: auto; */
 }
 
 /* Add paragraph spacing */
