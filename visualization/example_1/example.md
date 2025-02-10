@@ -14,11 +14,8 @@
 **There are a total of 19 baseballs across the four buckets:**
 
 - The first bucket (top left) contains 4 baseballs.
-
 - The second bucket (top right) contains 5 baseballs.   
-
 - The third bucket (bottom left) contains 4 baseballs.
-
 - The fourth bucket (bottom right) contains 6 baseballs.
 
 **Adding them together:** 4 + 5 + 4 + 6 = 19 baseballs.

@@ -8,133 +8,9 @@
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
     <link rel="stylesheet" href="../../static/css/bulma.min.css">
     <link rel="stylesheet" href="../../static/css/fontawesome.all.min.css">
-    
-    <style>
-        /* Custom styles for the visualization */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
 
-        /* List styling */
-        .step-content ol {
-            padding-left: 25px;
-            margin-bottom: 1em;
-            list-style-type: decimal;
-        }
-    
-        .step-content ul {
-            padding-left: 25px;
-            margin-bottom: 1em;
-            list-style-type: disc;
-        }
-    
-        .step-content ol ol,
-        .step-content ul ul,
-        .step-content ol ul,
-        .step-content ul ol {
-            margin-top: 0.5em;
-            margin-bottom: 0.5em;
-            padding-left: 25px;
-        }
-    
-        .step-content li {
-            margin-bottom: 0.5em;
-            line-height: 1.5;
-        }
-    
-        .step-content li > ul,
-        .step-content li > ol {
-            margin-top: 0.5em;
-        }
-
-        /* Layout styling */
-        .top-sections-wrapper {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .query-section {
-            flex: 0 0 55%;
-            display: flex;
-            background: #f5f5f5;
-            padding: 20px;
-            border-radius: 8px;
-        }
-        
-        .image-container {
-            flex: 0 0 50%;
-        }
-        
-        .query-details {
-            flex: 0 0 55%;
-            margin-left: 20px;
-        }
-        
-        .wrong-prediction {
-            flex: 0 0 45%;
-            background: #ffebee;
-            padding: 20px;
-            border-radius: 8px;
-        }
-
-        .steps-container {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .steps-buttons {
-            flex: 0 0 300px;
-        }
-        
-        .step-button {
-            display: block;
-            width: 100%;
-            text-align: left;
-            padding: 10px;
-            margin: 5px 0;
-            background: #f5f5f5;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        
-        .step-button.active {
-            background: #e3f2fd;
-            border-color: #2196f3;
-        }
-
-        .step-content {
-            flex: 1;
-            padding: 20px;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            min-height: 400px;
-        }
-        
-        /* Add paragraph spacing */
-        .step-content p {
-            margin-bottom: 1em;
-        }
-
-        .step-content p + p {
-            margin-top: 1em;
-        }
-        
-        
-        .step-content:empty::before {
-            content: 'Click a step to view details';
-            color: #666;
-            font-style: italic;
-        }
-        
-        .hidden {
-            display: none;
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../static/css/visualization.css">
 </head>
 
 <body>
@@ -143,18 +19,21 @@
         <div class="top-sections-wrapper">
             <!-- Query Section -->
             <div class="query-section">
-                <div class="image-container">
-                    <img src="baseball.png" alt="Baseball image" style="width: 100%;">
-                </div>
-                <div class="query-details">
-                    <p><strong>Image path:</strong> baseball.png</p>
-                    <p><strong>Question:</strong> How many baseballs are there?</p>
-                    <p><strong>Ground truth:</strong> 20</p>
+                <h3 class="query-badge">The Query</h3>
+                <div class="query-content">
+                    <div class="image-container">
+                        <img src="baseball.png" alt="Baseball image" style="width: 100%;">
+                    </div>
+                    <div class="query-details">
+                        <p><strong>Image path:</strong> baseball.png</p>
+                        <p><strong>Question:</strong> How many baseballs are there?</p>
+                        <p><strong>Ground truth:</strong> 20</p>
+                    </div>
                 </div>
             </div>
 
             <!-- Wrong Prediction -->
-            <div class="wrong-prediction">
+            <!-- <div class="wrong-prediction">
                 <h3>Wrong Prediction from GPT-4 Model</h3>
                 <p>There are a total of 19 baseballs across the four buckets:</p>
                 <ul>
@@ -164,10 +43,18 @@
                     <li>The fourth bucket (bottom right) contains 6 baseballs.</li>
                 </ul>
                 <p>Adding them together: 4 + 5 + 4 + 6 = 19 baseballs.</p>
+            </div> -->
+
+            <!-- Wrong Prediction -->
+            <div class="wrong-prediction">
+                <h3 class="wrong-prediction-badge">Wrong Prediction from GPT-4o</h3>
+                <div id="wrong-prediction-content"></div>
             </div>
+                        
         </div>
 
         <!-- Steps Section -->
+        <h3 class="steps-badge">Prediction from the OctoTool Framework</h3>
         <div class="steps-container">
             <div class="steps-buttons">
                 <button class="step-button" data-step="step0">Step 0: Initial Plan from Query Analyzer</button>
@@ -181,7 +68,6 @@
                 <button class="step-button" data-step="step2-verify">Step 2: Verification from Context Verifier</button>
                 <button class="step-button" data-step="final">Final Answer</button>
             </div>
-            
             <div class="step-content"></div>
         </div>
     </div>
@@ -201,6 +87,7 @@
         }
     
         // Function to parse markdown into sections
+        // Function to parse markdown into sections
         function parseMarkdownSections(markdown) {
             const sections = {};
             const lines = markdown.split('\n');
@@ -208,13 +95,13 @@
             let currentContent = [];
     
             lines.forEach(line => {
-                if (line.startsWith('### ')) {
+                if (line.startsWith('## ') || line.startsWith('### ')) {
                     // If we were building a previous section, save it
                     if (currentSection) {
                         sections[currentSection] = currentContent.join('\n');
                         currentContent = [];
                     }
-                    currentSection = line.replace('### ', '').trim();
+                    currentSection = line.replace(/^##+ /, '').trim();
                 } else if (currentSection) {
                     currentContent.push(line);
                 }
@@ -231,6 +118,11 @@
         // Initialize content when page loads
         async function initializeContent() {
             const sections = await loadMarkdownContent();
+            
+            // Add wrong prediction content
+            const wrongPredictionContent = sections['Wrong Prediction from GPT-4o'] || '';
+            document.getElementById('wrong-prediction-content').innerHTML = marked.parse(wrongPredictionContent);
+            
             
             // Update stepContent with parsed markdown sections
             stepContent = {
