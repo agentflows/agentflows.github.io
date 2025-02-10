@@ -178,37 +178,37 @@
     font-size: 16px;  /* added font-size */
 }
 
-/* Planner buttons (light red) */
+/* Planner buttons (darker red) */
 .step-button.planner {
-    background: #ffebee;
-    border: 1px solid #ffcdd2;
+    background: #ffcdd2;
+    border: 1px solid #e57373;
 }
 
 .step-button.planner.active {
-    background: #ef9a9a;
-    border-color: #ef5350;
+    background: #e57373;
+    border-color: #d32f2f;
 }
 
-/* Executor buttons (light blue) */
+/* Executor buttons (darker blue) */
 .step-button.executor {
-    background: #e3f2fd;
-    border: 1px solid #bbdefb;
+    background: #bbdefb;
+    border: 1px solid #64b5f6;
 }
 
 .step-button.executor.active {
-    background: #90caf9;
-    border-color: #42a5f5;
+    background: #64b5f6;
+    border-color: #1976d2;
 }
 
-/* Answer button (light green) */
+/* Answer button (darker green) */
 .step-button.answer {
-    background: #e8f5e9;
-    border: 1px solid #c8e6c9;
+    background: #c8e6c9;
+    border: 1px solid #81c784;
 }
 
 .step-button.answer.active {
-    background: #a5d6a7;
-    border-color: #66bb6a;
+    background: #81c784;
+    border-color: #388e3c;
 }
 
 .step-content {
@@ -217,7 +217,7 @@
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 4px;
-    min-height: 400px;
+    min-height: 500px;
 }
 
 /* Add paragraph spacing */
