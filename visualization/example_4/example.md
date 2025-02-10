@@ -168,7 +168,7 @@ execution = tool.execute(query="Mesopotamian Babylonian number system Sumerian c
 
 ### Step 4: Result from Command Executor
 
-\textbf{Execution:}
+**Execution:**
 
 ```json
 [
