@@ -8,92 +8,13 @@
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
     <link rel="stylesheet" href="../../static/css/bulma.min.css">
     <link rel="stylesheet" href="../../static/css/fontawesome.all.min.css">
-    
-    <style>
-        /* Custom styles for the visualization */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
 
-        /* Add new wrapper class */
-        .top-sections-wrapper {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .query-section {
-            flex: 0 0 55%;  /* Modified from full width to 45% */
-            display: flex;
-            background: #f5f5f5;
-            padding: 20px;
-            border-radius: 8px;
-        }
-        
-        
-        .image-container {
-            flex: 0 0 50%;
-        }
-        
-        .query-details {
-            flex: 0 0 55%;
-            margin-left: 20px;
-        }
-        
-        .wrong-prediction {
-            flex: 0 0 45%;  /* Modified from full width to 45% */
-            background: #ffebee;
-            padding: 20px;
-            border-radius: 8px;
-        }
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../static/css/visualization.css">
 
-        .steps-container {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .steps-buttons {
-            flex: 0 0 300px;
-        }
-        
-        .step-button {
-            display: block;
-            width: 100%;
-            text-align: left;
-            padding: 10px;
-            margin: 5px 0;
-            background: #f5f5f5;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        
-        .step-button.active {
-            background: #e3f2fd;
-            border-color: #2196f3;
-        }
-        
-        .step-content {
-            flex: 1;
-            padding: 20px;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            min-height: 400px;
-        }
-        
-        .step-content:empty::before {
-            content: 'Click a step to view details';
-            color: #666;
-            font-style: italic;
-        }
-        
-        .hidden {
-            display: none;
-        }
-    </style>
+    <!-- Custom JS -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="../../static/js/example.js"></script>
 </head>
 
 <body>
@@ -102,80 +23,67 @@
         <div class="top-sections-wrapper">
             <!-- Query Section -->
             <div class="query-section">
-                <div class="image-container">
-                    <img src="baseball.png" alt="Baseball image" style="width: 100%;">
-                </div>
-                <div class="query-details">
-                    <p><strong>Image path:</strong> baseball.png</p>
-                    <p><strong>Question:</strong> How many baseballs are there?</p>
-                    <p><strong>Ground truth:</strong> 20</p>
+                <h3 class="query-badge">The Query</h3>
+                <div class="query-content">
+                    <!-- <div class="image-container">
+                        <img src="baseball.png" alt="Baseball image" style="width: 100%;">
+                    </div> -->
+                    <div class="query-details" style="flex: 0 0 100%;">
+                        <p><strong>Question:</strong>Using the numbers [1, 1, 6, 9], create an expression that equals 24. You must use basic arithmetic operations (+, -, ×, /) and parentheses.</p>
+                        <p><strong>Example:</strong> For [1, 2, 3, 4], one solution is (1+2+3)×4.</p>
+                        <!-- <p><strong>Ground truth:</strong> 20</p> -->
+                    </div>
                 </div>
             </div>
-
+            
             <!-- Wrong Prediction -->
             <div class="wrong-prediction">
-                <h3>Wrong Prediction from GPT-4 Model</h3>
-                <p>There are a total of 19 baseballs across the four buckets:</p>
-                <ul>
-                    <li>The first bucket (top left) contains 4 baseballs.</li>
-                    <li>The second bucket (top right) contains 5 baseballs.</li>
-                    <li>The third bucket (bottom left) contains 4 baseballs.</li>
-                    <li>The fourth bucket (bottom right) contains 6 baseballs.</li>
-                </ul>
-                <p>Adding them together: 4 + 5 + 4 + 6 = 19 baseballs.</p>
+                <h3 class="wrong-prediction-badge">Wrong Prediction from GPT-4o</h3>
+                <div id="wrong-prediction-content"></div>
             </div>
+                        
         </div>
 
         <!-- Steps Section -->
+        <h3 class="steps-badge">Prediction from the OctoTool Framework</h3>
+
+        <div class="button-legend">
+            <div class="legend-item">
+                <span class="legend-dot planner"></span>
+                <span class="legend-text">Planner Components</span>
+                <span class="legend-dot executor"></span>
+                <span class="legend-text">Executor Components</span>
+                <span class="legend-dot answer"></span>
+                <span class="legend-text">Final Answer</span>
+            </div>
+        </div>
+
         <div class="steps-container">
             <div class="steps-buttons">
-                <button class="step-button" data-step="step0">Step 0: Initial Plan from Query Analyzer</button>
-                <button class="step-button" data-step="step1-action">Step 1: Action from Action Predictor</button>
-                <button class="step-button" data-step="step1-command">Step 1: Command from Command Generator</button>
-                <button class="step-button" data-step="step1-result">Step 1: Result from Command Executor</button>
-                <button class="step-button" data-step="step1-verify">Step 1: Verification from Context Verifier</button>
-                <button class="step-button" data-step="step2-action">Step 2: Action from Action Predictor</button>
-                <button class="step-button" data-step="step2-command">Step 2: Command from Command Generator</button>
-                <button class="step-button" data-step="step2-result">Step 2: Result from Command Executor</button>
-                <button class="step-button" data-step="step2-verify">Step 2: Verification from Context Verifier</button>
-                <button class="step-button" data-step="final">Final Answer</button>
+                <button class="step-button planner" data-step="step0">Step 0: Initial Plan from Query Analyzer</button>
+                <br>
+                <button class="step-button planner" data-step="step1-action">Step 1: Action from Action Predictor</button>
+                <button class="step-button executor" data-step="step1-command">Step 1: Command from Command Generator</button>
+                <button class="step-button executor" data-step="step1-result">Step 1: Result from Command Executor</button>
+                <button class="step-button planner" data-step="step1-verify">Step 1: Verification from Context Verifier</button>
+                <br>
+                <button class="step-button planner" data-step="step2-action">Step 2: Action from Action Predictor</button>
+                <button class="step-button executor" data-step="step2-command">Step 2: Command from Command Generator</button>
+                <button class="step-button executor" data-step="step2-result">Step 2: Result from Command Executor</button>
+                <button class="step-button planner" data-step="step2-verify">Step 2: Verification from Context Verifier</button>
+                <br>
+                <button class="step-button planner" data-step="step3-action">Step 3: Action from Action Predictor</button>
+                <button class="step-button executor" data-step="step3-command">Step 3: Command from Command Generator</button>
+                <button class="step-button executor" data-step="step3-result">Step 3: Result from Command Executor</button>
+                <button class="step-button planner" data-step="step3-verify">Step 3: Verification from Context Verifier</button>
+                <br>
+                <!-- <button class="step-button answer" data-step="final-context">Full Trajectory in the Context</button>
+                <button class="step-button answer" data-step="final-summary">Summary from Solution Summarizer</button> -->
+                <button class="step-button answer" data-step="final">Final Answer</button>
             </div>
-            
             <div class="step-content"></div>
         </div>
     </div>
 
-    <script>
-        // Store step content
-        const stepContent = {
-            'step0': `<h3>Initial Plan from Query Analyzer</h3>
-                     <p><strong>Concise summary:</strong> The query asks, "How many baseballs are there?" accompanied by an image showing several buckets containing baseballs. The objective is to determine the total number of baseballs present in the image.</p>
-                     <p><strong>Required skills:</strong></p>
-                     <ol>
-                         <li>Image Analysis: Understanding and interpreting visual content.</li>
-                         <li>Tool Operation: Ability to operate and execute commands using the provided tools.</li>
-                         <li>Critical Thinking: Evaluating tool outputs and making decisions based on them.</li>
-                     </ol>`,
-            'step1-action': `<h3>Action from Action Predictor</h3>
-                            <p><strong>Justification:</strong> The Image_Captioner_Tool is the best choice for the first step because it provides a general description of the image...</p>`,
-            // Add content for other steps...
-        };
-
-        // Handle button clicks
-        document.querySelectorAll('.step-button').forEach(button => {
-            button.addEventListener('click', () => {
-                // Toggle active state
-                document.querySelectorAll('.step-button').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                button.classList.add('active');
-
-                // Show content
-                const stepId = button.dataset.step;
-                const contentDiv = document.querySelector('.step-content');
-                contentDiv.innerHTML = stepContent[stepId] || 'Content for this step will be added...';
-            });
-        });
-    </script>
 </body>
 </html>
