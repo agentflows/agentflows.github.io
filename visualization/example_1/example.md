@@ -176,7 +176,7 @@ The memory is complete and accurate enough to generate the final output. The use
 
 **Conclusion:** `STOP`
     
-### Final Trajectory
+### Full Trajectory in the Context
 
 ```json
 {
@@ -213,7 +213,7 @@ The memory is complete and accurate enough to generate the final output. The use
 }
 ```
     
-### Final Answer
+### Summary from Solution Summarizer
 
 **Summary:** The query aimed to determine the number of baseballs in an image. The process involved using two tools: an `Image_Captioner_Tool` to describe the image and an `Object_Detector_Tool` to count the baseballs.
 
@@ -236,3 +236,7 @@ The image shows four blue buckets, each containing five baseballs. Therefore, **
 **Additional Insights**
 - The consistent results from both tools reinforce the accuracy of the analysis.
 - The arrangement of the buckets and baseballs is clear and well-organized, aiding in accurate detection.
+
+### Final Answer
+
+The image shows four blue buckets, each containing five baseballs. Therefore, **there are a total of 20 baseballs.**

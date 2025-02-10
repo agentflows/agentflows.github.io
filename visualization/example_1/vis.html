@@ -152,6 +152,8 @@
                 'step2-command': marked.parse(sections['Step 2: Command from Command Generator'] || ''),    
                 'step2-result': marked.parse(sections['Step 2: Result from Command Executor'] || ''),
                 'step2-verify': marked.parse(sections['Step 2: Verification from Context Verifier'] || ''),
+                'final-context': marked.parse(sections['Full Trajectory in the Context'] || ''),
+                'final-summary': marked.parse(sections['Summary from Solution Summarizer'] || ''),
                 'final': marked.parse(sections['Final Answer'] || ''),
                 // Add other steps as needed...
             };
