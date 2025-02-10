@@ -249,3 +249,41 @@
 .hidden {
     display: none;
 }
+
+
+/* Add these new styles for wrong prediction content */
+.wrong-prediction #wrong-prediction-content {
+    padding: 10px 0;
+}
+
+.wrong-prediction #wrong-prediction-content p {
+    margin-bottom: 1em;
+    line-height: 1.0;
+}
+
+.wrong-prediction #wrong-prediction-content ul,
+.wrong-prediction #wrong-prediction-content ol {
+    padding-left: 25px;
+    margin-bottom: 1em;
+    list-style-type: disc;
+}
+
+.wrong-prediction #wrong-prediction-content ol {
+    list-style-type: decimal;
+}
+
+.wrong-prediction #wrong-prediction-content li {
+    margin-bottom: 0.5em;
+    line-height: 1.0;
+}
+
+.wrong-prediction #wrong-prediction-content strong {
+    font-weight: bold;
+}
+
+.wrong-prediction #wrong-prediction-content code {
+    background-color: #f8f8f8;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: monospace;
+}
