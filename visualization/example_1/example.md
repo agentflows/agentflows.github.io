@@ -176,22 +176,22 @@ The memory is complete and accurate enough to generate the final output. The use
 
 **Conclusion:** `STOP`
     
-### Final Trajectory
+### Full Trajectory in the Context
 
 ```json
 {
     "Action Step 1": {
         "tool_name": "Image_Captioner_Tool", 
-        "sub_goal": "Generate a descriptive caption for the image located at \"baseball.png\" to provide context for subsequent object detection.",
-        "command": "execution = tool.execute(image=\"baseball.png\")",
+        "sub_goal": "Generate a descriptive caption for the image located at 'baseball.png' to provide context for subsequent object detection.",
+        "command": "execution = tool.execute(image='baseball.png')",
         "result": [
             "The image shows four blue buckets, each containing five baseballs. The buckets are arranged in a grid with three on the top row and one on the bottom left. Each bucket is depicted from a top-down perspective, and the baseballs inside are white with red stitching. The buckets have handles on the sides. The background is plain white, emphasizing the buckets and baseballs."
         ]
     },
     "Action Step 2": {
         "tool_name": "Object_Detector_Tool",
-        "sub_goal": "Use the `Object_Detector_Tool` to detect and count the number of baseballs in the image located at \"baseball.png\".",
-        "command": "execution = tool.execute(image=\"baseball_113.png\", labels=[\"baseball\"])",
+        "sub_goal": "Use the `Object_Detector_Tool` to detect and count the number of baseballs in the image located at 'baseball.png'.",
+        "command": "execution = tool.execute(image='baseball_113.png', labels=['baseball'])",
         "result": [
             [
                 {

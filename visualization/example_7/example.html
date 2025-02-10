@@ -26,12 +26,20 @@
                 <h3 class="query-badge">The Query</h3>
                 <div class="query-content">
                     <div class="image-container">
-                        <img src="baseball.png" alt="Baseball image" style="width: 100%;">
+                        <img src="example_pathcls_286.jpg" alt="image" style="width: 100%;">
                     </div>
                     <div class="query-details">
-                        <p><strong>Image path:</strong> baseball.png</p>
-                        <p><strong>Question:</strong> How many baseballs are there?</p>
-                        <p><strong>Ground truth:</strong> 20</p>
+                        <p><strong>Image path:</strong> tissue.jpg</p>
+                        <p><strong>Question:</strong> 
+                            This is a hematoxylin and eosin (H&E) stained osteosarcoma histology image of:
+                            <ul>
+                                <li>A) Non-tumor</li>
+                                <li>B) Necrotic tumor</li>
+                                <li>C) Viable tumor</li>
+                            </ul>
+                            Choose the correct option.
+                        </p>
+                        <p><strong>Ground truth:</strong> B) Necrotic tumor</p>
                     </div>
                 </div>
             </div>
@@ -67,13 +75,13 @@
                 <button class="step-button executor" data-step="step1-result">Step 1: Result from Command Executor</button>
                 <button class="step-button planner" data-step="step1-verify">Step 1: Verification from Context Verifier</button>
                 <br>
-                <button class="step-button planner" data-step="step2-action">Step 2: Action from Action Predictor</button>
+                <!-- <button class="step-button planner" data-step="step2-action">Step 2: Action from Action Predictor</button>
                 <button class="step-button executor" data-step="step2-command">Step 2: Command from Command Generator</button>
                 <button class="step-button executor" data-step="step2-result">Step 2: Result from Command Executor</button>
                 <button class="step-button planner" data-step="step2-verify">Step 2: Verification from Context Verifier</button>
-                <br>
-                <button class="step-button answer" data-step="final-context">Full Trajectory in the Context</button>
-                <button class="step-button answer" data-step="final-summary">Summary from Solution Summarizer</button>
+                <br> -->
+                <!-- <button class="step-button answer" data-step="final-context">Full Trajectory in the Context</button>
+                <button class="step-button answer" data-step="final-summary">Summary from Solution Summarizer</button> -->
                 <button class="step-button answer" data-step="final">Final Answer</button>
             </div>
             <div class="step-content"></div>

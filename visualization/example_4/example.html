@@ -25,13 +25,22 @@
             <div class="query-section">
                 <h3 class="query-badge">The Query</h3>
                 <div class="query-content">
-                    <div class="image-container">
+                    <!-- <div class="image-container">
                         <img src="baseball.png" alt="Baseball image" style="width: 100%;">
-                    </div>
-                    <div class="query-details">
-                        <p><strong>Image path:</strong> baseball.png</p>
-                        <p><strong>Question:</strong> How many baseballs are there?</p>
-                        <p><strong>Ground truth:</strong> 20</p>
+                    </div> -->
+                    <div class="query-details" style="flex: 0 0 100%;">
+                        <p><strong>Question:</strong> 
+                            Consider the following symbols: 𒐜  𒐐𒐚
+                            <br>
+                            This is a number written using the Mesopotamian/Babylonian number system and represented with Sumerian cuneiform. Convert this number into Arabic numerals as a decimal number.
+                        </p>
+                        <p><strong>Ground truth:</strong> 536</p>
+                        <p><strong>Annotated solution (for response validation only):</strong>
+                            <li>Look up Babylonian number system (base 60, using uniform `hashmarks' as counters)</li>
+                            <li>Converted the Cuniform to Arabic (\eight 8 \fiftysix~56)</li>
+                            <li>Since Babylonian is a base 60 system, converted the 60's place to decimal (8*60=480)</li>
+                            <li>Added 56 to 480 (536)</li>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -72,8 +81,13 @@
                 <button class="step-button executor" data-step="step2-result">Step 2: Result from Command Executor</button>
                 <button class="step-button planner" data-step="step2-verify">Step 2: Verification from Context Verifier</button>
                 <br>
-                <button class="step-button answer" data-step="final-context">Full Trajectory in the Context</button>
-                <button class="step-button answer" data-step="final-summary">Summary from Solution Summarizer</button>
+                <button class="step-button planner" data-step="step3-action">Step 3: Action from Action Predictor</button>
+                <button class="step-button executor" data-step="step3-command">Step 3: Command from Command Generator</button>
+                <button class="step-button executor" data-step="step3-result">Step 3: Result from Command Executor</button>
+                <button class="step-button planner" data-step="step3-verify">Step 3: Verification from Context Verifier</button>
+                <br>
+                <!-- <button class="step-button answer" data-step="final-context">Full Trajectory in the Context</button>
+                <button class="step-button answer" data-step="final-summary">Summary from Solution Summarizer</button> -->
                 <button class="step-button answer" data-step="final">Final Answer</button>
             </div>
             <div class="step-content"></div>
