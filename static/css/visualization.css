@@ -73,6 +73,52 @@
     width: 100%;
 }
 
+.button-legend {
+    margin: 20px 0 20px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fff;
+    display: flex;
+    /* text-align: center; */
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 20px;
+}
+
+.legend-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin: 0 10px 0 10px;  /* reduced left margin from 20px to 10px */
+}
+
+.legend-dot.planner {
+    background: #ef9a9a;
+    border: 1px solid #ef5350;
+    margin-left: -10px;
+}
+
+.legend-dot.executor {
+    background: #90caf9;
+    border: 1px solid #42a5f5;
+}
+
+.legend-dot.answer {
+    background: #a5d6a7;
+    border: 1px solid #66bb6a;
+}
+
+.legend-text {
+    font-size: 16px;
+    color: #333;
+    min-width: 150px;
+}
+
 /* Step Content */
 .step-content ol {
     padding-left: 25px;
@@ -118,7 +164,7 @@
 }
 
 .steps-buttons {
-    flex: 0 0 300px;
+    flex: 0 0 350px;
 }
 
 .step-button {
@@ -127,15 +173,42 @@
     text-align: left;
     padding: 10px;
     margin: 5px 0;
-    background: #f5f5f5;
-    border: 1px solid #ddd;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 16px;  /* added font-size */
 }
 
-.step-button.active {
+/* Planner buttons (light red) */
+.step-button.planner {
+    background: #ffebee;
+    border: 1px solid #ffcdd2;
+}
+
+.step-button.planner.active {
+    background: #ef9a9a;
+    border-color: #ef5350;
+}
+
+/* Executor buttons (light blue) */
+.step-button.executor {
     background: #e3f2fd;
-    border-color: #2196f3;
+    border: 1px solid #bbdefb;
+}
+
+.step-button.executor.active {
+    background: #90caf9;
+    border-color: #42a5f5;
+}
+
+/* Answer button (light green) */
+.step-button.answer {
+    background: #e8f5e9;
+    border: 1px solid #c8e6c9;
+}
+
+.step-button.answer.active {
+    background: #a5d6a7;
+    border-color: #66bb6a;
 }
 
 .step-content {

@@ -55,18 +55,33 @@
 
         <!-- Steps Section -->
         <h3 class="steps-badge">Prediction from the OctoTool Framework</h3>
+
+        <div class="button-legend">
+            <div class="legend-item">
+                <span class="legend-dot planner"></span>
+                <span class="legend-text">Planner Components</span>
+                <span class="legend-dot executor"></span>
+                <span class="legend-text">Executor Components</span>
+                <span class="legend-dot answer"></span>
+                <span class="legend-text">Final Answer</span>
+            </div>
+        </div>
+
         <div class="steps-container">
             <div class="steps-buttons">
-                <button class="step-button" data-step="step0">Step 0: Initial Plan from Query Analyzer</button>
-                <button class="step-button" data-step="step1-action">Step 1: Action from Action Predictor</button>
-                <button class="step-button" data-step="step1-command">Step 1: Command from Command Generator</button>
-                <button class="step-button" data-step="step1-result">Step 1: Result from Command Executor</button>
-                <button class="step-button" data-step="step1-verify">Step 1: Verification from Context Verifier</button>
-                <button class="step-button" data-step="step2-action">Step 2: Action from Action Predictor</button>
-                <button class="step-button" data-step="step2-command">Step 2: Command from Command Generator</button>
-                <button class="step-button" data-step="step2-result">Step 2: Result from Command Executor</button>
-                <button class="step-button" data-step="step2-verify">Step 2: Verification from Context Verifier</button>
-                <button class="step-button" data-step="final">Final Answer</button>
+                <button class="step-button planner" data-step="step0">Step 0: Initial Plan from Query Analyzer</button>
+                <br>
+                <button class="step-button planner" data-step="step1-action">Step 1: Action from Action Predictor</button>
+                <button class="step-button executor" data-step="step1-command">Step 1: Command from Command Generator</button>
+                <button class="step-button executor" data-step="step1-result">Step 1: Result from Command Executor</button>
+                <button class="step-button planner" data-step="step1-verify">Step 1: Verification from Context Verifier</button>
+                <br>
+                <button class="step-button planner" data-step="step2-action">Step 2: Action from Action Predictor</button>
+                <button class="step-button executor" data-step="step2-command">Step 2: Command from Command Generator</button>
+                <button class="step-button executor" data-step="step2-result">Step 2: Result from Command Executor</button>
+                <button class="step-button planner" data-step="step2-verify">Step 2: Verification from Context Verifier</button>
+                <br>
+                <button class="step-button answer" data-step="final">Final Answer</button>
             </div>
             <div class="step-content"></div>
         </div>
