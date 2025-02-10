@@ -3,7 +3,7 @@ let stepContent = {};
 // Function to fetch and parse markdown content
 async function loadMarkdownContent() {
     try {
-        const response = await fetch('../example_1/example.md');
+        const response = await fetch('example.md');
         const markdownContent = await response.text();
         return parseMarkdownSections(markdownContent);
     } catch (error) {

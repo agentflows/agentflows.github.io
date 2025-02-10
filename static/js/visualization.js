@@ -13,8 +13,8 @@ function handleExampleButtonClick(event) {
   
   // Update iframe source
   const container = document.getElementById('example-container');
-  container.innerHTML = `<iframe src="visualization/example_${exampleNum}/vis.html" 
-                               style="width: 100%; height: 100%; border: none;"></iframe>`;
+  container.innerHTML = `<iframe src="visualization/example_${exampleNum}/example.html" 
+                               style="width: 100%; height: 1100px; border: none;"></iframe>`;  
 }
 
 // Initialize visualization when DOM is loaded
