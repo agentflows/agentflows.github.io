@@ -129,6 +129,7 @@
           <a href="#ablation-study">Ablation Study</a>
         </div> -->
       </li>
+      <li><a href="#Share">Share</a></li>
       <li><a href="#BibTeX">BibTeX</a></li>
     </ul>
   </div>
@@ -203,7 +204,7 @@
                 </span>
                 <!-- Demo Link. -->
                 <span class="link-block">
-                  <a href="https://huggingface.co/spaces/octotools"
+                  <a href="https://huggingface.co/spaces/OctoTools/octotools"
                     class="external-link button is-normal is-rounded is-dark" target="_blank">
                     <span class="icon">
                       <p style="font-size:18px">🤗</p>
@@ -233,6 +234,7 @@
                 </span>
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -767,7 +769,7 @@
               <b>tentative plan</b> from a high-level perspective, indicating how these tools can be used to address the
               query, which forms the initial <b>context</b> $s_0$. From this plan, the planner determines the initial
               <b>action</b> $a_1$ for tool usage, specifying which tool $d_1$ to use, the relevant context, and a
-              sub-goal. An <b>executor</b> (also powered by a language model) then converts the planner’s text-based
+              sub-goal. An <b>executor</b> (also powered by a language model) then converts the planner's text-based
               action $a_1$ into a machine-executable <b>command</b> $o_t$, which is run to obtain intermediate results
               $r_1$. These results, along with the original action, update the context to $s_1 := (a_1, o_1, r_1)$. This
               process constitutes one step in our framework.
@@ -1044,6 +1046,37 @@
   <!--/ Results -->
 
   
+  <!-- Share Buttons -->
+  <section class="section" id="Share">
+
+  <div class="column has-text-centered">
+    <h2 class="title is-3 has-text-centered">Share OctoTools</h2>
+    <!-- Social Media Share Buttons -->
+    <div class="social-share-buttons" style="margin-top: 20px;">
+      <!-- Twitter Share Button -->
+      <a href="https://twitter.com/intent/tweet?text=Introducing%20OctoTools:%20An%20Agentic%20Framework%20with%20Extensible%20Tools%20for%20Complex%20Reasoning%20https://octotools.github.io" 
+         class="button is-info is-outlined"
+         target="_blank">
+        <span class="icon">
+          <i class="fab fa-twitter"></i>
+        </span>
+        <span>Share on X (Twitter)</span>
+      </a>
+      
+      <!-- LinkedIn Share Button -->
+      <a href="https://www.linkedin.com/feed/?shareActive=true&shareUrl=https%3A%2F%2Foctotools.github.io" 
+         class="button is-info is-outlined"
+         style="margin-left: 10px;"
+         target="_blank">
+        <span class="icon">
+          <i class="fab fa-linkedin"></i>
+        </span>
+        <span>Share on LinkedIn</span>
+      </a>
+    </div>
+  </div>
+  </section>
+
   <!-- BibTeX -->
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
