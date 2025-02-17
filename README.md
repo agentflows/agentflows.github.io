@@ -14,7 +14,6 @@ git commit -m "Update website"
 git push
 ```
 
-
 ### Local server
 
 ```sh
@@ -27,7 +26,6 @@ python -m http.server 8000
 # Python 2
 python -m SimpleHTTPServer 8000
 ```
-
 
 After starting either server, you can access your site at:
 
