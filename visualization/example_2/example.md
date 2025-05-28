@@ -11,14 +11,16 @@
 
 ## Wrong Prediction from GPT-4o
 
-**There are a total of 19 baseballs across the four buckets:**
+To solve this, we need to track how the rot spreads from the rotten kiwi to the fresh ones:
 
-- The first bucket (top left) contains 4 baseballs.
-- The second bucket (top right) contains 5 baseballs.   
-- The third bucket (bottom left) contains 4 baseballs.
-- The fourth bucket (bottom right) contains 6 baseballs.
+1. **Minute 1:** The rotten kiwi in the bottom left corner will rot the fresh kiwi directly above it (middle left cell).
 
-**Adding them together:** 4 + 5 + 4 + 6 = 19 baseballs.
+2. **Minute 2:** The newly rotten kiwi in the middle left cell will rot the fresh kiwi directly above it (top left cell) and
+the fresh kiwi to its right (middle center cell).
+
+3. **Minute 3:** The rotten kiwi in the middle center cell will rot the fresh kiwi directly above it (top center cell).
+
+After 3 minutes, all fresh kiwis will be rotten.
 
 ## Correct Prediction from OctoTools
 
