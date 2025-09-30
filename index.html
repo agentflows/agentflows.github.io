@@ -3,10 +3,10 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="OctoTools: An Agentic Framework with Extensible Tools for Complex Reasoning">
-  <meta name="keywords" content="OctoTools, LLM Agents, Complex Reasoning, LLMs, Tools">
+  <meta name="description" content="AgentFlow: In-The-Flow Agentic System Optimization for Effective Planning and Tool Use">
+  <meta name="keywords" content="AgentFlow, LLM Agents, Agentic Reasoning, Agentic Systems, RL, Planning, Tool Use">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> OctoTools: An Agentic Framework with Extensible Tools for Complex Reasoning</title>
+  <title>AgentFlow: In-The-Flow Agentic System Optimization for Effective Planning and Tool Use</title>
 
   <link rel="icon" href="./assets/logos/octotools.svg">
 
@@ -116,7 +116,7 @@
     <ul class="toc-list">
       <li><a href="#introduction">Introduction</a></li>
       <li><a href="#video">YouTube Video</a></li>
-      <li><a href="#tool-cards">Tool Cards</a></li>
+      <!-- <li><a href="#tool-cards">Tool Cards</a></li> -->
       <li><a href="#visualization">Visualization</a></li>
       <li>
         <a href="#framework">Framework</a>
@@ -144,32 +144,41 @@
             <h1 class="title is-1 publication-title is-bold">
               <img src="assets/logos/octotools.svg" style="width:1em;vertical-align: middle" alt="Logo">
               <span style="vertical-align: middle">
-                <span style="color: var(--color-octo-red);">Octo</span><span
-                  style="color: var(--color-tools-blue);">Tools</span>
+                <span style="color: var(--color-octo-red);">Agent</span><span
+                  style="color: var(--color-tools-blue);">Flow</span>
               </span>
             </h1>
             <h2 class="subtitle is-3 publication-subtitle">
-              An Agentic Framework with Extensible Tools for <br>Complex Reasoning
+              In-The-Flow Agentic System Optimization for Effective Planning and Tool Use
             </h2>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                <a href="https://lupantech.github.io/" target="_blank">Pan Lu</a>*
-                <a href="mailto:lupantech@gmail.com"><i class="fas fa-envelope"></i></a>,</span>
+                <a href="https://zhuofeng-li.github.io/" target="_blank">Zhuofeng Li</a>*<sup>1</sup>
+                <a href="mailto:zhuofengli12345@gmail.com"><i class="fas fa-envelope"></i></a>,</span>
               <span class="author-block">
-                <a href="https://bowen118.github.io/" target="_blank">Bowen Chen</a>*,</span>
+                <a href="https://isaacghx.github.io/about/" target="_blank">Haoxiang Zhang</a>*<sup>2</sup>,</span>
               <span class="author-block">
-                <a href="https://shengliu66.github.io/" target="_blank">Sheng Liu</a>*,</span>
+                <a href="https://seungjuhan.me/" target="_blank">Seungju Han</a><sup>3</sup>,</span>
               <span class="author-block">
-                <a href="https://rthapa84.github.io/" target="_blank">Rahul Thapa</a>,</span>
+                <a href="https://shengliu66.github.io/" target="_blank">Sheng Liu</a><sup>3</sup>,</span>
               <span class="author-block">
-                <a href="https://dbds.stanford.edu/people/joseph-boen/" target="_blank">Joseph Boen</a>,</span>
+                <a href="http://www.stat.ucla.edu/~jxie/" target="_blank">Jianwen Xie</a><sup>4</sup>,</span>
               <span class="author-block">
-                <a href="https://www.james-zou.com/" target="_blank">James Zou</a>
-                <a href="mailto:jamesz@stanford.edu"><i class="fas fa-envelope"></i></a></span>
+                <a href="https://yuzhimanhua.github.io/" target="_blank">Yu Zhang</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://yejinc.github.io/" target="_blank">Yejin Choi</a><sup>3</sup>,</span>
+              <span class="author-block">
+                <a href="https://www.james-zou.com/" target="_blank">James Zou</a><sup>3</sup>,</span>
+              <span class="author-block">
+                <a href="https://lupantech.github.io/" target="_blank">Pan Lu</a><sup>3</sup>
+                <a href="mailto:lupantech@gmail.com"><i class="fas fa-envelope"></i></a></span>
             </div>
 
             <div class="is-size-5 publication-authors">
-              <span class="author-block">Stanford University</span><br>
+              <span class="author-block"><sup>1</sup> Texas A&M University</span>
+              <span class="author-block"><sup>2</sup> UC San Diego</span>
+              <span class="author-block"><sup>3</sup> Stanford University</span>
+              <span class="author-block"><sup>4</sup> Lambda</span><br>
               <span class="paper-block"><b>* Equal Contribution</b></span>
             </div>
 
@@ -283,40 +292,40 @@
     </div>
   </section>
 
-
+  <!-- Performance Teaser -->
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="content has-text-centered">
-        <img src="assets/models/framework_overall.png" width="100%">
+        <img src="assets/results/main_scores_bar_chart.png" width="80%">
         <p style="text-align: left;">
-          The overall framework of <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
-            style="color: var(--color-tools-blue);"><b>Tools</b></span>.
-          (1) <b style="color: var(--color-tool-cards-orange)">Tool cards</b> define tool-usage metadata and encapsulate
-          heterogeneous tools, enabling training-free integration of new tools without additional training or framework
-          refinement.
-          (2) The <b style="color: var(--color-planner-red)">planner</b> governs both high-level and low-level planning
-          to address the global objective and refine actions step by step.
-          (3) The <b style="color: var(--color-executor-blue)">executor</b> instantiates tool calls by generating
-          executable commands and save structured results in the context. The final answer is summarized from the full
-          trajectory in the context.
-          Furthermore, the <b style="color: var(--color-tool-cards-orange)">task-specific toolset optimization</b>
-          algorithm learns a beneficial subset of tools for downstream tasks.
-        </p>
-      </div>
-      <div class="content has-text-centered">
-        <img src="assets/models/framework_example.png" width="100%">
-        <p style="text-align: left;">
-          The demonstration of the self-contained example.
-          We visualize the <b>tool cards</b> for selected tools, the initial plan, and two steps in which the
-          <b>planner</b> and the <b>executor</b> orchestrate low-level planing and tool usage.
+          Performance comparison across 10 diverse benchmarks. <span
+            style="color: var(--color-octo-red);"><b>Agent</b></span><span
+            style="color: var(--color-tools-blue);"><b>Flow</b></span> with a 7B-scale backbone achieves substantial
+          improvements over top-performing baselines across search, agentic, mathematical, and scientific reasoning tasks.
         </p>
       </div>
     </div>
   </section>
 
+  <!-- <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="content has-text-centered">
+        <img src="assets/models/framework_overall.png" width="100%">
+        <p style="text-align: left;">
+          <b>(a)</b> Overview of <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
+            style="color: var(--color-tools-blue);"><b>Flow</b></span>, a trainable agentic system for in-the-flow planning and tool use.
+          Four modules (<b>planner</b>, <b>executor</b>, <b>verifier</b>, <b>generator</b>) coordinate via a shared evolving memory $M$ and toolset $K$, given a query $q$.
+          <b>The planner policy is optimized on-policy <i>inside</i> the system's multi-turn loop to enable adaptive, long-horizon reasoning.</b>
+          <b>(b)</b> A single state transition, showing the action $a^t$, execution result $e^t$, and verifier signal $v^t$ that update
+          the memory from $M^t$ to $M^{t+1}$.
+        </p>
+      </div>
+    </div> -->
+  </section>
+
 
 <!-- YouTube Video -->
-<section class="section video-section" id="video">
+<!-- <section class="section video-section" id="video">
   <div class="container">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -335,7 +344,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
   <!-- Introduction -->
   <section class="section" id="introduction">
@@ -345,45 +354,26 @@
           <h2 class="title is-3">Introduction</h2>
           <div class="content has-text-justified">
             <p>
-              Solving complex reasoning tasks may involve visual understanding, domain knowledge retrieval, numerical
-              calculation, and multi-step reasoning. Existing methods augment <b>large language models (LLMs)</b> with
-              external
-              tools but are restricted to specialized domains, limited tool types, or require additional training data.
+              Outcome-driven reinforcement learning has advanced reasoning in large language models (LLMs), but prevailing tool-augmented approaches train a single, monolithic policy that interleaves thoughts and tool calls under full context; this scales poorly with long horizons and diverse tools and generalizes weakly to new scenarios. Agentic systems offer a promising alternative by decomposing work across specialized modules, yet most remain training-free or rely on offline training decoupled from the live dynamics of multi-turn interaction. 
             </p>
             <p>
-              We introduce
-              <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
-                style="color: var(--color-tools-blue);"><b>Tools</b></span>, a training-free, user-friendly, and easily
-              extensible open-source agentic framework designed to tackle complex reasoning across diverse domains.
-              <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
-                style="color: var(--color-tools-blue);"><b>Tools</b></span>
-              introduces standardized tool cards to encapsulate tool functionality, a planner for both high-level and
-              low-level planning, and an
-              executor to carry out tool usage. We validate <span
-                style="color: var(--color-octo-red);"><b>Octo</b></span><span
-                style="color: var(--color-tools-blue);"><b>Tools</b></span>’ generality across <b>16 diverse tasks</b>
-              (including MathVista, MMLU-Pro, MedQA, and GAIA-Text), achieving substantial average accuracy gains of
-              <b>9.3%</b> over
-              <b>GPT-4o</b>. Furthermore, <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
-                style="color: var(--color-tools-blue);"><b>Tools</b></span> also outperforms <b>AutoGen</b>,
-              <b>GPT-Functions</b> and <b>LangChain</b> by up to <b>10.6%</b> when given the same set of tools. Through
-              comprehensive analysis and ablations,
-              <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
-                style="color: var(--color-tools-blue);"><b>Tools</b></span>
-              demonstrates advantages in task planning, effective tool usage, and multi-step problem solving.
+              We introduce <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
+                style="color: var(--color-tools-blue);"><b>Flow</b></span>, a trainable, <i>in-the-flow</i> agentic
+              framework that coordinates four modules (<b>planner</b>, <b>executor</b>, <b>verifier</b>, <b>generator</b>)
+              through an evolving memory and directly optimizes its planner inside the multi-turn loop. To train on-policy
+              in live environments, we propose <i>Flow-based Group Refined Policy Optimization</i> (<b>Flow-GRPO</b>), which
+              tackles long-horizon, sparse-reward credit assignment by converting multi-turn optimization into a sequence of
+              tractable single-turn policy updates. It broadcasts a single, verifiable trajectory-level outcome to every turn
+              to align local planner decisions with global success and stabilizes learning with group-normalized advantages.
             </p>
-          </div>
-          <div class="container is-max-desktop">
-            <div class="content has-text-centered">
-              <img src="assets/results/main_scores_bar_chart.png" width="40%">
-              <p style="text-align: left;">
-                Performance comparison across 16 diverse tasks. <span
-                  style="color: var(--color-octo-red);"><b>Octo</b></span><span
-                  style="color: var(--color-tools-blue);"><b>Tools</b></span> achieves substantial improvements over
-                GPT-4o and other frameworks including AutoGen, GPT-Functions, and LangChain when given access to the
-                same set of tools.
-              </p>
-            </div>
+            <p>
+              Across ten benchmarks, <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
+                style="color: var(--color-tools-blue);"><b>Flow</b></span> with a 7B-scale backbone outperforms top-performing
+              baselines with average accuracy gains of <b>14.9%</b> on search, <b>14.0%</b> on agentic, <b>14.5%</b> on
+              mathematical, and <b>4.1%</b> on scientific tasks, even surpassing larger proprietary models like <b>GPT-4o</b>.
+              Further analyses confirm the benefits of in-the-flow optimization, showing improved planning, enhanced
+              tool-calling reliability, and positive scaling with model size and reasoning turns.
+            </p>
           </div>
         </div>
       </div>
@@ -391,368 +381,201 @@
   </section>
   <!--/ Introduction -->
 
-
-
-
-  <!-- Tool Cards -->
-  <section class="section" id="tool-cards">
-    <div class="container">
+  <!-- AgentFlow System -->
+  <section class="section" id="agentflow">
+    <div class="container" style="margin-bottom: 2vh;">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Tool Cards in <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
-              style="color: var(--color-tools-blue);"><b>Tools</b></span></h2>
+          <h2 class="title is-3"><span style="color: var(--color-octo-red);"><b>Agent</b></span><span
+              style="color: var(--color-tools-blue);"><b>Flow</b></span>: An In-the-Flow Agentic System</h2>
           <div class="content has-text-justified">
             <p>
-              Our framework provides a diverse set of tools to handle different types of tasks. Here are some key tools in our toolbox:
+              We propose <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
+                style="color: var(--color-tools-blue);"><b>Flow</b></span>, a general-purpose tool-integrated agentic
+              framework for solving complex reasoning tasks through fine-grained planning and effective tool use within a
+              multi-turn architecture. As shown in the figure above, the framework comprises four specialized modules—<b>Action
+              Planner</b> $\mathcal{P}$, <b>Tool Executor</b> $\mathcal{E}$, <b>Execution Verifier</b> $\mathcal{V}$, and
+              <b>Solution Generator</b> $\mathcal{G}$—coordinated by a shared evolving memory $M$ and a toolset $K$. These
+              modules interact sequentially and iteratively to perform <i>action planning</i>, <i>tool execution</i>,
+              <i>context verification</i>, and <i>solution generation</i>, thereby enabling tool-integrated reasoning across
+              multiple turns.
             </p>
-
-            <!-- Include tool cards -->
-            <!-- <div id="tool-cards-container"></div>
-
-            <script>
-              fetch('tool_cards.html')
-                .then(response => response.text())
-                .then(html => {
-                  document.getElementById('tool-cards-container').innerHTML = html;
-                })
-                .catch(error => console.error('Error loading tool cards:', error));
-            </script> -->
-
-            <div class="columns is-multiline">
-
-              <!-- Tool Card: Generalist Solutioner -->
-              <div class="column is-one-third">
-                <div class="card tool-card">
-                  <div class="card-content">
-                    <div class="content">
-                      <p class="title is-4">
-                        <span class="tool-emoji" style="font-size: 24px;">🧙</span> 
-                        <a href="tools/generalist_solution_generator/tool.html" class="tool-name" target="_blank">Generalist Solutioner</a>
-                      </p>
-                      <p class="tool-description">
-                        Base tool that answers general questi-ons without using any external tools.
-                      </p>
-                    </div>
-                  </div>
-                  <footer class="card-footer">
-                    <a href="tools/generalist_solution_generator/tool.html#metadata" class="card-footer-item" target="_blank">Metadata</a>
-                    <a href="https://github.com/zou-group/toolbox-agent/blob/main/opentools/tools/generalist_solution_generator/tool.py" class="card-footer-item" target="_blank">Code</a>
-                    <a href="tools/generalist_solution_generator/tool.html#example" class="card-footer-item" target="_blank">Example</a>
-                  </footer>
-                </div>
-              </div>
-            
-              <!-- Tool Card: Image Captioner -->
-              <div class="column is-one-third">
-                <div class="card tool-card">
-                  <div class="card-content">
-                    <div class="content">
-                      <p class="title is-4">
-                        <span class="tool-emoji" style="font-size: 24px;">📸</span>
-                        <a href="tools/image_captioner/tool.html" class="tool-name" target="_blank">Image Captioner</a>
-                      </p>
-                      <p class="tool-description">
-                        <!-- Generate captions for images using OpenAI's multimodal model. -->
-                        Generate a caption for a given image with a text prompt.
-                      </p>
-                    </div>
-                  </div>
-                  <footer class="card-footer">
-                    <a href="tools/image_captioner/tool.html#metadata" class="card-footer-item" target="_blank">Metadata</a>
-                    <a href="https://github.com/zou-group/toolbox-agent/blob/main/opentools/tools/image_captioner/tool.py" class="card-footer-item" target="_blank">Code</a>
-                    <a href="tools/image_captioner/tool.html#example" class="card-footer-item" target="_blank">Example</a>
-                  </footer>
-                </div>
-              </div>
-            
-              <!-- Tool Card: Relevant Patch Zoomer -->
-              <div class="column is-one-third">
-                <div class="card tool-card">
-                  <div class="card-content">
-                    <div class="content">
-                      <p class="title is-4">
-                        <span class="tool-emoji" style="font-size: 24px;">🔍</span>
-                        <a href="tools/relevant_patch_zoomer/tool.html" class="tool-name" target="_blank">Relevant Patch Zoomer</a>
-                      </p>
-                      <p class="tool-description">
-                        <!-- tool that analyzes an image, divides it into 5 regions (4 quarters + center), and identifies the most relevant patches based on a question. The returned patches are zoomed in by a factor of 2. -->
-                         Locate and zoom in relevant quarter patches in an image given a question.
-                      </p>
-                    </div>
-                  </div>
-                  <footer class="card-footer">
-                    <a href="tools/relevant_patch_zoomer/tool.html#metadata" class="card-footer-item" target="_blank">Metadata</a>
-                    <a href="https://github.com/zou-group/toolbox-agent/blob/main/opentools/tools/relevant_patch_zoomer/tool.py" class="card-footer-item" target="_blank">Code</a>
-                    <a href="tools/relevant_patch_zoomer/tool.html#example" class="card-footer-item" target="_blank">Example</a>
-                  </footer>
-                </div>
-              </div>
-            
-              <!-- Tool Card: Text Detector -->
-              <div class="column is-one-third">
-                <div class="card tool-card">
-                  <div class="card-content">
-                    <div class="content">
-                      <p class="title is-4">
-                        <span class="tool-emoji" style="font-size: 24px;">📝</span>
-                        <a href="tools/text_detector/tool.html" class="tool-name" target="_blank">Text Detector</a>
-                      </p>
-                      <p class="tool-description">
-                        <!-- detects text in an image using EasyOCR. -->
-                         Detect text with coordinates and confi-dence scores in an image by EasyOCR.
-                      </p>
-                    </div>
-                  </div>
-                  <footer class="card-footer">
-                    <a href="tools/text_detector/tool.html#metadata" class="card-footer-item" target="_blank">Metadata</a>
-                    <a href="https://github.com/zou-group/toolbox-agent/blob/main/opentools/tools/text_detector/tool.py" class="card-footer-item" target="_blank">Code</a>
-                    <a href="tools/text_detector/tool.html#example" class="card-footer-item" target="_blank">Example</a>
-                  </footer>
-                </div>
-              </div>
-
-              <!-- Tool Card: Object Detector -->
-              <div class="column is-one-third">
-                <div class="card tool-card">
-                  <div class="card-content">
-                    <div class="content">
-                      <p class="title is-4">
-                        <span class="tool-emoji" style="font-size: 24px;">👁️</span>
-                        <a href="tools/object_detector/tool.html" class="tool-name" target="_blank">Object Detector</a>
-                      </p>
-                      <p class="tool-description">
-                        <!-- detects objects in an image using the Grounding DINO model and saves individual object images with empty padding -->
-                        Detect objects in an image using the Grounding DINO model.
-                      </p>
-                    </div>
-                  </div>
-                  <footer class="card-footer">
-                    <a href="tools/object_detector/tool.html#metadata" class="card-footer-item" target="_blank">Metadata</a>
-                    <a href="https://github.com/zou-group/toolbox-agent/blob/main/opentools/tools/object_detector/tool.py" class="card-footer-item" target="_blank">Code</a>
-                    <a href="tools/object_detector/tool.html#example" class="card-footer-item" target="_blank">Example</a>
-                  </footer>
-                </div>
-              </div>
-
-              <!-- Tool Card: Wikipedia Searcher -->
-              <div class="column is-one-third">
-                <div class="card tool-card">
-                  <div class="card-content">
-                    <div class="content">
-                      <p class="title is-4">
-                        <span class="tool-emoji" style="font-size: 24px;">📚</span>
-                        <a href="tools/wikipedia_knowledge_searcher/tool.html" class="tool-name" target="_blank">Wikipedia Search</a>
-                      </p>
-                      <p class="tool-description">
-                        <!-- searches Wikipedia and returns web text based on a given query -->
-                        Search Wikipedia for relevant informa-tion based on a given query.
-                      </p>
-                    </div>
-                  </div>
-                  <footer class="card-footer">
-                    <a href="tools/wikipedia_knowledge_searcher/tool.html#metadata" class="card-footer-item" target="_blank">Metadata</a>
-                    <a href="https://github.com/zou-group/toolbox-agent/blob/main/opentools/tools/wikipedia_knowledge_searcher/tool.py" class="card-footer-item" target="_blank">Code</a>
-                    <a href="tools/wikipedia_knowledge_searcher/tool.html#example" class="card-footer-item" target="_blank">Example</a>
-                  </footer>
-                </div>
-              </div>
-            
-              <!-- Tool Card: Google Searcher -->
-              <div class="column is-one-third">
-                <div class="card tool-card">
-                  <div class="card-content">
-                    <div class="content">
-                      <p class="title is-4">
-                        <span class="tool-emoji" style="font-size: 24px;">🌐</span>
-                        <a href="tools/google_search/tool.html" class="tool-name" target="_blank">Google Search</a>
-                      </p>
-                      <p class="tool-description">
-                        <!-- performs Google searches based on a given text query -->
-                        Search the Google website for relevant information based on a given query.
-                      </p>
-                    </div>
-                  </div>
-                  <footer class="card-footer">
-                    <a href="tools/google_search/tool.html#metadata" class="card-footer-item" target="_blank">Metadata</a>
-                    <a href="https://github.com/zou-group/toolbox-agent/blob/main/opentools/tools/google_search/tool.py" class="card-footer-item" target="_blank">Code</a>
-                    <a href="tools/google_search/tool.html#example" class="card-footer-item" target="_blank">Example</a>
-                  </footer>
-                </div>
-              </div>
-          
-              <!-- Tool Card: URL Extractor -->
-              <div class="column is-one-third">
-                <div class="card tool-card">  
-                  <div class="card-content">
-                    <div class="content">
-                      <p class="title is-4">
-                        <span class="tool-emoji" style="font-size: 24px;">🔗</span>
-                        <a href="tools/url_text_extractor/tool.html" class="tool-name" target="_blank">URL Extractor</a>
-                      </p>
-                      <p class="tool-description">
-                        <!-- extracts all text from a given URL -->
-                        Visit the given URL and extract all text from that page.
-                      </p>
-                    </div>
-                  </div>
-                  <footer class="card-footer">
-                    <a href="tools/url_text_extractor/tool.html#metadata" class="card-footer-item" target="_blank">Metadata</a>
-                    <a href="https://github.com/zou-group/toolbox-agent/blob/main/opentools/tools/url_text_extractor/tool.py" class="card-footer-item" target="_blank">Code</a>
-                    <a href="tools/url_text_extractor/tool.html#example" class="card-footer-item" target="_blank">Example</a>
-                  </footer>
-                </div>
-              </div>
-
-          
-              <!-- Tool Card: Python Interpreter -->
-              <div class="column is-one-third">
-                <div class="card tool-card">  
-                  <div class="card-content">
-                    <div class="content">
-                      <p class="title is-4">
-                        <span class="tool-emoji" style="font-size: 24px;">🧮</span>
-                        <a href="tools/python_code_generator/tool.html" class="tool-name" target="_blank">Python Interpreter</a>
-                      </p>
-                      <p class="tool-description">
-                        <!-- generates and executes simple Python code snippets for basic arithmetical calculations and math-related problems -->
-                        Generate and execute Python code snippets for basic calculations.
-                      </p>
-                    </div>
-                  </div>
-                  <footer class="card-footer">
-                    <a href="tools/python_code_generator/tool.html#metadata" class="card-footer-item" target="_blank">Metadata</a>
-                    <a href="https://github.com/zou-group/toolbox-agent/blob/main/opentools/tools/python_code_generator/tool.py" class="card-footer-item" target="_blank">Code</a>
-                    <a href="tools/python_code_generator/tool.html#example" class="card-footer-item" target="_blank">Example</a>
-                  </footer>
-                </div>
-              </div>
-
-
-              <!-- Tool Card: ArXiv Paper Search -->
-              <div class="column is-one-third">
-                <div class="card tool-card">
-                  <div class="card-content">
-                    <div class="content">
-                      <p class="title is-4">
-                        <span class="tool-emoji" style="font-size: 24px;">📄</span>
-                        <a href="tools/arxiv_paper_searcher/tool.html" class="tool-name" target="_blank">ArXiv Paper Search</a>
-                      </p>
-                      <p class="tool-description">
-                        <!-- Search arXiv for papers based on a given query. -->
-                        Search arXiv for the latest literature based on a given query.
-                      </p>
-                    </div>
-                  </div>
-                  <footer class="card-footer">  
-                    <a href="tools/arxiv_paper_searcher/tool.html#metadata" class="card-footer-item" target="_blank">Metadata</a>
-                    <a href="https://github.com/zou-group/toolbox-agent/blob/main/opentools/tools/arxiv_paper_searcher/tool.py" class="card-footer-item" target="_blank">Code</a>
-                    <a href="tools/arxiv_paper_searcher/tool.html#example" class="card-footer-item" target="_blank">Example</a>
-                  </footer>
-                </div>
-              </div>
-
-
-              <!-- Tool Card: PubMed Paper Search -->
-              <div class="column is-one-third">
-                <div class="card tool-card">
-                  <div class="card-content">
-                    <div class="content">
-                      <p class="title is-4">
-                        <span class="tool-emoji" style="font-size: 24px;">🏥</span>
-                        <a href="tools/pubmed_search/tool.html" class="tool-name" target="_blank">PubMed Paper Search</a>
-                      </p>
-                      <p class="tool-description">
-                        <!-- searches PubMed Central to retrieve relevant article abstracts based on a given list of text queries. Use this ONLY if you cannot use the other more specific ontology tools -->
-                        Search PubMed for the latest literature based on a given query.
-                      </p>
-                    </div>
-                  </div>
-                  <footer class="card-footer">
-                    <a href="tools/pubmed_search/tool.html#metadata" class="card-footer-item" target="_blank">Metadata</a>
-                    <a href="https://github.com/zou-group/toolbox-agent/blob/main/opentools/tools/pubmed_search/tool.py" class="card-footer-item" target="_blank">Code</a>
-                    <a href="tools/pubmed_search/tool.html#example" class="card-footer-item" target="_blank">Example</a>
-                  </footer>
-                </div>
-              </div>
-
-
-              <!-- Tool Card: Nature News Search -->
-              <div class="column is-one-third">
-                <div class="card tool-card">
-                  <div class="card-content">
-                    <div class="content">
-                      <p class="title is-4">
-                        <span class="tool-emoji" style="font-size: 24px;">🌿</span>
-                        <a href="tools/nature_news_fetcher/tool.html" class="tool-name" target="_blank">Nature News Search</a>
-                      </p>
-                      <p class="tool-description">
-                        <!-- fetches the latest news articles from Nature -->
-                        Search the latest news articles from the Nature website.
-                      </p>
-                    </div>
-                  </div>
-                  <footer class="card-footer">
-                    <a href="tools/nature_news_fetcher/tool.html#metadata" class="card-footer-item" target="_blank">Metadata</a>
-                    <a href="https://github.com/zou-group/toolbox-agent/blob/main/opentools/tools/nature_news_fetcher/tool.py" class="card-footer-item" target="_blank">Code</a>
-                    <a href="tools/nature_news_fetcher/tool.html#example" class="card-footer-item" target="_blank">Example</a>
-                  </footer>
-                </div>
-              </div>              
-
-
-              <!-- Tool Card: Pathology Classifier -->
-              <div class="column is-one-third">
-                <div class="card tool-card">
-                  <div class="card-content">
-                    <div class="content">
-                      <p class="title is-4">
-                        <span class="tool-emoji" style="font-size: 24px;">🔬</span>
-                        <a href="tools/path_generalist_classifier/tool.html" class="tool-name" target="_blank">Pathology Classifier</a>
-                      </p>
-                      <p class="tool-description">
-                        <!-- answering multiple choice questions about H&E microscopy images. -->
-                        Classify H&E-stained pathology images into one of the given options.
-                      </p>
-                    </div>
-                  </div>
-                  <footer class="card-footer">
-                    <a href="tools/path_generalist_classifier/tool.html#metadata" class="card-footer-item" target="_blank">Metadata</a>
-                    <a href="https://github.com/zou-group/toolbox-agent/blob/main/opentools/tools/path_generalist_classifier/tool.py" class="card-footer-item" target="_blank">Code</a>
-                    <a href="tools/path_generalist_classifier/tool.html#example" class="card-footer-item" target="_blank">Example</a>
-                  </footer>
-                </div>
-              </div>
-
-              <!-- Tool Card: More Tools -->
-              <div class="column is-one-third">
-                <div class="card tool-card">
-                  <div class="card-content">
-                    <div class="content">
-                      <p class="title is-4">
-                        <span class="tool-emoji" style="font-size: 24px;">⚒️</span>
-                         More Tools ...
-                      </p>
-                      <p class="tool-description">
-                        More tools can be added!
-                        <br><br>
-                      </p>
-                    </div>
-                  </div>
-                  <footer class="card-footer">
-                    <a class="card-footer-item">Metadata</a>
-                    <a class="card-footer-item" target="_blank">Code</a>
-                    <a class="card-footer-item">Example</a>
-                  </footer>
-                </div>
-              </div>
-
-
-            </div>
-
+            <p>
+              We formalize <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
+                style="color: var(--color-tools-blue);"><b>Flow</b></span>'s problem-solving process as a multi-turn Markov
+              Decision Process (MDP). Given a query $q$ and a toolset $K$, the system proceeds for a variable number of turns.
+              Let $M^t$ denote the memory state before turn $t$ (with $M^1$ initialized from $q$). At turn $t$, the planner
+              $\mathcal{P}$ (a trainable policy $\pi_\theta$) formulates a sub-goal, selects an appropriate tool $k \in K$, and
+              retrieves relevant context from memory, producing an action: $a^t \sim \pi_\theta(a^t \mid q, K, M^t)$.
+            </p>
+            <p>
+              The executor $\mathcal{E}$ invokes the chosen tool with context, yielding an execution observation
+              $e^t \sim \mathcal{E}(e^t \mid a^t, K)$. The verifier $\mathcal{V}$ then evaluates whether $e^t$ is valid and
+              whether the accumulated memory is sufficient to solve the query, producing a binary verification signal
+              $v^t \sim \mathcal{V}(v^t \mid q, e^t, M^t)$. If $v^t = 0$, the memory is updated deterministically to
+              incorporate new evidence: $M^{t+1} = f_{\text{mem}}(M^t, a^t, e^t, v^t)$, where $f_{\text{mem}}(\cdot)$ denotes
+              the memory-update function, which records agent-process information in a concise, structured form along with
+              contextual details such as time, turn index, and error signals.
+            </p>
+            <p>
+              The process repeats until $v^t = 1$ (termination) or a predefined maximum turn budget is reached. Upon
+              termination at turn $T$, the solution generator $\mathcal{G}$ produces the final solution $o$, conditioned on the
+              query and the accumulated memory: $o \sim \mathcal{G}(o \mid q, M^T)$.
+            </p>
+            <p>
+              This formulation decomposes multi-turn, tool-integrated reasoning into structured, observable transitions. After
+              $T$ turns, the trajectory $\tau = \{(a^t, e^t, v^t)\}_{t=1}^T$ records the history of planning, execution, and
+              verification. The joint generative process can be written as
+              $$p_\theta\!\left(\{a^t, e^t, v^t\}_{t=1}^T,\, o \mid q\right)
+              = \Bigg[\prod_{t=1}^T \pi_\theta(a^t \mid q, K, M^t)\;
+                \mathcal{E}(e^t \mid a^t, K)\;
+                \mathcal{V}(v^t \mid q, e^t, M^t)\Bigg]\;
+                \mathcal{G}(o \mid q, M^T),$$
+              where $\{a^t, e^t, v^t\}_{t=1}^T$ are explicit realizations of the latent reasoning chain. Importantly, unlike
+              latent thoughts behind trajectories, our memory $M$ is an explicit and deterministic record of the reasoning
+              process, ensuring transparency and controllability of multi-turn decisions.
+            </p>
           </div>
         </div>
       </div>
+    </div>
   </section>
+  <!--/ AgentFlow System -->
+
+  <!-- AgentFlow Framework Figure -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="content has-text-centered">
+        <img src="assets/models/framework_overall.png" width="100%">
+        <p style="text-align: left;">
+          <b>(a)</b> Overview of <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
+            style="color: var(--color-tools-blue);"><b>Flow</b></span>, a trainable agentic system for in-the-flow planning and tool use.
+          Four modules (<b>planner</b>, <b>executor</b>, <b>verifier</b>, <b>generator</b>) coordinate via a shared evolving memory $M$ and toolset $K$, given a query $q$.
+          <b>The planner policy is optimized on-policy <i>inside</i> the system's multi-turn loop to enable adaptive, long-horizon reasoning.</b>
+          <b>(b)</b> A single state transition, showing the action $a^t$, execution result $e^t$, and verifier signal $v^t$ that update
+          the memory from $M^t$ to $M^{t+1}$.
+        </p>
+      </div>
+    </div>
+  </section>
+  <!--/ AgentFlow Framework Figure -->
+
+  <!-- Flow-GRPO -->
+  <section class="section" id="flow-grpo">
+    <div class="container" style="margin-bottom: 2vh;">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Flow-based Group Refined Policy Optimization</h2>
+          <div class="content has-text-justified">
+            <p>
+              We target tool-integrated <i>agentic systems</i> operating under <i>long-horizon</i> tasks with <i>sparse</i>
+              rewards. In this setting, the <b>Action Planner</b> (the trainable policy of <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
+                style="color: var(--color-tools-blue);"><b>Flow</b></span>) selects a <i>sequence</i> of interdependent
+              actions while the state $(q, K, M^t)$ evolves with tool results and verifier feedback. Conventional
+              <i>offline</i> training—e.g., supervised fine-tuning or preference fine-tuning on curated traces—optimizes the
+              planner <i>outside</i> the active loop. This decoupling prevents real-time coordination with the executor,
+              verifier, and solution generator, induces distribution shift between training and deployment, and provides
+              limited guidance about <i>which</i> intermediate decisions truly matter. As a result, planners often adapt
+              poorly to multi-turn dynamics; early errors cascade, and post-hoc fixes are brittle.
+            </p>
+            <h4 class="title is-5">In-the-flow learning</h4>
+            <p>
+              To address these issues, we optimize the planner <i>in the flow</i> of execution. We roll out the full
+              <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
+                style="color: var(--color-tools-blue);"><b>Flow</b></span> system under the current policy, collect the
+              actual trajectory $\tau$ of states, actions, and tool events it induces, and update the policy within the
+              agentic system using a verifiable final-outcome signal. This exposes the multi-turn credit-assignment problem
+              directly and trains the planner on the exact states it will face at inference. Our objective, Flow-GRPO, is
+              designed to stabilize learning under sparse, trajectory-level rewards over multiple turns.
+            </p>
+            <p>
+              As established above, rollouts in <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
+                style="color: var(--color-tools-blue);"><b>Flow</b></span> define a finite-horizon MDP with a variable
+              horizon $T$. At turn $t$, the planner observes the state $(q, K, M^t)$, selects an action $a^t$, the executor
+              and verifier return $(e^t, v^t)$, and the memory updates deterministically to $M^{t+1}$.
+            </p>
+            <h4 class="title is-5">Policy optimization objective</h4>
+            <p>
+              The planner policy $\pi_\theta$ is trained to maximize the expected return over on-policy rollouts. Let
+              $R(\tau)$ be the reward for a complete trajectory $\tau$. The objective is:
+              $$\mathcal{J}(\theta)=\mathbb{E}_{\tau\sim\pi_\theta}\!\big[R(\tau)\big], \qquad \theta^\star=\arg\max_\theta \mathcal{J}(\theta),$$
+              where a rollout $\tau$ is the sequence of decisions $\{a^t\}_{t=1}^{T}$ generated on-policy by $\pi_\theta$.
+            </p>
+            <h4 class="title is-5">Final-outcome reward</h4>
+            <p>
+              Assigning credit to intermediate actions is challenging because each $a^t$ influences the final solution only
+              indirectly, and their value may only emerge after several turns (e.g., error or improvement accumulation). To
+              avoid brittle local feedback, we adopt a <i>final-outcome-based reward</i>: every action within a rollout
+              receives the same global reward signal, based on the correctness of the final solution $o$ with respect to query
+              $q$ and ground truth $y^*$:
+              $$r = R(a^t) = \bar{R}(o, q, y^*), \quad \forall t = 1,\dots,T,$$
+              where $\bar{R}(o, q, y^*) \in \{0, 1\}$ is assigned by an LLM-as-judge rubric for semantic, numeric, and
+              option-level equivalence. This propagates a trajectory-level success signal back through the reasoning chain,
+              aligning every decision $a^t$ with global correctness.
+            </p>
+            <h4 class="title is-5">Objective function</h4>
+            <p>
+              We formalize <b>Flow</b>-based <b>G</b>roup <b>R</b>efined <b>P</b>olicy <b>O</b>ptimization for the planner.
+              The goal is to optimize the policy $\pi_\theta$ by maximizing the expected return over a group of parallel
+              rollouts. For each query-label pair from training corpus $(q,y^*) \sim \mathcal{D}$, we sample a group of $G$
+              on-policy trajectories $\{\tau_i\}_{i=1}^G$ by running the current behavior policy $\pi_{\theta_\text{old}}$
+              inside <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
+                style="color: var(--color-tools-blue);"><b>Flow</b></span>, where $\tau_i = \{a_i^1, ....a_i^{T_i}, o_i\}$.
+              Let $s_i^t=(q, K, M_i^t)$ be the state at turn $t$ of rollout $i$, $a_i^t$ the planner's action (a token
+              sequence of length $|a_i^t|$), and $o_i$ the final response.
+            </p>
+            <p>
+              This structure is key to addressing the long-horizon credit assignment challenge: by broadcasting a single
+              trajectory-level reward to all turns, we effectively decompose the <i>multi-turn RL</i> problem into <i>a set
+              of independent, single-turn</i> policy updates. Each update for an action $a_i^t$ is conditioned on the full
+              historical context encapsulated in the state $s_i^t$ and receives the same global success signal, simplifying
+              optimization. The objective is
+              $$\begin{aligned}
+              \mathcal{J}_{\text{Flow-GRPO}}(\theta) &= \mathbb{E}_{(q, y^*) \sim \mathcal{D}, \; \{\tau_i\}_{i=1}^{G} \sim \pi_{\theta_\text{old}}} \\
+              & \Bigg[
+              \frac{1}{G}\sum_{i=1}^{G}\frac{1}{T_i}\sum_{t=1}^{T_i}\frac{1}{|a_i^t|}\sum_{j=1}^{|a_i^t|}
+              \min\!\Big\{ \rho_{i,j}^t A_i^t,\, \mathrm{clip}(\rho_{i,j}^t,\,1-\epsilon,\,1+\epsilon)\,A_i^t \Big\}
+              \;-\; \beta\, \mathbb{D}_{\mathrm{KL}}\!\big(\pi_\theta \,\|\, \pi_{\text{ref}}\big)
+              \Bigg],
+              \end{aligned}$$
+              where $T_i$ is the (variable) number of turns in rollout $i$, and
+              $$\rho_{i,j}^t
+              = \frac{\pi_\theta\!\big(a_{i,j}^t \,\big|\, s_i^t, a_{i,1:j-1}^t\big)}
+              {\pi_{\theta_\text{old}}\!\big(a_{i,j}^t \,\big|\, s_i^t, a_{i,1:j-1}^t\big)}$$
+              is the token-level importance ratio for the $j$-th token of $a_i^t$, $\epsilon>0$ is the PPO clipping
+              parameter, and $\beta>0$ controls the KL penalty to a fixed reference policy $\pi_{\text{ref}}$.
+            </p>
+            <h4 class="title is-5">Group-normalized advantages</h4>
+            <p>
+              Because the reward is a single trajectory-level signal, the per-turn advantage $A_i^t$ is constant over $t$
+              within a rollout $i$. We reduce variance and sharpen credit assignment across the group by using a
+              <i>group-normalized</i> advantage:
+              $$A_i^t = \frac{\bar{R}(o_i, q, y^*) - \mathrm{mean}\left( \{ \bar{R}(o_k, q, y^*) \}_{k=1}^{G} \right)}{\mathrm{std}\left( \{ \bar{R}(o_k, q, y^*) \}_{k=1}^{G} \right)}.$$
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Flow-GRPO -->
+
+  <!-- Flow-GRPO Figure -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="content has-text-centered">
+        <img src="assets/models/flow_grpo.png" width="100%">
+        <p style="text-align: left;">
+          Optimization for our proposed agentic system <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
+            style="color: var(--color-tools-blue);"><b>Flow</b></span>. Given a query $q$, an evolving memory $M$, and a
+          toolset $K$, the policy model generates actions that target sub-goals and select tools. It is trained via
+          <i>Flow-based Group Refined Policy Optimization</i> (<b>Flow-GRPO</b>), which enables multi-turn reinforcement
+          learning and stable optimization under collaborative dynamics.
+        </p>
+      </div>
+    </div>
+  </section>
+  <!--/ Flow-GRPO Figure -->
+
   <!--/ Tool Cards -->
 
 <!-- Examples -->
@@ -858,7 +681,7 @@
             <p>
               The <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
                 style="color: var(--color-tools-blue);"><b>Tools</b></span> toolbox contains a diverse set of tools
-              covering different modalities and skills. By leveraging structured tool cards and robust planning
+              covering different modalities and skills. By leveraging structured tool metadata and robust planning
               capabilities, <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
                 style="color: var(--color-tools-blue);"><b>Tools</b></span> demonstrates strong generality when all
               available tools are enabled across different tasks. However, when a small set of validation examples are
