@@ -4,11 +4,67 @@
   padding: 2rem 0;
 }
 
+/* Two-column layout: sidebar + content */
+.tools-layout {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: flex-start;
+}
+
+.tools-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 20px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+}
+
+.tools-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.tool-selector-btn {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.5rem;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.tool-selector-btn:hover {
+  border-color: #667eea;
+  background: #f8f9fa;
+  transform: translateX(4px);
+}
+
+.tool-selector-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: #667eea;
+}
+
+.tool-selector-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
 .tools-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: 1fr;
   gap: 1.5rem;
-  margin-top: 2rem;
 }
 
 .tool-card {
@@ -20,6 +76,18 @@
   border: 2px solid transparent;
   position: relative;
   overflow: hidden;
+  animation: fadeInCard 0.4s ease;
+}
+
+@keyframes fadeInCard {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .tool-card::before {
@@ -42,6 +110,7 @@
   margin-bottom: 1rem;
   padding-bottom: 0.8rem;
   border-bottom: 2px solid #f0f0f0;
+  text-align: left;
 }
 
 .tool-card-title {
@@ -52,6 +121,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  text-align: left;
 }
 
 .tool-icon {
@@ -72,10 +142,12 @@
   color: #666;
   line-height: 1.6;
   margin-bottom: 1.2rem;
+  text-align: left;
 }
 
 .tool-card-section {
   margin-bottom: 1rem;
+  text-align: left;
 }
 
 .tool-card-section:last-child {
@@ -89,6 +161,7 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 0.5rem;
+  text-align: left;
 }
 
 .tool-inputs,
@@ -97,12 +170,14 @@
   padding: 0.8rem;
   border-radius: 8px;
   border-left: 3px solid #667eea;
+  text-align: left;
 }
 
 .tool-param {
   margin-bottom: 0.5rem;
   font-size: 0.85rem;
   line-height: 1.5;
+  text-align: left;
 }
 
 .tool-param:last-child {
@@ -137,6 +212,7 @@
   margin-bottom: 0.5rem;
   white-space: pre-wrap;
   word-wrap: break-word;
+  text-align: left;
 }
 
 .tool-code-example code {
@@ -150,6 +226,7 @@
   color: #666;
   font-style: italic;
   margin-bottom: 0.8rem;
+  text-align: left;
 }
 
 .tool-card-footer {
@@ -159,6 +236,7 @@
   display: flex;
   gap: 0.8rem;
   flex-wrap: wrap;
+  text-align: left;
 }
 
 .tool-link {
@@ -243,6 +321,28 @@
 }
 
 /* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .tools-layout {
+    flex-direction: column;
+  }
+
+  .tools-sidebar {
+    width: 100%;
+    position: static;
+    max-height: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tool-selector-btn {
+    width: auto;
+    flex: 1;
+    min-width: 150px;
+    margin-bottom: 0;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .tools-grid {
     grid-template-columns: 1fr;
@@ -272,6 +372,14 @@
   .tool-link {
     width: 100%;
     justify-content: center;
+  }
+
+  .tools-sidebar {
+    flex-direction: column;
+  }
+
+  .tool-selector-btn {
+    width: 100%;
   }
 }
 
@@ -434,22 +542,6 @@
 
 .metadata-demo:last-child {
   margin-bottom: 0;
-}
-
-/* Animation */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.tool-card {
-  animation: fadeInUp 0.5s ease;
 }
 
 /* Empty State */

@@ -51,6 +51,9 @@
   <script src="./static/js/tool_cards_data.js"></script>
   <script src="./static/js/tool_cards_simple.js"></script>
 
+  <!-- Add title animation script -->
+  <script src="./static/js/title_animation.js"></script>
+
 </head>
 
 
@@ -117,11 +120,18 @@
     </div>
   </nav>
 
-  <!-- Add Table of Contents -->
-  <div class="toc-wrapper">
-    <h4 style="margin-bottom: 10px;">
-      <a href="#">Table of Contents</a>
-    </h4>
+  <!-- Burger Menu for Table of Contents -->
+  <button class="toc-burger" id="toc-burger" aria-label="Toggle table of contents">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="toc-wrapper" id="toc-wrapper">
+    <div class="toc-header">
+      <h4>Table of Contents</h4>
+      <button class="toc-close" id="toc-close" aria-label="Close table of contents">×</button>
+    </div>
     <ul class="toc-list">
       <li><a href="#introduction">Introduction</a></li>
       <li><a href="#agentflow">AgentFlow System</a></li>
@@ -134,6 +144,8 @@
     </ul>
   </div>
 
+  <div class="toc-overlay" id="toc-overlay"></div>
+
   <section class="hero">
     <div class="hero-body">
       <div class="container is-max-desktop">
@@ -141,9 +153,9 @@
           <div class="column has-text-centered">
             <h1 class="title is-1 publication-title is-bold">
               <img src="assets/logos/octotools.svg" style="width:1em;vertical-align: middle" alt="Logo">
-              <span style="vertical-align: middle">
-                <span style="color: var(--color-octo-red);">Agent</span><span
-                  style="color: var(--color-tools-blue);">Flow</span>
+              <span style="vertical-align: middle; position: relative; display: inline-block;">
+                <span id="agent-text" class="clickable-title" style="color: var(--color-octo-red); position: relative; cursor: pointer;">Agent</span><span
+                  id="flow-text" class="clickable-title" style="color: var(--color-tools-blue); position: relative; cursor: pointer;">Flow</span>
               </span>
             </h1>
             <h2 class="subtitle is-3 publication-subtitle">
@@ -386,6 +398,20 @@
         <div class="column is-four-fifths">
           <h2 class="title is-3"><span style="color: var(--color-octo-red);"><b>Agent</b></span><span
               style="color: var(--color-tools-blue);"><b>Flow</b></span>: An In-the-Flow Agentic System</h2>
+
+          <!-- AgentFlow Framework Figure -->
+          <div class="content has-text-centered" style="margin-bottom: 2rem;">
+            <img src="assets/models/framework_overall.png" width="100%">
+            <p style="text-align: left;">
+              <b>(a)</b> Overview of <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
+                style="color: var(--color-tools-blue);"><b>Flow</b></span>, a trainable agentic system for in-the-flow planning and tool use.
+              Four modules (<b>planner</b>, <b>executor</b>, <b>verifier</b>, <b>generator</b>) coordinate via a shared evolving memory $M$ and toolset $K$, given a query $q$.
+              <b>The planner policy is optimized on-policy <i>inside</i> the system's multi-turn loop to enable adaptive, long-horizon reasoning.</b>
+              <b>(b)</b> A single state transition, showing the action $a^t$, execution result $e^t$, and verifier signal $v^t$ that update
+              the memory from $M^t$ to $M^{t+1}$.
+            </p>
+          </div>
+
           <div class="content has-text-justified">
             <p>
               We propose <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
@@ -424,11 +450,13 @@
               This formulation decomposes multi-turn, tool-integrated reasoning into structured, observable transitions. After
               $T$ turns, the trajectory $\tau = \{(a^t, e^t, v^t)\}_{t=1}^T$ records the history of planning, execution, and
               verification. The joint generative process can be written as
+              <div class="math-scrollable">
               $$p_\theta\!\left(\{a^t, e^t, v^t\}_{t=1}^T,\, o \mid q\right)
               = \Bigg[\prod_{t=1}^T \pi_\theta(a^t \mid q, K, M^t)\;
                 \mathcal{E}(e^t \mid a^t, K)\;
                 \mathcal{V}(v^t \mid q, e^t, M^t)\Bigg]\;
                 \mathcal{G}(o \mid q, M^T),$$
+              </div>
               where $\{a^t, e^t, v^t\}_{t=1}^T$ are explicit realizations of the latent reasoning chain. Importantly, unlike
               latent thoughts behind trajectories, our memory $M$ is an explicit and deterministic record of the reasoning
               process, ensuring transparency and controllability of multi-turn decisions.
@@ -440,30 +468,25 @@
   </section>
   <!--/ AgentFlow System -->
 
-  <!-- AgentFlow Framework Figure -->
-  <section class="hero teaser">
-    <div class="container is-max-desktop">
-      <div class="content has-text-centered">
-        <img src="assets/models/framework_overall.png" width="100%">
-        <p style="text-align: left;">
-          <b>(a)</b> Overview of <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
-            style="color: var(--color-tools-blue);"><b>Flow</b></span>, a trainable agentic system for in-the-flow planning and tool use.
-          Four modules (<b>planner</b>, <b>executor</b>, <b>verifier</b>, <b>generator</b>) coordinate via a shared evolving memory $M$ and toolset $K$, given a query $q$.
-          <b>The planner policy is optimized on-policy <i>inside</i> the system's multi-turn loop to enable adaptive, long-horizon reasoning.</b>
-          <b>(b)</b> A single state transition, showing the action $a^t$, execution result $e^t$, and verifier signal $v^t$ that update
-          the memory from $M^t$ to $M^{t+1}$.
-        </p>
-      </div>
-    </div>
-  </section>
-  <!--/ AgentFlow Framework Figure -->
-
   <!-- Flow-GRPO -->
   <section class="section" id="flow-grpo">
     <div class="container" style="margin-bottom: 2vh;">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3">Flow-based Group Refined Policy Optimization</h2>
+
+          <!-- Flow-GRPO Figure -->
+          <div class="content has-text-centered" style="margin-bottom: 2rem;">
+            <img src="assets/models/Flow-GRPO.png" width="100%">
+            <p style="text-align: left;">
+              Optimization for our proposed agentic system <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
+                style="color: var(--color-tools-blue);"><b>Flow</b></span>. Given a query $q$, an evolving memory $M$, and a
+              toolset $K$, the policy model generates actions that target sub-goals and select tools. It is trained via
+              <i>Flow-based Group Refined Policy Optimization</i> (<b>Flow-GRPO</b>), which enables multi-turn reinforcement
+              learning and stable optimization under collaborative dynamics.
+            </p>
+          </div>
+
           <div class="content has-text-justified">
             <p>
               We target tool-integrated <i>agentic systems</i> operating under <i>long-horizon</i> tasks with <i>sparse</i>
@@ -528,6 +551,7 @@
               of independent, single-turn</i> policy updates. Each update for an action $a_i^t$ is conditioned on the full
               historical context encapsulated in the state $s_i^t$ and receives the same global success signal, simplifying
               optimization. The objective is
+              <div class="math-scrollable">
               $$\begin{aligned}
               \mathcal{J}_{\text{Flow-GRPO}}(\theta) &= \mathbb{E}_{(q, y^*) \sim \mathcal{D}, \; \{\tau_i\}_{i=1}^{G} \sim \pi_{\theta_\text{old}}} \\
               & \Bigg[
@@ -536,6 +560,7 @@
               \;-\; \beta\, \mathbb{D}_{\mathrm{KL}}\!\big(\pi_\theta \,\|\, \pi_{\text{ref}}\big)
               \Bigg],
               \end{aligned}$$
+              </div>
               where $T_i$ is the (variable) number of turns in rollout $i$, and
               $$\rho_{i,j}^t
               = \frac{\pi_\theta\!\big(a_{i,j}^t \,\big|\, s_i^t, a_{i,1:j-1}^t\big)}
@@ -557,23 +582,6 @@
   </section>
   <!--/ Flow-GRPO -->
 
-  <!-- Flow-GRPO Figure -->
-  <section class="hero teaser">
-    <div class="container is-max-desktop">
-      <div class="content has-text-centered">
-        <img src="assets/models/flow_grpo.png" width="100%">
-        <p style="text-align: left;">
-          Optimization for our proposed agentic system <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
-            style="color: var(--color-tools-blue);"><b>Flow</b></span>. Given a query $q$, an evolving memory $M$, and a
-          toolset $K$, the policy model generates actions that target sub-goals and select tools. It is trained via
-          <i>Flow-based Group Refined Policy Optimization</i> (<b>Flow-GRPO</b>), which enables multi-turn reinforcement
-          learning and stable optimization under collaborative dynamics.
-        </p>
-      </div>
-    </div>
-  </section>
-  <!--/ Flow-GRPO Figure -->
-
   <!-- Tool Cards Section -->
   <section class="section tools-section" id="tools">
     <div class="container">
@@ -584,9 +592,19 @@
             AgentFlow leverages a diverse set of specialized tools to accomplish complex reasoning tasks
           </p>
 
-          <!-- Tools Grid -->
-          <div class="tools-grid" id="tools-grid">
-            <!-- Tool cards will be generated by JavaScript -->
+          <!-- Two-column layout: sidebar + content -->
+          <div class="tools-layout">
+            <!-- Left sidebar with tool buttons -->
+            <div class="tools-sidebar" id="tools-sidebar">
+              <!-- Tool selector buttons will be generated by JavaScript -->
+            </div>
+
+            <!-- Right content area for tool cards -->
+            <div class="tools-content">
+              <div class="tools-grid" id="tools-grid">
+                <!-- Tool cards will be generated by JavaScript -->
+              </div>
+            </div>
           </div>
 
         </div>
@@ -714,13 +732,19 @@
             <div id="main-results-carousel" class="carousel results-carousel">
               <div class="box m-5">
                 <div class="content has-text-centered">
-                  <img src="assets/results/main_table1.png" width="100%">
+                  <img src="assets/results/main_table_1.png" width="100%">
+                  <p><b>Accuracy comparison on search-intensive and agentic tasks.</b> 7B-Base refers to Qwen-2.5-7B-Base and 7B-Inst refers to Qwen-2.5-7B-Instruct. AutoGen and our <span style="color: var(--color-octo-red);"><b>Agent</b></span><span style="color: var(--color-tools-blue);"><b>Flow</b></span> method are agentic systems, which use Qwen-2.5-7B-Instruct for the LLM-powered agents and tools for fair comparison. We visualize the gains of <span style="color: var(--color-octo-red);"><b>Agent</b></span><span style="color: var(--color-tools-blue);"><b>Flow</b></span> to each baseline in the Δ columns.
+                  <br><br><b>Baselines:</b> We compare against four categories of baselines: (1) <i>Open-source LLMs</i>: Qwen-2.5 (7B, 14B, 32B) and Llama-3.3-70B; (2) <i>Proprietary LLMs</i>: GPT-4o-mini and GPT-4o; (3) <i>Tool-integrated reasoning LLMs</i>: Supervised Fine-Tuning (SFT), Iter-RetGen, Search-R1, ZeroSearch, ReSearch, StepSearch, and VerlTool; (4) <i>Training-free agentic system</i>: AutoGen.
+                  </p>
                 </div>
               </div>
 
               <div class="box m-5">
                 <div class="content has-text-centered">
-                  <img src="assets/results/main_table2.png" width="100%">
+                  <img src="assets/results/main_table_2.png" width="100%">
+                  <p><b>Accuracy comparison of mathematical and scientific reasoning tasks.</b> We visualize the gains of <span style="color: var(--color-octo-red);"><b>Agent</b></span><span style="color: var(--color-tools-blue);"><b>Flow</b></span> to each baseline in the Δ columns.
+                  <br><br><b>Baselines:</b> We compare against four categories of baselines: (1) <i>Open-source LLMs</i>: Qwen-2.5 (7B, 14B) and Llama-3.3-70B, Llama-3.1-405B; (2) <i>Proprietary LLMs</i>: GPT-4o-mini and GPT-4o; (3) <i>Reasoning LLMs</i>: Supervised Fine-Tuning (SFT), SimpleRL-reason, Open-Reasoner-Zero, General-Reasoner, and Luffy; (4) <i>Tool-integrated reasoning LLMs</i>: TIR and ToRL; (5) <i>Training-free agentic system</i>: AutoGen.
+                  </p>
                 </div>
               </div>
             </div>
@@ -865,13 +889,28 @@
   </section>
 
   <section>
-    <div class="section" id="org-banners" style="display:flex">
-      <a href="https://www.stanford.edu/" target="_blank" rel="external">
-        <img class="center-block org-banner" src="assets/logos/stanford.png">
-      </a>
-      <a href="https://ai.stanford.edu/" target="_blank" rel="external">
-        <img class="center-block org-banner" src="assets/logos/ai_stanford.png">
-      </a>
+    <div class="section" id="org-banners">
+      <!-- First row: TAMU, UCSD, Lambda -->
+      <div class="org-banner-row">
+        <a href="https://www.tamu.edu/" target="_blank" rel="external">
+          <img class="center-block org-banner" src="assets/logos/tamu.png" alt="Texas A&M University">
+        </a>
+        <a href="https://ucsd.edu/" target="_blank" rel="external">
+          <img class="center-block org-banner" src="assets/logos/ucsd.png" alt="UC San Diego">
+        </a>
+        <a href="https://lambdalabs.com/" target="_blank" rel="external">
+          <img class="center-block org-banner" src="assets/logos/lambda.png" alt="Lambda">
+        </a>
+      </div>
+      <!-- Second row: Stanford logos centered -->
+      <div class="org-banner-row org-banner-row-centered">
+        <a href="https://www.stanford.edu/" target="_blank" rel="external">
+          <img class="center-block org-banner" src="assets/logos/stanford.png" alt="Stanford University">
+        </a>
+        <a href="https://ai.stanford.edu/" target="_blank" rel="external">
+          <img class="center-block org-banner" src="assets/logos/ai_stanford.png" alt="Stanford AI Lab">
+        </a>
+      </div>
     </div>
   </section>
 

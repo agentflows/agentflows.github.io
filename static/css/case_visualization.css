@@ -258,10 +258,12 @@
   padding: 0.8rem;
   border-radius: 6px;
   border-left: 3px solid #667eea;
+  text-align: left;
 }
 
 .step-item {
   margin-bottom: 0.6rem;
+  text-align: left;
 }
 
 .step-item:last-child {
@@ -279,6 +281,7 @@
   color: #4a4a4a;
   line-height: 1.5;
   font-size: 0.9rem;
+  text-align: left;
 }
 
 .tool-name {

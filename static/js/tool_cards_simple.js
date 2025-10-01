@@ -1,14 +1,51 @@
 // Simplified Tool Cards Display
 
+let selectedToolId = null;
+
 document.addEventListener('DOMContentLoaded', function() {
-  renderToolCards();
+  renderToolSidebar();
+  // Select first tool by default
+  if (toolsData && toolsData.length > 0) {
+    selectTool(toolsData[0].id);
+  }
 });
 
-function renderToolCards() {
+function renderToolSidebar() {
+  const sidebar = document.getElementById('tools-sidebar');
+  if (!sidebar || typeof toolsData === 'undefined') return;
+
+  sidebar.innerHTML = toolsData.map(tool => `
+    <button class="tool-selector-btn" onclick="window.toolCards.selectTool('${tool.id}')" data-tool-id="${tool.id}">
+      <span class="tool-selector-icon">${tool.icon}</span>
+      <span>${tool.name}</span>
+    </button>
+  `).join('');
+}
+
+function selectTool(toolId) {
+  selectedToolId = toolId;
+
+  // Update active button
+  document.querySelectorAll('.tool-selector-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  const activeBtn = document.querySelector(`[data-tool-id="${toolId}"]`);
+  if (activeBtn) {
+    activeBtn.classList.add('active');
+  }
+
+  // Render selected tool card
+  renderToolCard(toolId);
+}
+
+function renderToolCard(toolId) {
   const container = document.getElementById('tools-grid');
   if (!container || typeof toolsData === 'undefined') return;
 
-  container.innerHTML = toolsData.map(tool => createToolCard(tool)).join('');
+  const tool = toolsData.find(t => t.id === toolId);
+  if (!tool) return;
+
+  container.innerHTML = createToolCard(tool);
 }
 
 function createToolCard(tool) {
@@ -169,6 +206,7 @@ function closeMetadata(event) {
 
 // Expose functions globally
 window.toolCards = {
+  selectTool,
   showMetadata,
   closeMetadata
 };
