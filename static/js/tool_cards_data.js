@@ -2,38 +2,33 @@
 
 const toolsData = [
   {
-    id: 'google_search',
-    name: 'Google Search',
-    icon: '🔍',
-    description: 'A web search tool powered by Google Search that provides real-time information from the internet with citation support.',
+    id: 'base_generator',
+    name: 'Base Generator',
+    icon: '💡',
+    description: 'A generalized tool that takes query from the user, and answers the question step by step to the best of its ability. It can also accept an image.',
     inputs: [
-      { name: 'query', type: 'str', desc: 'The search query to find information on the web.' },
-      { name: 'add_citations', type: 'bool', desc: 'Whether to add citations to the results. If True, the results will be formatted with citations. By default, it is True.' }
+      { name: 'query', type: 'str', desc: 'The query that includes query from the user to guide the agent to generate response.' }
     ],
-    output: { type: 'str', desc: 'The search results of the query.' },
+    output: { type: 'str', desc: 'The generated response to the original query' },
     demoCommands: [
       {
-        command: 'execution = tool.execute(query="What is the capital of France?")',
-        description: 'Search for general information about the capital of France with default citations enabled.'
-      },
-      {
-        command: 'execution = tool.execute(query="Who won the euro 2024?", add_citations=False)',
-        description: 'Search for information about the Euro 2024 winner without citations.'
+        command: 'execution = tool.execute(query="Summarize the following text in a few lines")',
+        description: 'Generate a short summary given the query from the user.'
       }
     ],
     limitations: [
-      'This tool is only suitable for general information search.',
-      'This tool contains less domain-specific information.',
-      'This tool is not suitable for searching and analyzing videos on YouTube or other video platforms.'
+      'The Base Generator may provide hallucinated or incorrect responses.'
     ],
     bestPractices: [
-      'Choose this tool when you want to search for general information about a topic.',
-      'Choose this tool for question types of query, such as "What is the capital of France?" or "Who invented the telephone?".',
-      'The tool will return summarized information.',
-      'This tool is more suitable for definition, world knowledge, and general information search.'
+      'Use it for general queries or tasks that don\'t require specialized knowledge or specific tools in the toolbox.',
+      'Provide clear, specific query.',
+      'Use it to answer the original query through step by step reasoning for tasks without complex or multi-step reasoning.',
+      'For complex queries, break them down into subtasks and use the tool multiple times.',
+      'Use it as a starting point for complex tasks, then refine with specialized tools.',
+      'Verify important information from its responses.'
     ],
-    llmRequired: false,
-    codeLink: 'https://github.com/octotools/octotools/tree/main/octotoolkit/tools/google_search'
+    llmRequired: true,
+    codeLink: 'https://github.com/lupantech/AgentFlow/tree/main/agentflow/agentflow/tools/base_generator/tool.py'
   },
   {
     id: 'python_coder',
@@ -74,7 +69,79 @@ const toolsData = [
       'Review generated code to ensure it only uses basic Python arithmetic operations and built-in math functions.'
     ],
     llmRequired: true,
-    codeLink: 'https://github.com/octotools/octotools/tree/main/octotoolkit/tools/python_code'
+    codeLink: 'https://github.com/lupantech/AgentFlow/tree/main/agentflow/agentflow/tools/python_coder/tool.py'
+  },
+  {
+    id: 'google_search',
+    name: 'Google Search',
+    icon: '🔍',
+    description: 'A web search tool powered by Google Search that provides real-time information from the internet with citation support.',
+    inputs: [
+      { name: 'query', type: 'str', desc: 'The search query to find information on the web.' },
+      { name: 'add_citations', type: 'bool', desc: 'Whether to add citations to the results. If True, the results will be formatted with citations. By default, it is True.' }
+    ],
+    output: { type: 'str', desc: 'The search results of the query.' },
+    demoCommands: [
+      {
+        command: 'execution = tool.execute(query="What is the capital of France?")',
+        description: 'Search for general information about the capital of France with default citations enabled.'
+      },
+      {
+        command: 'execution = tool.execute(query="Who won the euro 2024?", add_citations=False)',
+        description: 'Search for information about the Euro 2024 winner without citations.'
+      }
+    ],
+    limitations: [
+      'This tool is only suitable for general information search.',
+      'This tool contains less domain-specific information.',
+      'This tool is not suitable for searching and analyzing videos on YouTube or other video platforms.'
+    ],
+    bestPractices: [
+      'Choose this tool when you want to search for general information about a topic.',
+      'Choose this tool for question types of query, such as "What is the capital of France?" or "Who invented the telephone?".',
+      'The tool will return summarized information.',
+      'This tool is more suitable for definition, world knowledge, and general information search.'
+    ],
+    llmRequired: false,
+    codeLink: 'https://github.com/lupantech/AgentFlow/tree/main/agentflow/agentflow/tools/google_search/tool.py'
+  },
+  {
+    id: 'wikipedia_search',
+    name: 'Wikipedia Search',
+    icon: '📚',
+    description: 'A tool that searches Wikipedia and returns relevant pages with their page titles, URLs, abstract, and retrieved information based on a given query.',
+    inputs: [
+      { name: 'query', type: 'str', desc: 'The search query for Wikipedia.' }
+    ],
+    output: { type: 'dict', desc: 'A dictionary containing search results, all matching pages with their content, URLs, and metadata.' },
+    demoCommands: [
+      {
+        command: 'execution = tool.execute(query="What is the exact mass in kg of the moon")',
+        description: 'Search Wikipedia and get the information about the mass of the moon.'
+      },
+      {
+        command: 'execution = tool.execute(query="Function of human kidney")',
+        description: 'Search Wikipedia and get the information about the function of the human kidney.'
+      },
+      {
+        command: 'execution = tool.execute(query="When was the first moon landing?")',
+        description: 'Search Wikipedia and get the information about the first moon landing.'
+      }
+    ],
+    limitations: [
+      'It is designed specifically for retrieving grounded information from Wikipedia pages only.',
+      'Filtering of relevant pages depends on LLM model performance and may not always select optimal pages.',
+      'The returned information accuracy depends on Wikipedia\'s content quality.'
+    ],
+    bestPractices: [
+      'Use specific, targeted queries rather than broad or ambiguous questions.',
+      'The tool automatically filters for relevant pages using LLM-based selection - trust the "relevant_pages" results.',
+      'If initial results are insufficient, examine the "other_pages" section for additional potentially relevant content.',
+      'Use this tool as part of a multi-step research process rather than a single source of truth.',
+      'You can use the Web Search to get more information from the URLs.'
+    ],
+    llmRequired: true,
+    codeLink: 'https://github.com/lupantech/AgentFlow/tree/main/agentflow/agentflow/tools/wikipedia_search/tool.py'
   },
   {
     id: 'web_search',
@@ -114,73 +181,6 @@ const toolsData = [
       'It is highly recommended to use this tool after calling other web-based tools (e.g., Google Search, Wikipedia Search, etc.) to get the real, accessible URLs.'
     ],
     llmRequired: true,
-    codeLink: 'https://github.com/octotools/octotools/tree/main/octotoolkit/tools/web_search'
-  },
-  {
-    id: 'wikipedia_search',
-    name: 'Wikipedia Search',
-    icon: '📚',
-    description: 'A tool that searches Wikipedia and returns relevant pages with their page titles, URLs, abstract, and retrieved information based on a given query.',
-    inputs: [
-      { name: 'query', type: 'str', desc: 'The search query for Wikipedia.' }
-    ],
-    output: { type: 'dict', desc: 'A dictionary containing search results, all matching pages with their content, URLs, and metadata.' },
-    demoCommands: [
-      {
-        command: 'execution = tool.execute(query="What is the exact mass in kg of the moon")',
-        description: 'Search Wikipedia and get the information about the mass of the moon.'
-      },
-      {
-        command: 'execution = tool.execute(query="Function of human kidney")',
-        description: 'Search Wikipedia and get the information about the function of the human kidney.'
-      },
-      {
-        command: 'execution = tool.execute(query="When was the first moon landing?")',
-        description: 'Search Wikipedia and get the information about the first moon landing.'
-      }
-    ],
-    limitations: [
-      'It is designed specifically for retrieving grounded information from Wikipedia pages only.',
-      'Filtering of relevant pages depends on LLM model performance and may not always select optimal pages.',
-      'The returned information accuracy depends on Wikipedia\'s content quality.'
-    ],
-    bestPractices: [
-      'Use specific, targeted queries rather than broad or ambiguous questions.',
-      'The tool automatically filters for relevant pages using LLM-based selection - trust the "relevant_pages" results.',
-      'If initial results are insufficient, examine the "other_pages" section for additional potentially relevant content.',
-      'Use this tool as part of a multi-step research process rather than a single source of truth.',
-      'You can use the Web Search to get more information from the URLs.'
-    ],
-    llmRequired: true,
-    codeLink: 'https://github.com/octotools/octotools/tree/main/octotoolkit/tools/wikipedia_search'
-  },
-  {
-    id: 'base_generator',
-    name: 'Base Generator',
-    icon: '💡',
-    description: 'A generalized tool that takes query from the user, and answers the question step by step to the best of its ability. It can also accept an image.',
-    inputs: [
-      { name: 'query', type: 'str', desc: 'The query that includes query from the user to guide the agent to generate response.' }
-    ],
-    output: { type: 'str', desc: 'The generated response to the original query' },
-    demoCommands: [
-      {
-        command: 'execution = tool.execute(query="Summarize the following text in a few lines")',
-        description: 'Generate a short summary given the query from the user.'
-      }
-    ],
-    limitations: [
-      'The Base Generator may provide hallucinated or incorrect responses.'
-    ],
-    bestPractices: [
-      'Use it for general queries or tasks that don\'t require specialized knowledge or specific tools in the toolbox.',
-      'Provide clear, specific query.',
-      'Use it to answer the original query through step by step reasoning for tasks without complex or multi-step reasoning.',
-      'For complex queries, break them down into subtasks and use the tool multiple times.',
-      'Use it as a starting point for complex tasks, then refine with specialized tools.',
-      'Verify important information from its responses.'
-    ],
-    llmRequired: true,
-    codeLink: 'https://github.com/octotools/octotools/tree/main/octotoolkit/tools/base_generator'
+    codeLink: 'https://github.com/lupantech/AgentFlow/tree/main/agentflow/agentflow/tools/web_search/tool.py'
   }
 ];
