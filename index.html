@@ -719,91 +719,71 @@
               </div>
             </div>
           </div>
-          <h3 class="title is-4">Ablation Study: Disentangling Different Components</h3>
+          <h3 class="title is-4">In-Depth Analysis</h3>
           <div class="content has-text-justified">
             <p>
-              We further explore several factors that affect <span
-                style="color: var(--color-octo-red);"><b>Octo</b></span><span
-                style="color: var(--color-tools-blue);"><b>Tools</b></span>'s performance, using a validation set of 100
-              samples.
+              We conduct comprehensive analyses to understand the effectiveness of Flow-GRPO and the behavior of <span
+                style="color: var(--color-octo-red);"><b>Agent</b></span><span
+                style="color: var(--color-tools-blue);"><b>Flow</b></span> across various dimensions.
             </p>
 
             <div id="results-carousel" class="carousel results-carousel">
               <div class="box m-5">
                 <div class="content has-text-centered">
-                  <img src="assets/ablation/ours_tool_selection_category_scores_bar_chart.png" width="50%">
-                  <p> Performance under three toolset strategies in <span
-                      style="color: var(--color-octo-red);"><b>Octo</b></span><span
-                      style="color: var(--color-tools-blue);"><b>Tools</b></span> across all 16 tasks and various
-                    categories (the number in parentheses indicates the number of tasks in each category).
+                  <img src="assets/results/table3.png" width="60%">
+                  <p><b>Impact of Planner Training Strategies.</b> Experiments demonstrate that training the planner with the online reinforcement learning method, Flow-GRPO, yields a significant 17.2% performance improvement, whereas traditional offline Supervised Fine-Tuning (SFT) results in a catastrophic 19.0% performance collapse.
                   </p>
                 </div>
               </div>
 
               <div class="box m-5">
                 <div class="content has-text-centered">
-                  <img src="assets/ablation/all_tools_ablation.png" width="90%">
-                  <p> Performance with vs. without tool selection. While toolset optimization increases performance over
-                    using the full toolset in most tasks, even without it, our framework achieves similar performance by
-                    naively enabling all possible tools. Bar values represent accuracy and error bars represent standard
-                    deviation.
+                  <img src="assets/results/figure3.png" width="75%">
+                  <p><b>Optimized and Adaptive Tool Selection.</b> After optimization with Flow-GRPO, the planner learns to select the most appropriate tools for different tasks, such as increasing the use of Google Search for the broad-knowledge 2Wiki task while shifting to the more specialized Wikipedia and Web Search for the domain-specific MedQA task.
                   </p>
                 </div>
               </div>
 
               <div class="box m-5">
                 <div class="content has-text-centered">
-                  <img src="assets/ablation/gpt4omini_ours_category_scores_bar_chart.png" width="50%">
-                  <p> Performance of <span style="color: var(--color-octo-red);"><b>Octo</b></span><span
-                      style="color: var(--color-tools-blue);"><b>Tools</b></span> on 16 tasks and various categories
-                    using a weaker LLM, GPT-4o-mini, as the base engine. <span
-                      style="color: var(--color-octo-red);"><b>Octo</b></span><span
-                      style="color: var(--color-tools-blue);"><b>Tools</b></span><sub>base</sub> is the configuration in
-                    which only the base <b>Generalist_Solution_Generator</b> tool is enabled. The number in parentheses
-                    indicates the number of tasks in each category.
+                  <img src="assets/results/figure4.png" width="75%">
+                  <p><b>Enhanced Tool-Calling Reliability.</b> The Flow-GRPO training process enhances tool-calling reliability, as evidenced by a consistent decrease in the tool-calling error rate across all tasks, with a reduction of up to 28.4% on the GAIA task.
                   </p>
                 </div>
               </div>
 
               <div class="box m-5">
                 <div class="content has-text-centered">
-                  <img src="assets/ablation/gpt4o-mini_bar_plot.png" width="90%">
-                  <p> Performance ours vs. other agents. Our framework consistently outperforms agent baselines across
-                    all benchmarks. Bar
-                    values represent accuracy and error bars represent standard deviation.
+                  <img src="assets/results/figure5.png" width="90%">
+                  <p><b>Superior Training Efficiency and Stability.</b> Analysis of training dynamics reveals that Flow-GRPO not only continuously increases rewards (accuracy) while shortening response length but also achieves more stable and sustained performance growth compared to traditional monolithic methods like ToRL.
                   </p>
                 </div>
               </div>
 
               <div class="box m-5">
                 <div class="content has-text-centered">
-                  <img src="assets/ablation/average_accuracy_by_max_steps_error_range.png" width="40%">
-                  <p> Average accuracy across 16 benchmarks with respect to maximum allowed reasoning steps in <span
-                      style="color: var(--color-octo-red);"><b>Octo</b></span><span
-                      style="color: var(--color-tools-blue);"><b>Tools</b></span>. Overall, performance tends to improve
-                    as the maxmum number of steps increases, highlighting the benefit of longer chains of multi-step
-                    reasoning.
+                  <img src="assets/results/figure6.png" width="60%">
+                  <p><b>Consistent Gains Across Model Scales.</b> Flow-GRPO's online fine-tuning method delivers consistent and effective performance gains on <span style="color: var(--color-octo-red);"><b>Agent</b></span><span style="color: var(--color-tools-blue);"><b>Flow</b></span>, regardless of whether the backbone model scales from 3B to 7B parameters.
                   </p>
                 </div>
               </div>
 
               <div class="box m-5">
                 <div class="content has-text-centered">
-                  <img src="assets/ablation/accuracy_vs_max_steps_indiv_delta.png" width="65%">
-                  <p> Accuracy vs number of maximum steps. The change in accuracy from a maximum step of 1 is plotted.
-                    Most benchmarks improve in performance with the number of allowed steps.
+                  <img src="assets/results/figure7.png" width="75%">
+                  <p><b>Performance Scaling with Inference Turns.</b> During the inference phase, increasing the maximum allowed interaction turns from 3 to 10 enables <span style="color: var(--color-octo-red);"><b>Agent</b></span><span style="color: var(--color-tools-blue);"><b>Flow</b></span> to conduct deeper reasoning, leading to continuous improvements in final performance across all tasks.
                   </p>
                 </div>
               </div>
 
               <div class="box m-5">
                 <div class="content has-text-centered">
-                  <img src="assets/ablation/toolset.png" width="60%">
-                  <p> Optimized tool sets for each benchmark following our Algorithm. A ✓indicates that the tool is used
-                    for that benchmark.
+                  <img src="assets/results/figure9.png" width="75%">
+                  <p><b>Adaptability to Upgraded Tool Engines.</b> The trained <span style="color: var(--color-octo-red);"><b>Agent</b></span><span style="color: var(--color-tools-blue);"><b>Flow</b></span> system demonstrates strong adaptability, as its overall performance significantly improves when its internal tool engines are upgraded from Qwen-2.5-7B-Instruct to the more powerful GPT-4o.
                   </p>
                 </div>
               </div>
+
 
             </div>
           </div>
