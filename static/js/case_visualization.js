@@ -209,35 +209,92 @@ const caseData = {
       title: "Success Case: AgentFlow w/ Flow-GRPO",
       steps: [
         {
-          title: "Action Step 1: Initial Search",
-          tool: "Wikipedia Search",
-          subgoal: "Retrieve Tropicos ID for Helotiales from Wikipedia.",
-          command: "Tropicos ID of Order Helotiales",
-          result: "No results found on Wikipedia.",
+          title: "Action Step 1",
+          tool: "Wikipedia_RAG_Search_Tool",
+          subgoal: "Retrieve the Tropicos ID from the Wikipedia page on Helotiales.",
+          command: `execution = tool.execute(query="Tropicos ID of Order Helotiales")`,
+          result: `{"query": "Tropicos ID of Order Helotiales", "relevant_pages": [], "other_pages (may be irrelevant to the query)": [{"title": null, "url": null, "abstract": null, "error": "No results found for query: Tropicos ID of Order Helotiales"}]}`,
           type: "warning"
         },
         {
-          title: "Action Step 2: Recovery Search",
-          tool: "Google Search",
-          subgoal: "Retrieve Tropicos ID from a reliable online source.",
-          command: "Tropicos ID of Order Helotiales",
-          result: "Successfully found Tropicos ID: 100370510.",
+          title: "Action Step 2",
+          tool: "Ground_Google_Search_Tool",
+          subgoal: "Retrieve the Tropicos ID of Order Helotiales from a reliable online source.",
+          command: `execution = tool.execute(query="Tropicos ID of Order Helotiales")`,
+          result: `The Tropicos ID for the Order Helotiales is 100370510.[1](https://commons.wikimedia.org/wiki/Category:Helotiales)`,
           type: "success"
         },
         {
-          title: "Action Step 3: Initial Calculation Attempt",
-          tool: "Python Coder",
-          subgoal: "Calculate ISBN-10 check digit for the found ID.",
-          command: "Calculate check digit for variable 'tropicos_id'",
-          result: "Error: variable 'tropicos_id' not defined.",
+          title: "Action Step 3",
+          tool: "Python_Code_Generator_Tool",
+          subgoal: "Write and execute a Python script to calculate the check digit for `tropicos_id` as if it were an ISBN-10 number.",
+          command: `execution = tool.execute(query="Calculate the check digit for the ISBN-10 number " + tropicos_id)`,
+          result: `Error in execute_tool_command: name 'tropicos_id' is not defined`,
           type: "warning"
         },
         {
-          title: "Action Step 4: Corrected Calculation",
-          tool: "Python Coder",
-          subgoal: "Correctly calculate ISBN-10 check digit for the number.",
-          command: "Compute check digit for 100370510",
-          result: "Successfully calculated the check digit: 3.",
+          title: "Action Step 4",
+          tool: "Python_Code_Generator_Tool",
+          subgoal: "Write and execute a Python script to calculate the check digit for `tropicos_id` as if it were an ISBN-10 number.",
+          command: `execution = tool.execute(query="Compute the check digit for 100370510 as an ISBN-10 number")`,
+          result: `<pre><code>def calculate_check_digit(isbn):
+    # Extract the first 9 digits of the ISBN-10
+    isbn_digits = [int(digit) for digit in isbn[:9]]
+
+    # Calculate the sum of products
+    total_sum = sum(position * digit for position, digit in enumerate(isbn_digits, start=1))
+
+    # Determine the check digit
+    check_digit = total_sum % 11
+    if check_digit == 10:
+        return 'X'
+    else:
+        return str(check_digit)
+
+# Given ISBN-10 number
+isbn_10 = "100370510"
+
+# Compute the check digit
+check_digit_result = calculate_check_digit(isbn_10)
+
+# Print the final result
+print(f"The check digit for the ISBN-10 number {isbn_10} is {check_digit_result}")</code></pre><br>Printed output: The check digit for the ISBN-10 number 100370510 is 3`,
+          type: "success"
+        },
+        {
+          title: "Action Step 5",
+          tool: "Python_Code_Generator_Tool",
+          subgoal: "Execute the existing Python script to calculate and print the check digit for `tropicos_id` as an ISBN-10 number.",
+          command: `execution = tool.execute(query="Compute the check digit for tropicos_id 100370510 as an ISBN-10 number")`,
+          result: `<pre><code>def calculate_isbn10_check_digit(tropicos_id):
+    # Step 1: Extract the first 9 digits of the Tropicos ID
+    isbn_digits = tropicos_id[:9]
+
+    # Step 2: Initialize the sum for the check digit calculation
+    total_sum = 0
+
+    # Step 3: Calculate the sum of the products of each digit and its position
+    for i, digit in enumerate(isbn_digits, start=1):
+        total_sum += i * int(digit)
+
+    # Step 4: Calculate the check digit
+    check_digit = total_sum % 11
+
+    # If the check digit is 10, it is represented as 'X'
+    if check_digit == 10:
+        check_digit = 'X'
+
+    # Step 5: Format the ISBN-10
+    isbn_10 = f"{isbn_digits}{check_digit}"
+
+    return isbn_10
+
+# Given Tropicos ID
+tropicos_id = "100370510"
+
+# Step 6: Generate the ISBN-10 and print the result
+isbn_10 = calculate_isbn10_check_digit(tropicos_id)
+print(f"The ISBN-10 number for the Tropicos ID {tropicos_id} is: {isbn_10}")</code></pre><br>Printed output: The ISBN-10 number for the Tropicos ID 100370510 is: 1003705103`,
           type: "success"
         }
       ],
@@ -248,56 +305,32 @@ const caseData = {
       title: "Failure Case: AgentFlow w/o Flow-GRPO",
       steps: [
         {
-          title: "Action Step 1: Initial Search",
-          tool: "Wikipedia Search",
-          subgoal: "Retrieve Tropicos ID for Helotiales from Wikipedia.",
-          command: "Tropicos ID of Order Helotiales",
-          result: "Error: No results found on Wikipedia.",
-          type: "error"
+          title: "Action Step 1",
+          tool: "Wikipedia_RAG_Search_Tool",
+          subgoal: "Retrieve the Tropicos ID of the Order Helotiales from Wikipedia.",
+          command: `execution = tool.execute(query="Tropicos ID for the Order Helotiales")`,
+          result: `{"query": "Tropicos ID for the Order Helotiales", "relevant_pages": [], "other_pages (may be irrelevant to the query)": [{"title": null, "url": null, "abstract": null, "error": "No results found for query: Tropicos ID for the Order Helotiales"}]}`,
+          type: "warning"
         },
         {
-          title: "Action Step 2: Recovery Search",
-          tool: "Google Search",
-          subgoal: "Retrieve Tropicos ID from a reliable web source.",
-          command: "Tropicos ID search",
-          result: "Successfully found Tropicos ID: 100370510.",
+          title: "Action Step 2",
+          tool: "Ground_Google_Search_Tool",
+          subgoal: "Retrieve the Tropicos ID of the Order Helotiales from a reliable web source.",
+          command: `execution = tool.execute(query="Tropicos ID for the Order Helotiales", add_citations=True)`,
+          result: `The Tropicos ID for the Order Helotiales is 100370510.[1](https://explorer.invariantlabs.ai/u/feixieliz/gaia_magentic-one/t/10), [2](https://commons.wikimedia.org/wiki/Category:Helotiales)`,
           type: "success"
         },
         {
-          title: "Action Step 3: Calculation Attempt",
-          tool: "Python Coder",
-          subgoal: "Calculate ISBN-10 check digit for the Tropicos ID.",
-          command: "Calculate check digit",
-          result: "Error: name 'isbn' is not defined.",
-          type: "error"
-        },
-        {
-          title: "Action Step 4: Repetitive Error",
-          tool: "Python Coder",
-          subgoal: "Calculate ISBN-10 check digit for the Tropicos ID.",
-          command: "Calculate check digit",
-          result: "Error: name 'isbn' is not defined.",
-          type: "error"
-        },
-        {
-          title: "Action Step 5: Repetitive Error",
-          tool: "Python Coder",
-          subgoal: "Calculate ISBN-10 check digit for the Tropicos ID.",
-          command: "Calculate check digit",
-          result: "Error: name 'isbn' is not defined.",
-          type: "error"
-        },
-        {
-          title: "Action Steps 6-9: Stuck in Error Loop",
-          tool: "Python Coder",
-          subgoal: "Continue attempting calculation",
-          command: "Multiple attempts",
-          result: "The agent continues to call the Python Coder tool four more times, receiving the identical 'name isbn is not defined' error in each step.",
+          title: "Action Steps 3-9",
+          tool: "Python_Code_Generator_Tool",
+          subgoal: "Calculate the check digit for the Tropicos ID 100370510 if it were an ISBN-10 number.",
+          command: `execution = tool.execute(query="Calculate the check digit for the ISBN-10 number 100370510")`,
+          result: `{"error": "name 'isbn' is not defined"}<br><br><strong>Note:</strong> Action Steps 3 through 9 all have identical subgoals, commands, and error results - the agent is stuck in a repetitive error loop, unable to fix the variable naming issue.`,
           type: "error"
         }
       ],
       verifier: "STOP, Stuck in Repetitive Tool Error",
-      solution: "The Python tool failed repeatedly. The agent then resorted to a manual calculation in its final summary, correctly finding the ID 100370510 and correctly calculating the check digit as 2."
+      solution: "The Python tool failed repeatedly with the same 'isbn' variable error across 7 consecutive attempts (Steps 3-9). The agent was unable to recover from this error and failed to calculate the check digit."
     }
   },
   5: {

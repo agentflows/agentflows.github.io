@@ -159,35 +159,33 @@
               </span>
             </h1>
             <h2 class="subtitle is-3 publication-subtitle">
-              In-The-Flow Agentic System Optimization for Effective Planning and Tool Use
+              In-The-Flow Agentic System Optimization for <br>Effective Planning and Tool Use
             </h2>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                <a href="https://zhuofeng-li.github.io/" target="_blank">Zhuofeng Li</a>*<sup>1</sup>
-                <a href="mailto:zhuofengli12345@gmail.com"><i class="fas fa-envelope"></i></a>,</span>
+                <a href="https://zhuofeng-li.github.io/" target="_blank">Zhuofeng Li</a>*<sup>1,2</sup>,</span>
               <span class="author-block">
-                <a href="https://isaacghx.github.io/about/" target="_blank">Haoxiang Zhang</a>*<sup>2</sup>,</span>
+                <a href="https://isaacghx.github.io/about/" target="_blank">Haoxiang Zhang</a>*<sup>1,3</sup>,</span>
               <span class="author-block">
-                <a href="https://seungjuhan.me/" target="_blank">Seungju Han</a><sup>3</sup>,</span>
+                <a href="https://seungjuhan.me/" target="_blank">Seungju Han</a><sup>1</sup>,</span>
               <span class="author-block">
-                <a href="https://shengliu66.github.io/" target="_blank">Sheng Liu</a><sup>3</sup>,</span>
+                <a href="https://shengliu66.github.io/" target="_blank">Sheng Liu</a><sup>1</sup>,</span>
               <span class="author-block">
-                <a href="http://www.stat.ucla.edu/~jxie/" target="_blank">Jianwen Xie</a><sup>4</sup>,</span>
+                <a href="http://www.stat.ucla.edu/~jxie/" target="_blank">Jianwen Xie</a><sup>4</sup>,</span><br>
               <span class="author-block">
-                <a href="https://yuzhimanhua.github.io/" target="_blank">Yu Zhang</a><sup>1</sup>,</span>
+                <a href="https://yuzhimanhua.github.io/" target="_blank">Yu Zhang</a><sup>2</sup>,</span>
               <span class="author-block">
-                <a href="https://yejinc.github.io/" target="_blank">Yejin Choi</a><sup>3</sup>,</span>
+                <a href="https://yejinc.github.io/" target="_blank">Yejin Choi</a><sup>1</sup>,</span>
               <span class="author-block">
-                <a href="https://www.james-zou.com/" target="_blank">James Zou</a><sup>3</sup>,</span>
+                <a href="https://www.james-zou.com/" target="_blank">James Zou</a><sup>1</sup>,</span>
               <span class="author-block">
-                <a href="https://lupantech.github.io/" target="_blank">Pan Lu</a><sup>3</sup>
-                <a href="mailto:lupantech@gmail.com"><i class="fas fa-envelope"></i></a></span>
+                <a href="https://lupantech.github.io/" target="_blank">Pan Lu</a><sup>1</sup></span>
             </div>
 
             <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>1</sup> Texas A&M University</span>
-              <span class="author-block"><sup>2</sup> UC San Diego</span>
-              <span class="author-block"><sup>3</sup> Stanford University</span>
+              <span class="author-block"><sup>1</sup> Stanford University</span>
+              <span class="author-block"><sup>2</sup> Texas A&M University</span>
+              <span class="author-block"><sup>3</sup> UC San Diego</span>
               <span class="author-block"><sup>4</sup> Lambda</span><br>
               <span class="paper-block"><b>* Equal Contribution</b></span>
             </div>
@@ -223,14 +221,24 @@
                     <span>Code</span>
                   </a>
                 </span>
-                <!-- HuggingFace Link. -->
+                <!-- HuggingFace Model Link. -->
                 <span class="link-block">
                   <a href="https://huggingface.co/agentflow"
                     class="external-link button is-normal is-rounded is-dark" target="_blank">
                     <span class="icon">
                       <p style="font-size:18px">🤗</p>
                     </span>
-                    <span>HuggingFace</span>
+                    <span>Model</span>
+                  </a>
+                </span>
+                <!-- HuggingFace Demo Link. -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/spaces/agentflow"
+                    class="external-link button is-normal is-rounded is-dark" target="_blank">
+                    <span class="icon">
+                      <p style="font-size:18px">🤗</p>
+                    </span>
+                    <span>Demo</span>
                   </a>
                 </span>
                 <!-- DeepWiki Link. -->
@@ -279,8 +287,7 @@
         <img src="assets/results/main_scores_bar_chart.png" width="80%">
         <p style="text-align: left;">
           Performance comparison across 10 diverse benchmarks. <span
-            style="color: var(--color-octo-red);"><b>Agent</b></span><span
-            style="color: var(--color-tools-blue);"><b>Flow</b></span> with a 7B-scale backbone achieves substantial
+            <b>AgentFlow</b> with a 7B-scale backbone achieves substantial
           improvements over top-performing baselines across search, agentic, mathematical, and scientific reasoning tasks.
         </p>
       </div>
@@ -292,8 +299,7 @@
       <div class="content has-text-centered">
         <img src="assets/models/framework_overall.png" width="100%">
         <p style="text-align: left;">
-          <b>(a)</b> Overview of <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
-            style="color: var(--color-tools-blue);"><b>Flow</b></span>, a trainable agentic system for in-the-flow planning and tool use.
+          <b>(a)</b> Overview of <b>AgentFlow</b>, a trainable agentic system for in-the-flow planning and tool use.
           Four modules (<b>planner</b>, <b>executor</b>, <b>verifier</b>, <b>generator</b>) coordinate via a shared evolving memory $M$ and toolset $K$, given a query $q$.
           <b>The planner policy is optimized on-policy <i>inside</i> the system's multi-turn loop to enable adaptive, long-horizon reasoning.</b>
           <b>(b)</b> A single state transition, showing the action $a^t$, execution result $e^t$, and verifier signal $v^t$ that update
@@ -337,8 +343,7 @@
               Outcome-driven reinforcement learning has advanced reasoning in large language models (LLMs), but prevailing tool-augmented approaches train a single, monolithic policy that interleaves thoughts and tool calls under full context; this scales poorly with long horizons and diverse tools and generalizes weakly to new scenarios. Agentic systems offer a promising alternative by decomposing work across specialized modules, yet most remain training-free or rely on offline training decoupled from the live dynamics of multi-turn interaction. 
             </p>
             <p>
-              We introduce <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
-                style="color: var(--color-tools-blue);"><b>Flow</b></span>, a trainable, <i>in-the-flow</i> agentic
+              We introduce <b>AgentFlow</b>, a trainable, <i>in-the-flow</i> agentic
               framework that coordinates four modules (<b>planner</b>, <b>executor</b>, <b>verifier</b>, <b>generator</b>)
               through an evolving memory and directly optimizes its planner inside the multi-turn loop. To train on-policy
               in live environments, we propose <i>Flow-based Group Refined Policy Optimization</i> (<b>Flow-GRPO</b>), which
@@ -347,8 +352,7 @@
               to align local planner decisions with global success and stabilizes learning with group-normalized advantages.
             </p>
             <p>
-              Across ten benchmarks, <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
-                style="color: var(--color-tools-blue);"><b>Flow</b></span> with a 7B-scale backbone outperforms top-performing
+              Across ten benchmarks, <b>AgentFlow</b> with a 7B-scale backbone outperforms top-performing
               baselines with average accuracy gains of <b>14.9%</b> on search, <b>14.0%</b> on agentic, <b>14.5%</b> on
               mathematical, and <b>4.1%</b> on scientific tasks, even surpassing larger proprietary models like <b>GPT-4o</b>.
               Further analyses confirm the benefits of in-the-flow optimization, showing improved planning, enhanced
@@ -366,15 +370,13 @@
     <div class="container" style="margin-bottom: 2vh;">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3"><span style="color: var(--color-octo-red);"><b>Agent</b></span><span
-              style="color: var(--color-tools-blue);"><b>Flow</b></span>: An In-the-Flow Agentic System</h2>
+          <h2 class="title is-3"><span <b>AgentFlow</b>: An In-the-Flow Agentic System</h2>
 
           <!-- AgentFlow Framework Figure -->
           <div class="content has-text-centered" style="margin-bottom: 2rem;">
             <img src="assets/models/framework_overall.png" width="100%">
             <p style="text-align: left;">
-              <b>(a)</b> Overview of <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
-                style="color: var(--color-tools-blue);"><b>Flow</b></span>, a trainable agentic system for in-the-flow planning and tool use.
+              <b>(a)</b> Overview of <b>AgentFlow</b>, a trainable agentic system for in-the-flow planning and tool use.
               Four modules (<b>planner</b>, <b>executor</b>, <b>verifier</b>, <b>generator</b>) coordinate via a shared evolving memory $M$ and toolset $K$, given a query $q$.
               <b>The planner policy is optimized on-policy <i>inside</i> the system's multi-turn loop to enable adaptive, long-horizon reasoning.</b>
               <b>(b)</b> A single state transition, showing the action $a^t$, execution result $e^t$, and verifier signal $v^t$ that update
@@ -384,8 +386,7 @@
 
           <div class="content has-text-justified">
             <p>
-              We propose <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
-                style="color: var(--color-tools-blue);"><b>Flow</b></span>, a general-purpose tool-integrated agentic
+              We propose <b>AgentFlow</b>, a general-purpose tool-integrated agentic
               framework for solving complex reasoning tasks through fine-grained planning and effective tool use within a
               multi-turn architecture. As shown in the figure above, the framework comprises four specialized modules—<b>Action
               Planner</b> $\mathcal{P}$, <b>Tool Executor</b> $\mathcal{E}$, <b>Execution Verifier</b> $\mathcal{V}$, and
@@ -395,8 +396,7 @@
               multiple turns.
             </p>
             <p>
-              We formalize <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
-                style="color: var(--color-tools-blue);"><b>Flow</b></span>'s problem-solving process as a multi-turn Markov
+              We formalize <b>AgentFlow</b>'s problem-solving process as a multi-turn Markov
               Decision Process (MDP). Given a query $q$ and a toolset $K$, the system proceeds for a variable number of turns.
               Let $M^t$ denote the memory state before turn $t$ (with $M^1$ initialized from $q$). At turn $t$, the planner
               $\mathcal{P}$ (a trainable policy $\pi_\theta$) formulates a sub-goal, selects an appropriate tool $k \in K$, and
@@ -449,8 +449,7 @@
           <div class="content has-text-centered" style="margin-bottom: 2rem;">
             <img src="assets/models/Flow-GRPO.png" width="100%">
             <p style="text-align: left;">
-              Optimization for our proposed agentic system <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
-                style="color: var(--color-tools-blue);"><b>Flow</b></span>. Given a query $q$, an evolving memory $M$, and a
+              Optimization for our proposed agentic system <b>AgentFlow</b>. Given a query $q$, an evolving memory $M$, and a
               toolset $K$, the policy model generates actions that target sub-goals and select tools. It is trained via
               <i>Flow-based Group Refined Policy Optimization</i> (<b>Flow-GRPO</b>), which enables multi-turn reinforcement
               learning and stable optimization under collaborative dynamics.
@@ -460,8 +459,7 @@
           <div class="content has-text-justified">
             <p>
               We target tool-integrated <i>agentic systems</i> operating under <i>long-horizon</i> tasks with <i>sparse</i>
-              rewards. In this setting, the <b>Action Planner</b> (the trainable policy of <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
-                style="color: var(--color-tools-blue);"><b>Flow</b></span>) selects a <i>sequence</i> of interdependent
+              rewards. In this setting, the <b>Action Planner</b> (the trainable policy of <b>AgentFlow</b>) selects a <i>sequence</i> of interdependent
               actions while the state $(q, K, M^t)$ evolves with tool results and verifier feedback. Conventional
               <i>offline</i> training—e.g., supervised fine-tuning or preference fine-tuning on curated traces—optimizes the
               planner <i>outside</i> the active loop. This decoupling prevents real-time coordination with the executor,
@@ -472,16 +470,14 @@
             <h4 class="title is-5">In-the-flow learning</h4>
             <p>
               To address these issues, we optimize the planner <i>in the flow</i> of execution. We roll out the full
-              <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
-                style="color: var(--color-tools-blue);"><b>Flow</b></span> system under the current policy, collect the
+              <b>AgentFlow</b> system under the current policy, collect the
               actual trajectory $\tau$ of states, actions, and tool events it induces, and update the policy within the
               agentic system using a verifiable final-outcome signal. This exposes the multi-turn credit-assignment problem
               directly and trains the planner on the exact states it will face at inference. Our objective, Flow-GRPO, is
               designed to stabilize learning under sparse, trajectory-level rewards over multiple turns.
             </p>
             <p>
-              As established above, rollouts in <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
-                style="color: var(--color-tools-blue);"><b>Flow</b></span> define a finite-horizon MDP with a variable
+              As established above, rollouts in <b>AgentFlow</b> define a finite-horizon MDP with a variable
               horizon $T$. At turn $t$, the planner observes the state $(q, K, M^t)$, selects an action $a^t$, the executor
               and verifier return $(e^t, v^t)$, and the memory updates deterministically to $M^{t+1}$.
             </p>
@@ -510,8 +506,7 @@
               The goal is to optimize the policy $\pi_\theta$ by maximizing the expected return over a group of parallel
               rollouts. For each query-label pair from training corpus $(q,y^*) \sim \mathcal{D}$, we sample a group of $G$
               on-policy trajectories $\{\tau_i\}_{i=1}^G$ by running the current behavior policy $\pi_{\theta_\text{old}}$
-              inside <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
-                style="color: var(--color-tools-blue);"><b>Flow</b></span>, where $\tau_i = \{a_i^1, ....a_i^{T_i}, o_i\}$.
+              inside <b>AgentFlow</b>, where $\tau_i = \{a_i^1, ....a_i^{T_i}, o_i\}$.
               Let $s_i^t=(q, K, M_i^t)$ be the state at turn $t$ of rollout $i$, $a_i^t$ the planner's action (a token
               sequence of length $|a_i^t|$), and $o_i$ the final response.
             </p>
@@ -691,8 +686,7 @@
           <h3 class="title is-4">Main Results</h3>
           <div class="content has-text-justified">
             <p>
-              To comprehensively evaluate tool-use capabilities of <span style="color: var(--color-octo-red);"><b>Agent</b></span><span
-                style="color: var(--color-tools-blue);"><b>Flow</b></span>, we conduct experiments on four
+              To comprehensively evaluate tool-use capabilities of <b>AgentFlow</b>, we conduct experiments on four
               types of reasoning tasks: (1) <b>Knowledge-intensive search</b> including Bamboogle, 2Wiki, HotpotQA, and Musique;
               (2) <b>Agentic reasoning</b> such as GAIA (where we adopt the textual split);
               (3) <b>Logic-dense mathematical reasoning</b> including AIME 2024, AMC 23, and Game Of 24; and
@@ -703,7 +697,7 @@
               <div class="box m-5">
                 <div class="content has-text-centered">
                   <img src="assets/results/main_table_1.png" width="100%">
-                  <p><b>Accuracy comparison on search-intensive and agentic tasks.</b> 7B-Base refers to Qwen-2.5-7B-Base and 7B-Inst refers to Qwen-2.5-7B-Instruct. AutoGen and our <span style="color: var(--color-octo-red);"><b>Agent</b></span><span style="color: var(--color-tools-blue);"><b>Flow</b></span> method are agentic systems, which use Qwen-2.5-7B-Instruct for the LLM-powered agents and tools for fair comparison. We visualize the gains of <span style="color: var(--color-octo-red);"><b>Agent</b></span><span style="color: var(--color-tools-blue);"><b>Flow</b></span> to each baseline in the Δ columns.
+                  <p><b>Accuracy comparison on search-intensive and agentic tasks.</b> 7B-Base refers to Qwen-2.5-7B-Base and 7B-Inst refers to Qwen-2.5-7B-Instruct. AutoGen and our <b>AgentFlow</b> method are agentic systems, which use Qwen-2.5-7B-Instruct for the LLM-powered agents and tools for fair comparison. We visualize the gains of <b>AgentFlow</b> to each baseline in the Δ columns.
                   <br><br><b>Baselines:</b> We compare against four categories of baselines: (1) <i>Open-source LLMs</i>: Qwen-2.5 (7B, 14B, 32B) and Llama-3.3-70B; (2) <i>Proprietary LLMs</i>: GPT-4o-mini and GPT-4o; (3) <i>Tool-integrated reasoning LLMs</i>: Supervised Fine-Tuning (SFT), Iter-RetGen, Search-R1, ZeroSearch, ReSearch, StepSearch, and VerlTool; (4) <i>Training-free agentic system</i>: AutoGen.
                   </p>
                 </div>
@@ -712,7 +706,7 @@
               <div class="box m-5">
                 <div class="content has-text-centered">
                   <img src="assets/results/main_table_2.png" width="100%">
-                  <p><b>Accuracy comparison of mathematical and scientific reasoning tasks.</b> We visualize the gains of <span style="color: var(--color-octo-red);"><b>Agent</b></span><span style="color: var(--color-tools-blue);"><b>Flow</b></span> to each baseline in the Δ columns.
+                  <p><b>Accuracy comparison of mathematical and scientific reasoning tasks.</b> We visualize the gains of <b>AgentFlow</b> to each baseline in the Δ columns.
                   <br><br><b>Baselines:</b> We compare against four categories of baselines: (1) <i>Open-source LLMs</i>: Qwen-2.5 (7B, 14B) and Llama-3.3-70B, Llama-3.1-405B; (2) <i>Proprietary LLMs</i>: GPT-4o-mini and GPT-4o; (3) <i>Reasoning LLMs</i>: Supervised Fine-Tuning (SFT), SimpleRL-reason, Open-Reasoner-Zero, General-Reasoner, and Luffy; (4) <i>Tool-integrated reasoning LLMs</i>: TIR and ToRL; (5) <i>Training-free agentic system</i>: AutoGen.
                   </p>
                 </div>
@@ -723,8 +717,7 @@
           <div class="content has-text-justified">
             <p>
               We conduct comprehensive analyses to understand the effectiveness of Flow-GRPO and the behavior of <span
-                style="color: var(--color-octo-red);"><b>Agent</b></span><span
-                style="color: var(--color-tools-blue);"><b>Flow</b></span> across various dimensions.
+                <b>AgentFlow</b> across various dimensions.
             </p>
 
             <div id="results-carousel" class="carousel results-carousel">
@@ -763,7 +756,7 @@
               <div class="box m-5">
                 <div class="content has-text-centered">
                   <img src="assets/results/figure6.png" width="60%">
-                  <p><b>Consistent Gains Across Model Scales.</b> Flow-GRPO's online fine-tuning method delivers consistent and effective performance gains on <span style="color: var(--color-octo-red);"><b>Agent</b></span><span style="color: var(--color-tools-blue);"><b>Flow</b></span>, regardless of whether the backbone model scales from 3B to 7B parameters.
+                  <p><b>Consistent Gains Across Model Scales.</b> Flow-GRPO's online fine-tuning method delivers consistent and effective performance gains on <b>AgentFlow</b>, regardless of whether the backbone model scales from 3B to 7B parameters.
                   </p>
                 </div>
               </div>
@@ -771,7 +764,7 @@
               <div class="box m-5">
                 <div class="content has-text-centered">
                   <img src="assets/results/figure7.png" width="75%">
-                  <p><b>Performance Scaling with Inference Turns.</b> During the inference phase, increasing the maximum allowed interaction turns from 3 to 10 enables <span style="color: var(--color-octo-red);"><b>Agent</b></span><span style="color: var(--color-tools-blue);"><b>Flow</b></span> to conduct deeper reasoning, leading to continuous improvements in final performance across all tasks.
+                  <p><b>Performance Scaling with Inference Turns.</b> During the inference phase, increasing the maximum allowed interaction turns from 3 to 10 enables <b>AgentFlow</b> to conduct deeper reasoning, leading to continuous improvements in final performance across all tasks.
                   </p>
                 </div>
               </div>
@@ -779,7 +772,7 @@
               <div class="box m-5">
                 <div class="content has-text-centered">
                   <img src="assets/results/figure9.png" width="75%">
-                  <p><b>Adaptability to Upgraded Tool Engines.</b> The trained <span style="color: var(--color-octo-red);"><b>Agent</b></span><span style="color: var(--color-tools-blue);"><b>Flow</b></span> system demonstrates strong adaptability, as its overall performance significantly improves when its internal tool engines are upgraded from Qwen-2.5-7B-Instruct to the more powerful GPT-4o.
+                  <p><b>Adaptability to Upgraded Tool Engines.</b> The trained <b>AgentFlow</b> system demonstrates strong adaptability, as its overall performance significantly improves when its internal tool engines are upgraded from Qwen-2.5-7B-Instruct to the more powerful GPT-4o.
                   </p>
                 </div>
               </div>
