@@ -424,3 +424,48 @@
     font-size: 0.85rem;
   }
 }
+
+/* Case Example Buttons Layout */
+.case-example-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  max-width: 950px;
+  margin: 0 auto 2rem auto;
+}
+
+.case-example-buttons .button {
+  padding: 0.65rem 1rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  width: 200px;
+  text-align: center;
+  flex: 0 0 auto;
+}
+
+/* Force 4 buttons in first row, 3 in second row */
+.case-example-buttons .button:nth-child(1),
+.case-example-buttons .button:nth-child(2),
+.case-example-buttons .button:nth-child(3),
+.case-example-buttons .button:nth-child(4) {
+  margin-right: 0.8rem;
+}
+
+.case-example-buttons .button:nth-child(4) {
+  margin-right: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .case-example-buttons {
+    gap: 0.6rem;
+    max-width: 100%;
+  }
+
+  .case-example-buttons .button {
+    width: 45%;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+    margin-right: 0 !important;
+  }
+}
