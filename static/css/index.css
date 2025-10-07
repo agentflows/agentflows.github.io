@@ -76,6 +76,8 @@ body {
 #main-results-carousel .box {
   display: flex;
   flex-direction: column;
+  max-width: 95%;
+  margin: 0 auto;
 }
 
 .results-carousel .box .content,
@@ -83,6 +85,13 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+
+.results-carousel .box .content p,
+#main-results-carousel .box .content p {
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .results-carousel .box img,
