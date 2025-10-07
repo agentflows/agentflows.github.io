@@ -5,10 +5,10 @@ const caseData = {
     question: "<strong>GameOf24:</strong> Using the numbers [1, 1, 1, 13], create an expression that equals 24. You must use basic arithmetic operations (+, -, *, /) and parentheses.",
     answer: "(13-1)*(1+1)",
     success: {
-      title: "Success Case: AgentFlow w/ Flow-GRPO",
+      title: "Success Case: AgentFlow (with Flow-GRPO)",
       steps: [
         {
-          title: "Action Step 1",
+          title: "Action Turn 1",
           tool: "Google Search",
           subgoal: "Find a valid arithmetic expression that equals 24 using the numbers [1, 1, 1, 13].",
           command: `tool.execute(query="[1, 1, 1, 13] arithmetic expression to get 24")`,
@@ -20,10 +20,10 @@ const caseData = {
       solution: "The arithmetic expression is ((13 - 1) × (1 + 1)) = 24."
     },
     failure: {
-      title: "Failure Case: AgentFlow w/o Flow-GRPO",
+      title: "Failure Case: AgentFlow (without Flow-GRPO)",
       steps: [
         {
-          title: "Action Step 1",
+          title: "Action Turn 1",
           tool: "Python Coder",
           subgoal: "Generate and test all possible combinations of the numbers [1, 1, 1, 13] using basic arithmetic operations and parentheses to find an expression that equals 24.",
           command: `tool.execute(query="[1, 1, 1, 13] execution = (1 * (13 - 1 - 1))")`,
@@ -36,7 +36,7 @@ print(f"The result of the operation is: {operation_result}")</code></pre><br>Pri
           type: "error"
         },
         {
-          title: "Action Step 2",
+          title: "Action Turn 2",
           tool: "Python Coder",
           subgoal: "Generate and test all possible combinations of the numbers [1, 1, 1, 13] using basic arithmetic operations and parentheses to find an expression that equals 24.",
           command: `tool.execute(query="[1, 1, 1, 13] -> ((1 + 1 + 1) * 13)")`,
@@ -44,11 +44,11 @@ print(f"The result of the operation is: {operation_result}")</code></pre><br>Pri
           type: "error"
         },
         {
-          title: "Action Steps 3-8",
+          title: "Action Turns 3-8",
           tool: "No matched tool given: - Generalist_Solution_Generator_Tool",
           subgoal: "Generate and test all possible combinations of the numbers [1, 1, 1, 13] using basic arithmetic operations and parentheses to find an expression that equals 24.",
           command: "Not command is generated due to the tool not found.",
-          result: "Not result is generated due to the tool not found.<br><br><strong>Note:</strong> Action Steps 3 through 8 all have identical issues - the tool was not found and no commands were generated.",
+          result: "Not result is generated due to the tool not found.<br><br><strong>Note:</strong> Action Turns 3 through 8 all have identical issues - the tool was not found and no commands were generated.",
           type: "error"
         }
       ],
@@ -61,10 +61,10 @@ print(f"The result of the operation is: {operation_result}")</code></pre><br>Pri
     question: "<strong>GameOf24:</strong> Using the numbers [1, 1, 6, 9], create an expression that equals 24. You must use basic arithmetic operations (+, -, *, /) and parentheses.",
     answer: "(1+1)*9+6",
     success: {
-      title: "Success Case: AgentFlow w/ Flow-GRPO",
+      title: "Success Case: AgentFlow (with Flow-GRPO)",
       steps: [
         {
-          title: "Action Step 1",
+          title: "Action Turn 1",
           tool: "Python Coder",
           subgoal: "Generate and test all possible arithmetic expressions using the numbers [1, 1, 6, 9] exactly once to check if any combination equals 24.",
           command: `tool.execute(query="Using the numbers [1, 1, 6, 9], create an expression that equals 24 using basic arithmetic operations and parentheses.")`,
@@ -79,7 +79,7 @@ print(f"The result of the expression ({numbers[0]} + {numbers[1]} ) * ({numbers[
           type: "warning"
         },
         {
-          title: "Action Step 2",
+          title: "Action Turn 2",
           tool: "Python Coder",
           subgoal: "Generate and test all possible permutations of the numbers with different operator placements to find an expression that equals 24.",
           command: `tool.execute(query="Using the numbers [1, 1, 6, 9], create an expression with +,-,*,/ that equals 24")`,
@@ -87,7 +87,7 @@ print(f"The result of the expression ({numbers[0]} + {numbers[1]} ) * ({numbers[
           type: "warning"
         },
         {
-          title: "Action Step 3",
+          title: "Action Turn 3",
           tool: "Python Coder",
           subgoal: "Generate all possible combinations of the four numbers with every permutation of operators (+,-,*,/) to find a valid equation resulting in exactly 24.",
           command: `tool.execute(query="Using the numbers [1, 1, 6, 9] create an expression with +,-,*,/ that equals to '24'")`,
@@ -102,7 +102,7 @@ print(f"The result of the expression is: {result}")</code></pre><br>Printed outp
           type: "warning"
         },
         {
-          title: "Action Step 4",
+          title: "Action Turn 4",
           tool: "Python Coder",
           subgoal: "Generate and evaluate all possible permutations of the four numbers with every permutation of operators (+,-,*,/) to find a valid equation resulting in exactly 24.",
           command: `tool.execute(query="Using the numbers [1, 1, 6, 9] create an expression that equals 24 using +,-,/,*")`,
@@ -110,7 +110,7 @@ print(f"The result of the expression is: {result}")</code></pre><br>Printed outp
           type: "success"
         },
         {
-          title: "Action Step 5",
+          title: "Action Turn 5",
           tool: "Python Coder",
           subgoal: "Simplify and verify if any minor adjustments to the existing promising expression can achieve an exact match of 24.",
           command: `tool.execute(query="Using the numbers [1, 1, 6, 9] and basic arithmetic operations create an expression that equals 24: (9 * (6 * (1 + 1)))")`,
@@ -125,7 +125,7 @@ print(f"The result of the expression (9 * (1 + 1) * 6) is: {result}")</code></pr
           type: "warning"
         },
         {
-          title: "Action Step 6",
+          title: "Action Turn 6",
           tool: "Google Search",
           subgoal: "Search online for examples or discussions related to creating expressions using given numbers that equal a target value.",
           command: `tool.execute(query="using the numbers [1, 1, 6, 9] create an expression that equals 24", add_citations=True)`,
@@ -137,10 +137,10 @@ print(f"The result of the expression (9 * (1 + 1) * 6) is: {result}")</code></pr
       solution: "After a multi-step process of trial, error, and verification, the final correct expression is (1 + 1) * 9 + 6 = 24."
     },
     failure: {
-      title: "Failure Case: AgentFlow w/o Flow-GRPO",
+      title: "Failure Case: AgentFlow (without Flow-GRPO)",
       steps: [
         {
-          title: "Action Step 1",
+          title: "Action Turn 1",
           tool: "Python Coder",
           subgoal: "Generate and test Python code snippets to find an arithmetic expression using the numbers [1, 1, 6, 9] exactly once that equals 24.",
           command: `tool.execute(query="Using the numbers [1, 1, 6, 9], create an expression that equals 24 using basic arithmetic operations and parentheses.")`,
@@ -164,10 +164,10 @@ print("The result of the expression is:", result)</code></pre><br>Printed output
     question: "<strong>GAIA:</strong> Assuming scientists in the famous youtube video The Thinking Machine (Artificial Intelligence in the 1960s) were interviewed the same year, what is the name of the scientist predicting the sooner thinking machines or robots? Answer using the format First name Last name.",
     answer: "Claude Shannon",
     success: {
-      title: "Success Case: AgentFlow w/ Flow-GRPO",
+      title: "Success Case: AgentFlow (with Flow-GRPO)",
       steps: [
         {
-          title: "Action Step 1",
+          title: "Action Turn 1",
           tool: "Google Search",
           subgoal: "Search for details on \"The Thinking Machine\" YouTube video and identify key figures making predictions about AI.",
           command: `tool.execute(query="Assuming scientists in the famous youtube video The Thinking Machine (Artificial Intelligence in the 1960s) were interviewed the same year, what is the name of the scientist predicting sooner thinking machines or robots?")`,
@@ -179,10 +179,10 @@ print("The result of the expression is:", result)</code></pre><br>Printed output
       solution: "The scientist who made the prediction is Claude Shannon."
     },
     failure: {
-      title: "Failure Case: AgentFlow w/o Flow-GRPO",
+      title: "Failure Case: AgentFlow (without Flow-GRPO)",
       steps: [
         {
-          title: "Action Step 1",
+          title: "Action Turn 1",
           tool: "Web Search",
           subgoal: "Retrieve information from the YouTube video \"The Thinking Machine\" (Artificial Intelligence in the 1960s) to identify the name of the scientist who made the prediction about thinking machines or robots.",
           command: `tool.execute(query="Who predicted the sooner thinking machines or robots in the YouTube video 'The Thinking Machine' (Artificial Intelligence in the 1960s)?", url="https://www.youtube.com/watch?v=your_video_id")`,
@@ -190,7 +190,7 @@ print("The result of the expression is:", result)</code></pre><br>Printed output
           type: "warning"
         },
         {
-          title: "Action Step 2",
+          title: "Action Turn 2",
           tool: "Google Search",
           subgoal: "Find the name of the scientist who predicted the sooner development of thinking machines or robots in the YouTube video \"The Thinking Machine\" (Artificial Intelligence in the 1960s).",
           command: `tool.execute(query="In the YouTube video The Thinking Machine (Artificial Intelligence in the 1960s), which scientist predicted the sooner development of thinking machines or robots?", add_citations=True)`,
@@ -198,7 +198,7 @@ print("The result of the expression is:", result)</code></pre><br>Printed output
           type: "warning"
         },
         {
-          title: "Action Steps 3-4",
+          title: "Action Turns 3-4",
           tool: "Google Search",
           subgoal: "Find the name of the scientist who predicted the sooner development of thinking machines or robots in the YouTube video \"The Thinking Machine\" (Artificial Intelligence in the 1960s).",
           command: `tool.execute(query="In the YouTube video The Thinking Machine (Artificial Intelligence in the 1960s), which scientist predicted the sooner development of thinking machines or robots?", add_citations=True)`,
@@ -206,7 +206,7 @@ print("The result of the expression is:", result)</code></pre><br>Printed output
           type: "warning"
         },
         {
-          title: "Action Steps 5-6",
+          title: "Action Turns 5-6",
           tool: "Google Search",
           subgoal: "Find the exact year of the interview in the YouTube video \"The Thinking Machine\" and when Jerome Wiesner made his prediction.",
           command: `tool.execute(query="When was 'The Thinking Machine' YouTube video released?" / "In which year did Jerome Wiesner make his prediction about thinking machines?", add_citations=True)`,
@@ -223,10 +223,10 @@ print("The result of the expression is:", result)</code></pre><br>Printed output
     question: "<strong>GAIA:</strong> Compute the check digit the Tropicos ID for the Order Helotiales would have if it were an ISBN-10 number.",
     answer: "3",
     success: {
-      title: "Success Case: AgentFlow w/ Flow-GRPO",
+      title: "Success Case: AgentFlow (with Flow-GRPO)",
       steps: [
         {
-          title: "Action Step 1",
+          title: "Action Turn 1",
           tool: "Wikipedia Search",
           subgoal: "Retrieve the Tropicos ID from the Wikipedia page on Helotiales.",
           command: `tool.execute(query="Tropicos ID of Order Helotiales")`,
@@ -234,7 +234,7 @@ print("The result of the expression is:", result)</code></pre><br>Printed output
           type: "warning"
         },
         {
-          title: "Action Step 2",
+          title: "Action Turn 2",
           tool: "Google Search",
           subgoal: "Retrieve the Tropicos ID of Order Helotiales from a reliable online source.",
           command: `tool.execute(query="Tropicos ID of Order Helotiales")`,
@@ -242,7 +242,7 @@ print("The result of the expression is:", result)</code></pre><br>Printed output
           type: "success"
         },
         {
-          title: "Action Step 3",
+          title: "Action Turn 3",
           tool: "Python Coder",
           subgoal: "Write and execute a Python script to calculate the check digit for `tropicos_id` as if it were an ISBN-10 number.",
           command: `tool.execute(query="Calculate the check digit for the ISBN-10 number " + tropicos_id)`,
@@ -250,7 +250,7 @@ print("The result of the expression is:", result)</code></pre><br>Printed output
           type: "warning"
         },
         {
-          title: "Action Step 4",
+          title: "Action Turn 4",
           tool: "Python Coder",
           subgoal: "Write and execute a Python script to calculate the check digit for `tropicos_id` as if it were an ISBN-10 number.",
           command: `tool.execute(query="Compute the check digit for 100370510 as an ISBN-10 number")`,
@@ -279,7 +279,7 @@ print(f"The check digit for the ISBN-10 number {isbn_10} is {check_digit_result}
           type: "success"
         },
         {
-          title: "Action Step 5",
+          title: "Action Turn 5",
           tool: "Python Coder",
           subgoal: "Execute the existing Python script to calculate and print the check digit for `tropicos_id` as an ISBN-10 number.",
           command: `tool.execute(query="Compute the check digit for tropicos_id 100370510 as an ISBN-10 number")`,
@@ -319,10 +319,10 @@ print(f"The ISBN-10 number for the Tropicos ID {tropicos_id} is: {isbn_10}")</co
       solution: "The check digit is 3, resulting in the full number 1003705103."
     },
     failure: {
-      title: "Failure Case: AgentFlow w/o Flow-GRPO",
+      title: "Failure Case: AgentFlow (without Flow-GRPO)",
       steps: [
         {
-          title: "Action Step 1",
+          title: "Action Turn 1",
           tool: "Wikipedia Search",
           subgoal: "Retrieve the Tropicos ID of the Order Helotiales from Wikipedia.",
           command: `tool.execute(query="Tropicos ID for the Order Helotiales")`,
@@ -330,7 +330,7 @@ print(f"The ISBN-10 number for the Tropicos ID {tropicos_id} is: {isbn_10}")</co
           type: "warning"
         },
         {
-          title: "Action Step 2",
+          title: "Action Turn 2",
           tool: "Google Search",
           subgoal: "Retrieve the Tropicos ID of the Order Helotiales from a reliable web source.",
           command: `tool.execute(query="Tropicos ID for the Order Helotiales", add_citations=True)`,
@@ -338,11 +338,11 @@ print(f"The ISBN-10 number for the Tropicos ID {tropicos_id} is: {isbn_10}")</co
           type: "success"
         },
         {
-          title: "Action Steps 3-9",
+          title: "Action Turns 3-9",
           tool: "Python Coder",
           subgoal: "Calculate the check digit for the Tropicos ID 100370510 if it were an ISBN-10 number.",
           command: `tool.execute(query="Calculate the check digit for the ISBN-10 number 100370510")`,
-          result: `{"error": "name 'isbn' is not defined"}<br><br><strong>Note:</strong> Action Steps 3 through 9 all have identical subgoals, commands, and error results - the agent is stuck in a repetitive error loop, unable to fix the variable naming issue.`,
+          result: `{"error": "name 'isbn' is not defined"}<br><br><strong>Note:</strong> Action Turns 3 through 9 all have identical subgoals, commands, and error results - the agent is stuck in a repetitive error loop, unable to fix the variable naming issue.`,
           type: "error"
         }
       ],
@@ -355,10 +355,10 @@ print(f"The ISBN-10 number for the Tropicos ID {tropicos_id} is: {isbn_10}")</co
     question: "<strong>HotpotQA:</strong> Which part of Handel's Messiah covers the birth of a child who, according to the gospels of Luke and Matthew, was born in Bethlehem?",
     answer: "Part I",
     success: {
-      title: "Success Case: AgentFlow w/ Flow-GRPO",
+      title: "Success Case: AgentFlow (with Flow-GRPO)",
       steps: [
         {
-          title: "Action Steps 1-2",
+          title: "Action Turns 1-2",
           tool: "Wikipedia Search",
           subgoal: "Retrieve information about the part of Handel's Messiah that refers to the birth of Jesus in Bethlehem.",
           command: `tool.execute(query="Which part of Handel's Messiah refers to the birth of Jesus in Bethlehem?")`,
@@ -366,7 +366,7 @@ print(f"The ISBN-10 number for the Tropicos ID {tropicos_id} is: {isbn_10}")</co
           type: "warning"
         },
         {
-          title: "Action Step 3",
+          title: "Action Turn 3",
           tool: "Wikipedia Search",
           subgoal: "Identify the specific part of Handel's Messiah that mentions the birth of Jesus in Bethlehem.",
           command: `tool.execute(query="Handel's Messiah birth of Jesus Bethlehem")`,
@@ -374,7 +374,7 @@ print(f"The ISBN-10 number for the Tropicos ID {tropicos_id} is: {isbn_10}")</co
           type: "warning"
         },
         {
-          title: "Action Steps 4-5",
+          title: "Action Turns 4-5",
           tool: "Wikipedia Search",
           subgoal: "Retrieve the specific part of Handel's Messiah that mentions the birth of Jesus in Bethlehem.",
           command: `tool.execute(query="Which part of Handel's Messiah covers the birth of a child who, according to the gospels of Luke and Matthew, was born in Bethlehem?")`,
@@ -382,7 +382,7 @@ print(f"The ISBN-10 number for the Tropicos ID {tropicos_id} is: {isbn_10}")</co
           type: "warning"
         },
         {
-          title: "Action Step 6",
+          title: "Action Turn 6",
           tool: "Google Search",
           subgoal: "Find the specific part of Handel's Messiah that mentions the birth of Jesus in Bethlehem.",
           command: `tool.execute(query="Which part of Handel's Messiah covers the birth of a child who, according to the gospels of Luke and Matthew, was born in Bethlehem?", add_citations=True)`,
@@ -394,10 +394,10 @@ print(f"The ISBN-10 number for the Tropicos ID {tropicos_id} is: {isbn_10}")</co
       solution: "The answer is Part I, which includes the famous chorus 'For unto us a child is born' and the scene depicting the annunciation to the shepherds."
     },
     failure: {
-      title: "Failure Case: AgentFlow w/o Flow-GRPO",
+      title: "Failure Case: AgentFlow (without Flow-GRPO)",
       steps: [
         {
-          title: "Action Steps 1-2",
+          title: "Action Turns 1-2",
           tool: "Wikipedia Search",
           subgoal: "Retrieve information about the part of Handel's Messiah that refers to the birth of Jesus in Bethlehem.",
           command: `tool.execute(query="Which part of Handel's Messiah refers to the birth of Jesus in Bethlehem?")`,
@@ -405,7 +405,7 @@ print(f"The ISBN-10 number for the Tropicos ID {tropicos_id} is: {isbn_10}")</co
           type: "warning"
         },
         {
-          title: "Action Step 3",
+          title: "Action Turn 3",
           tool: "Wikipedia Search",
           subgoal: "Retrieve information about the specific part of Handel's Messiah that mentions the birth of Jesus in Bethlehem.",
           command: `tool.execute(query="Handel's Messiah birth of Jesus Bethlehem")`,
@@ -413,7 +413,7 @@ print(f"The ISBN-10 number for the Tropicos ID {tropicos_id} is: {isbn_10}")</co
           type: "warning"
         },
         {
-          title: "Action Steps 4-5",
+          title: "Action Turns 4-5",
           tool: "Wikipedia Search",
           subgoal: "Retrieve the specific part of Handel's Messiah that mentions the birth of Jesus in Bethlehem.",
           command: `tool.execute(query="Which part of Handel's Messiah refers to the birth of Jesus in Bethlehem?")`,
@@ -421,7 +421,7 @@ print(f"The ISBN-10 number for the Tropicos ID {tropicos_id} is: {isbn_10}")</co
           type: "warning"
         },
         {
-          title: "Action Step 6",
+          title: "Action Turn 6",
           tool: "Wikipedia Search",
           subgoal: "Retrieve the specific part of Handel's Messiah that mentions the birth of Jesus in Bethlehem.",
           command: `tool.execute(query="birth of Jesus in Handel's Messiah")`,
@@ -438,10 +438,10 @@ print(f"The ISBN-10 number for the Tropicos ID {tropicos_id} is: {isbn_10}")</co
     question: "<strong>GPQA:</strong> An intelligent civilization in the Large Magellanic Cloud has engineered an extraordinary spacecraft capable of traveling at a substantial fraction of the speed of light. The average lifetime of these aliens is roughly 150 solar years. Now, having Earth as their destination in mind, they are determined to travel with this spacecraft at a constant speed of 0.99999987*c, where c is the speed of light. Approximately, how long will it take for their 22 years old astronaut (from the point of view of the astronaut) to reach the Earth using this incredibly fast spacecraft? Choices: A. 81 years, B. 77 years, C. 72 years, D. The astronaut will die before reaching to the Earth.",
     answer: "A. 81 years",
     success: {
-      title: "Success Case: AgentFlow w/ Flow-GRPO",
+      title: "Success Case: AgentFlow (with Flow-GRPO)",
       steps: [
         {
-          title: "Action Step 1",
+          title: "Action Turn 1",
           tool: "Python Coder",
           subgoal: "Calculate the time it takes for the astronaut to reach Earth from the perspective of the astronaut.",
           command: `tool.execute(query="A spacecraft travels at a speed of 0.99999987*c, where c is the speed of light. The distance to Earth is 165000 light-years. If the astronaut is 22 years old, how long will it take for the astronaut to reach Earth from the perspective of the astronaut? Using the formula time = distance / speed, calculate the time dilation effect with the velocity given and determine the perceived time for the astronaut.")`,
@@ -472,10 +472,10 @@ print(f"Due to time dilation, the astronaut will perceive {perceived_time:.2f} y
       solution: "The correct answer is A. 81 years. The agent successfully applied the time dilation formula to calculate the proper relativistic travel time from the astronaut's perspective."
     },
     failure: {
-      title: "Failure Case: AgentFlow w/o Flow-GRPO",
+      title: "Failure Case: AgentFlow (without Flow-GRPO)",
       steps: [
         {
-          title: "Action Step 1",
+          title: "Action Turn 1",
           tool: "Python Coder",
           subgoal: "Generate and execute Python code to calculate the time experienced by the astronaut using time dilation formula.",
           command: `tool.execute(query="Calculate the time experienced by an astronaut using the time dilation formula: t' = t / sqrt(1 - v^2/c^2), where t is approximately 22 years (the lifespan of the astronaut) and v is 0.99999987 * c.")`,
@@ -494,7 +494,7 @@ print(f"The time experienced by the astronaut is {t_prime:.6f} years.")</code></
           type: "error"
         },
         {
-          title: "Action Step 2",
+          title: "Action Turn 2",
           tool: "Google Search",
           subgoal: "Find scientific references discussing similar scenarios regarding travel times under relativistic conditions.",
           command: `tool.execute(query="relativistic travel time calculations for speeds close to the speed of light", add_citations=True)`,
@@ -511,10 +511,10 @@ print(f"The time experienced by the astronaut is {t_prime:.6f} years.")</code></
     question: "<strong>2WikiMultihopQA:</strong> Who is the mother-in-law of Olivera Despina?",
     answer: "Gülçiçek Hatun",
     success: {
-      title: "Success Case: AgentFlow w/ Flow-GRPO",
+      title: "Success Case: AgentFlow (with Flow-GRPO)",
       steps: [
         {
-          title: "Action Step 1",
+          title: "Action Turn 1",
           tool: "Google Search",
           subgoal: "Perform a Google search for 'Olivera Despina biography' to find relevant information about her and possibly identify her husband's family members.",
           command: `tool.execute(query="Olivera Despina biography", add_citations=True)`,
@@ -522,7 +522,7 @@ print(f"The time experienced by the astronaut is {t_prime:.6f} years.")</code></
           type: "success"
         },
         {
-          title: "Action Step 2",
+          title: "Action Turn 2",
           tool: "Wikipedia Search",
           subgoal: "Identify any mention of Olivera's parents or in-laws in Wikipedia articles.",
           command: `tool.execute(query="Who is the mother-in-law of Olivera Despina")`,
@@ -530,7 +530,7 @@ print(f"The time experienced by the astronaut is {t_prime:.6f} years.")</code></
           type: "warning"
         },
         {
-          title: "Action Step 3",
+          title: "Action Turn 3",
           tool: "Google Search",
           subgoal: "Perform a Google search to find more detailed biographical information about Olivera Despina and her family members.",
           command: `tool.execute(query="Who is the mother-in-law of Olivera Despina")`,
@@ -542,10 +542,10 @@ print(f"The time experienced by the astronaut is {t_prime:.6f} years.")</code></
       solution: "The answer is Gülçiçek Hatun. The agent successfully identified that Olivera Despina married Sultan Bayezid I, and Gülçiçek Hatun was Bayezid I's mother, making her Olivera Despina's mother-in-law."
     },
     failure: {
-      title: "Failure Case: AgentFlow w/o Flow-GRPO",
+      title: "Failure Case: AgentFlow (without Flow-GRPO)",
       steps: [
         {
-          title: "Action Steps 1-8",
+          title: "Action Turns 1-8",
           tool: "Wikipedia Search / Google Search",
           subgoal: "Find the specific award Alexey Saltykov received for directing the film 'Pugachev' (1978).",
           command: `tool.execute(query="Alexey Saltykov award for Pugachev 1978")`,
@@ -619,11 +619,11 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="case-toggle-container">
               <button class="case-toggle-btn success-btn ${currentView === 'success' ? 'active' : ''}"
                       data-view="success" onclick="window.caseViz.toggleView('success')">
-                ✓ With Flow-GRPO
+                ✓ AgentFlow (with Flow-GRPO)
               </button>
               <button class="case-toggle-btn failure-btn ${currentView === 'failure' ? 'active' : ''}"
                       data-view="failure" onclick="window.caseViz.toggleView('failure')">
-                ✗ Without Flow-GRPO
+                ✗ AgentFlow (without Flow-GRPO)
               </button>
             </div>
           </div>

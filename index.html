@@ -101,6 +101,16 @@
               <b>TextGrad</b>
               <p style="font-size:18px; display: inline; margin-left: 5px;">🔥</p>
             </a>
+            <a class="navbar-item" href="https://octotools.github.io/" target="_blank">
+              <b>OctoTools</b>
+              <p style="font-size:18px; display: inline; margin-left: 5px;">🔥</p>
+            </a>
+            <a class="navbar-item" href="https://arxiv.org/abs/2501.06590" target="_blank">
+              <b>ChemAgent</b>
+            </a>
+            <a class="navbar-item" href="https://arxiv.org/abs/2504.04785" target="_blank">
+              <b>Weak-for-Strong</b>
+            </a>
           </div>
         </div>
       </div>
@@ -143,8 +153,7 @@
               <img src="assets/logos/agentflow.png" style="width:1.8em; vertical-align: middle;" alt="Logo">
               <span style="vertical-align: middle; position: relative; display: inline-block;">
                 <span id="agent-text" class="clickable-title"
-                      style="color: #000; position: relative; cursor: pointer;">Agent</span>
-                <span id="flow-text"
+                      style="color: #000; position: relative; cursor: pointer;">Agent</span><span id="flow-text"
                       style="color: #000; position: relative;">Flow</span>
               </span>
             </h1>
@@ -221,12 +230,12 @@
                     <span>Model</span>
                   </a>
                 </span>
-                <!-- HuggingFace Demo Link. -->
+                <!-- Gradio Demo Link. -->
                 <span class="link-block">
                   <a href="https://huggingface.co/spaces/AgentFlow/agentflow"
                     class="external-link button is-normal is-rounded is-dark" target="_blank">
                     <span class="icon">
-                      <p style="font-size:18px">🤗</p>
+                      <img src="assets/results/gradio.svg" width="18" height="18" style="vertical-align: middle;" alt="Gradio">
                     </span>
                     <span>Demo</span>
                   </a>
@@ -338,20 +347,62 @@
               tool-calling reliability, and positive scaling with model size and reasoning turns.
             </p>
           </div>
+          <div class="content has-text-centered" style="margin-top: 2rem;">
+            <img src="assets/results/case_study.png" width="100%">
+            <p style="text-align: left;">
+              <b>One case study example.</b> Initially failed with repetitive errors (left), <b>AgentFlow</b>, trained with Flow-GRPO, explores a new solution pathway at turn 4 after two failed attempts (right).
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </section>
   <!--/ Introduction -->
 
-  <!-- AgentFlow System -->
   <section class="section" id="agentflow">
+    <div class="container" style="margin-bottom: 2vh;">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3"><b>AgentFlow</b>: An In-the-Flow Agentic System</h2>
+
+          <!-- Framework Figure -->
+          <div class="content has-text-centered" style="margin-bottom: 2rem;">
+            <img src="assets/models/framework_overall.png" width="100%">
+            <p style="text-align: left;">
+              <b>(a)</b> Overview of <b>AgentFlow</b>, a trainable agentic system for in-the-flow planning and tool use.  
+              Four modules—<b>planner</b>, <b>executor</b>, <b>verifier</b>, and <b>generator</b>—interact via evolving memory $M$ and toolset $K$, given query $q$.  
+              <b>The planner policy is optimized on-policy inside the system's multi-turn loop for adaptive reasoning.</b>  
+              <b>(b)</b> A single state transition: $a^t$, $e^t$, and $v^t$ update memory from $M^t$ to $M^{t+1}$.
+            </p>
+          </div>
+          
+          <div class="content has-text-justified">
+            <p>
+              <b>AgentFlow</b> is a general-purpose tool-integrated agentic framework for solving complex reasoning tasks through fine-grained planning and effective tool use. It comprises four specialized modules—<b>Planner</b> $\mathcal{P}$, <b>Executor</b> $\mathcal{E}$, <b>Verifier</b> $\mathcal{V}$, and <b>Generator</b> $\mathcal{G}$—coordinated by shared memory $M$ and a toolset $K$. We formalize <b>AgentFlow's</b> problem-solving process as a multi-turn Markov Decision Process (MDP): given query $q$ and toolset $K$, the planner $\mathcal{P}$ (a trainable policy $\pi_\theta$) produces an action $a^t \sim \pi_\theta(a^t \mid q, K, M^t)$ that formulates a sub-goal, selects a tool $k \in K$, and retrieves relevant context from memory $M^t$. The executor $\mathcal{E}$ invokes tools according to $a^t$, yielding execution results $e^t \sim \mathcal{E}(e^t \mid a^t, K)$. The verifier $\mathcal{V}$ evaluates $e^t$, producing a binary verification signal $v^t \sim \mathcal{V}(v^t \mid q, e^t, M^t)$. If $v^t = 0$, the memory is updated deterministically: $M^{t+1} = f_{\text{mem}}(M^t, a^t, e^t, v^t)$. This process repeats until $v^t = 1$ (termination) or a maximum turn budget is reached. Upon termination at turn $T$, the generator $\mathcal{G}$ produces the final solution $o \sim \mathcal{G}(o \mid q, M^T)$. After $T$ turns, the trajectory $\tau = \{(a^t, e^t, v^t)\}_{t=1}^T$ records planning, execution, and verification steps. The joint generative process is:
+              <div class="math-scrollable">
+              $$p_\theta(\{a^t,e^t,v^t\}_{1:T}, o \mid q)
+              = \Big[\prod_{t=1}^T \pi_\theta(a^t \mid q,K,M^t)\;
+                \mathcal{E}(e^t \mid a^t,K)\;
+                \mathcal{V}(v^t \mid q,e^t,M^t)\Big]\;
+                \mathcal{G}(o \mid q,M^T).$$
+              </div>
+            </p>
+  
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- AgentFlow System -->
+  <!-- <section class="section" id="agentflow">
     <div class="container" style="margin-bottom: 2vh;">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3"><span <b>AgentFlow</b>: An In-the-Flow Agentic System</h2>
 
-          <!-- AgentFlow Framework Figure -->
           <div class="content has-text-centered" style="margin-bottom: 2rem;">
             <img src="assets/models/framework_overall.png" width="100%">
             <p style="text-align: left;">
@@ -414,17 +465,107 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
   <!--/ AgentFlow System -->
 
   <!-- Flow-GRPO -->
-  <section class="section" id="flow-grpo">
+<section class="section" id="flow-grpo">
+  <div class="container" style="margin-bottom: 2vh;">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Flow-based Group Refined Policy Optimization</h2>
+
+        <!-- Figure -->
+        <div class="content has-text-centered" style="margin-bottom: 2rem;">
+          <img src="assets/models/Flow-GRPO.png" width="100%">
+          <p style="text-align: left;">
+            Optimization of <b>AgentFlow</b>. Given a query $q$, memory $M$, and toolset $K$, the policy generates actions for sub-goals and tool selection.
+            It is trained via <b>Flow-GRPO</b> — a reinforcement learning method enabling multi-turn, stable optimization under collaborative dynamics.
+          </p>
+        </div>
+
+        <div class="content has-text-justified">
+          <h4 class="title is-5">In-the-flow Learning</h4>
+          <p>
+            For effective planning and tool use, we directly <b>optimizes planner agent within the system </b> in an <b>online fashion</b>. We roll out the full <b>AgentFlow</b> system under the current policy, collect the
+            actual trajectory $\tau$ of states, actions, and tool events it induces, and update the policy within the
+            agentic system using a verifiable final-outcome signal.
+            </p> 
+            <!-- <p>
+            This exposes the multi-turn credit-assignment problem
+            directly and trains the planner on the exact states it will face at inference. Our objective, Flow-GRPO, is
+            designed to stabilize learning under sparse, trajectory-level rewards over multiple turns.
+          </p> -->
+
+          <h4 class="title is-5">Policy Objective</h4>
+          <p>
+            Given rollout $\tau=\{a^t\}_{1:T}$ and reward $R(\tau)$, the planner maximizes
+            $$\mathcal{J}(\theta)=\mathbb{E}_{\tau\sim\pi_\theta}[R(\tau)], \quad
+            \theta^\star=\arg\max_\theta \mathcal{J}(\theta).$$
+            <p>
+              Assigning credit to intermediate actions is challenging because each $a^t$ influences the final solution only
+              indirectly, and their value may only emerge after several turns (e.g., error or improvement accumulation). To
+              avoid brittle local feedback, we adopt a <b>final-outcome-based reward</b>: every action within a rollout
+              receives the same global reward signal, based on the correctness of the final solution $o$ with respect to query
+              $q$ and ground truth $y^*$:
+              $$r = R(a^t) = \bar{R}(o, q, y^*), \quad \forall t = 1,\dots,T,$$
+              where $\bar{R}(o, q, y^*) \in \{0, 1\}$ is assigned by an LLM-as-judge rubric for semantic, numeric, and
+              option-level equivalence. This propagates a trajectory-level success signal back through the reasoning chain,
+              aligning every decision $a^t$ with global correctness.
+            </p>
+            <h4 class="title is-5">Objective function</h4>
+            <p>
+              We formalize <b>Flow</b>-based <b>G</b>roup <b>R</b>efined <b>P</b>olicy <b>O</b>ptimization for the planner.
+              The goal is to optimize the policy $\pi_\theta$ by maximizing the expected return over a group of parallel
+              rollouts. For each query-label pair from training corpus $(q,y^*) \sim \mathcal{D}$, we sample a group of $G$
+              on-policy trajectories $\{\tau_i\}_{i=1}^G$ by running the current behavior policy $\pi_{\theta_\text{old}}$
+              inside <b>AgentFlow</b>, where $\tau_i = \{a_i^1, ....a_i^{T_i}, o_i\}$.
+              Let $s_i^t=(q, K, M_i^t)$ be the state at turn $t$ of rollout $i$, $a_i^t$ the planner's action (a token
+              sequence of length $|a_i^t|$), and $o_i$ the final response.
+            </p>
+            <p>
+              This structure is key to addressing the long-horizon credit assignment challenge: by broadcasting a single
+              trajectory-level reward to all turns, we effectively decompose the <i>multi-turn RL</i> problem into <i>a set
+              of independent, single-turn</i> policy updates. Each update for an action $a_i^t$ is conditioned on the full
+              historical context encapsulated in the state $s_i^t$ and receives the same global success signal, simplifying
+              optimization. The objective is
+              <div class="math-scrollable">
+              $$\begin{aligned}
+              \mathcal{J}_{\text{Flow-GRPO}}(\theta) &= \mathbb{E}_{(q, y^*) \sim \mathcal{D}, \; \{\tau_i\}_{i=1}^{G} \sim \pi_{\theta_\text{old}}} \\
+              & \Bigg[
+              \frac{1}{G}\sum_{i=1}^{G}\frac{1}{T_i}\sum_{t=1}^{T_i}\frac{1}{|a_i^t|}\sum_{j=1}^{|a_i^t|}
+              \min\!\Big\{ \rho_{i,j}^t A_i^t,\, \mathrm{clip}(\rho_{i,j}^t,\,1-\epsilon,\,1+\epsilon)\,A_i^t \Big\}
+              \;-\; \beta\, \mathbb{D}_{\mathrm{KL}}\!\big(\pi_\theta \,\|\, \pi_{\text{ref}}\big)
+              \Bigg],
+              \end{aligned}$$
+              </div>
+              where $T_i$ is the (variable) number of turns in rollout $i$, and
+              $$\rho_{i,j}^t
+              = \frac{\pi_\theta\!\big(a_{i,j}^t \,\big|\, s_i^t, a_{i,1:j-1}^t\big)}
+              {\pi_{\theta_\text{old}}\!\big(a_{i,j}^t \,\big|\, s_i^t, a_{i,1:j-1}^t\big)}$$
+              is the token-level importance ratio for the $j$-th token of $a_i^t$, $\epsilon>0$ is the PPO clipping
+              parameter, and $\beta>0$ controls the KL penalty to a fixed reference policy $\pi_{\text{ref}}$.
+            </p>
+            <h4 class="title is-5">Group-normalized advantages</h4>
+            <p>
+              Because the reward is a single trajectory-level signal, the per-turn advantage $A_i^t$ is constant over $t$
+              within a rollout $i$. We reduce variance and sharpen credit assignment across the group by using a
+              <i>group-normalized</i> advantage:
+              $$A_i^t = \frac{\bar{R}(o_i, q, y^*) - \mathrm{mean}\left( \{ \bar{R}(o_k, q, y^*) \}_{k=1}^{G} \right)}{\mathrm{std}\left( \{ \bar{R}(o_k, q, y^*) \}_{k=1}^{G} \right)}.$$
+            </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Flow-GRPO -->
+  <!-- <section class="section" id="flow-grpo">
     <div class="container" style="margin-bottom: 2vh;">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3">Flow-based Group Refined Policy Optimization</h2>
 
-          <!-- Flow-GRPO Figure -->
           <div class="content has-text-centered" style="margin-bottom: 2rem;">
             <img src="assets/models/Flow-GRPO.png" width="100%">
             <p style="text-align: left;">
@@ -523,7 +664,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
   <!--/ Flow-GRPO -->
 
   <!-- Tool Cards Section -->
@@ -827,10 +968,10 @@
       <!-- Second row: TAMU, UCSD, Lambda -->
       <div class="org-banner-row">
         <a href="https://www.tamu.edu/" target="_blank" rel="external">
-          <img class="center-block org-banner" src="assets/logos/tamu.png" alt="Texas A&M University">
+          <img class="center-block org-banner" src="assets/logos/tamu.svg" alt="Texas A&M University">
         </a>
         <a href="https://ucsd.edu/" target="_blank" rel="external">
-          <img class="center-block org-banner" src="assets/logos/ucsd.png" alt="UC San Diego">
+          <img class="center-block org-banner" src="assets/logos/ucsd.svg" alt="UC San Diego">
         </a>
         <a href="https://lambdalabs.com/" target="_blank" rel="external">
           <img class="center-block org-banner" src="assets/logos/lambda.png" alt="Lambda">
