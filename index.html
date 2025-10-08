@@ -93,10 +93,6 @@
             More Research
           </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="https://github.com/TIGER-AI-Lab/verl-tool" target="_blank">
-              <b>VerlTool</b>
-              <p style="font-size:18px; display: inline; margin-left: 5px;">🔥</p>
-            </a>
             <a class="navbar-item" href="https://chameleon-llm.github.io/" target="_blank">
               <b>Chameleon</b>
               <p style="font-size:18px; display: inline; margin-left: 5px;">🔥</p>
@@ -109,11 +105,21 @@
               <b>OctoTools</b>
               <p style="font-size:18px; display: inline; margin-left: 5px;">🔥</p>
             </a>
+            <a class="navbar-item" href="https://github.com/TIGER-AI-Lab/verl-tool" target="_blank">
+              <b>VerlTool</b>
+              <p style="font-size:18px; display: inline; margin-left: 5px;">🔥</p>
+            </a>
             <a class="navbar-item" href="https://arxiv.org/abs/2501.06590" target="_blank">
               <b>ChemAgent</b>
             </a>
             <a class="navbar-item" href="https://arxiv.org/abs/2504.04785" target="_blank">
               <b>Weak-for-Strong</b>
+            </a>
+            <a class="navbar-item" href="https://arxiv.org/abs/2509.25370" target="_blank">
+              <b>AgentDebug</b>
+            </a>
+            <a class="navbar-item" href="https://arxiv.org/abs/2510.06217" target="_blank">
+              <b>TaTToo</b>
             </a>
           </div>
         </div>
@@ -224,12 +230,25 @@
                     <span>Code</span>
                   </a>
                 </span>
+                <!-- HuggingFace Paper Link. -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/papers/2510.05592"
+                    class="external-link button is-normal is-rounded is-dark" target="_blank">
+                    <span class="icon">
+                      <img src="assets/logos/huggingface.svg" width="20" height="20" style="vertical-align: middle;" alt="HuggingFace">
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
                 <!-- HuggingFace Model Link. -->
                 <span class="link-block">
                   <a href="https://huggingface.co/AgentFlow"
                     class="external-link button is-normal is-rounded is-dark" target="_blank">
-                    <span class="icon">
+                    <!-- <span class="icon">
                       <p style="font-size:18px">🤗</p>
+                    </span> -->
+                    <span class="icon">
+                      <img src="assets/logos/huggingface.svg" width="20" height="20" style="vertical-align: middle;" alt="HuggingFace">
                     </span>
                     <span>Model</span>
                   </a>
@@ -239,7 +258,7 @@
                   <a href="https://huggingface.co/spaces/AgentFlow/agentflow"
                     class="external-link button is-normal is-rounded is-dark" target="_blank">
                     <span class="icon">
-                      <img src="assets/results/gradio.svg" width="18" height="18" style="vertical-align: middle;" alt="Gradio">
+                      <img src="assets/logos/gradio.svg" width="18" height="18" style="vertical-align: middle;" alt="Gradio">
                     </span>
                     <span>Demo</span>
                   </a>
@@ -264,6 +283,18 @@
                     <span>Slack</span>
                   </a>
                 </span>
+
+                <!-- X Link. -->
+                <span class="link-block">
+                  <a href="https://x.com/lupantech"
+                    class="external-link button is-normal is-rounded is-dark" target="_blank">
+                    <span class="icon">
+                      <img src="assets/logos/x.svg" width="18" height="18" style="vertical-align: middle;" alt="X">
+                    </span>
+                    <span>Media</span>
+                  </a>
+                </span>
+
               </div>
             </div>
 
@@ -910,14 +941,11 @@ By broadcasting a single trajectory-level reward to all turns, we decompose mult
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title is-3 has-text-centered">BibTeX</h2>
-      <pre><code>@misc{li2025intheflowagenticoptimizationeffective,
-      title={In-the-Flow Agentic System Optimization for Effective Planning and Tool Use},
-      author={Zhuofeng Li and Haoxiang Zhang and Seungju Han and Sheng Liu and Jianwen Xie and Yu Zhang and Yejin Choi and James Zou and Pan Lu},
-      year={2025},
-      eprint={2510.05592},
-      archivePrefix={arXiv},
-      primaryClass={cs.AI},
-      url={https://arxiv.org/abs/2510.05592},
+      <pre><code>@article{li2025intheflow,
+    title = {In-the-Flow Agentic System Optimization for Effective Planning and Tool Use},
+    author = {Li, Zhuofeng and Zhang, Haoxiang and Han, Seungju and Liu, Sheng and Xie, Jianwen and Zhang, Yu and Choi, Yejin and Zou, James and Lu, Pan},
+    journal = {arXiv preprint arXiv:2510.05592},
+    year = {2025}
 }</code></pre>
     </div>
   </section>
@@ -978,7 +1006,5 @@ By broadcasting a single trajectory-level reward to all turns, we decompose mult
   <button onclick="topFunction()" id="topButton" title="Go to top">
     <i class="fas fa-arrow-up"></i>
   </button>
-
-
   
 </html>
