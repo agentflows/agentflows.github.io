@@ -333,4 +333,21 @@ body {
   background: #555;
 }
 
+/* Image hover effect - float up slightly */
+.content img,
+.hero-body img,
+.teaser img,
+section img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.content img:hover,
+.hero-body img:hover,
+.teaser img:hover,
+section img:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
 
